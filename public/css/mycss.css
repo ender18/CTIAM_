@@ -1,0 +1,85 @@
+/* CSS SIDEBAR */
+/*!
+ * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+ .sidebar-nav {
+     top: 0;
+     width: 250px;
+     margin: 0;
+     padding: 0;
+     background: #000;
+     list-style: none;
+ }
+
+ .sidebar-nav li {
+     text-indent: 20px;
+     line-height: 40px;
+ }
+
+ .sidebar-nav li a {
+     display: block;
+     text-decoration: none;
+     color: #999999;
+ }
+
+ .sidebar-nav li a:hover {
+     text-decoration: none;
+     color: #fff;
+     background: rgba(255,255,255,0.2);
+ }
+
+ .sidebar-nav li a:active,
+ .sidebar-nav li a:focus {
+     text-decoration: none;
+ }
+
+ .sidebar-nav > .sidebar-brand {
+     height: 65px;
+     font-size: 18px;
+     line-height: 60px;
+ }
+
+ .sidebar-nav > .sidebar-brand a {
+     color: #999999;
+ }
+
+ .sidebar-nav > .sidebar-brand a:hover {
+     color: #fff;
+     background: none;
+ }
+
+ .myAlert-top{
+    position: fixed;
+    top: 5px;
+    left:2%;
+    width: 96%;
+}
+
+div.fullscreen {
+  position: absolute;
+  width:100%;
+  height:960px;
+  top: 0;
+  left: 0;
+  background-color: lightblue;
+}
+
+.border-3 {
+    border-width:3px !important;
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+
+}
+
+.border-4 {
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+
+}
+
+
+
+
+/* END CSS SIDEBAR */
