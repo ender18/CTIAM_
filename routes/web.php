@@ -71,6 +71,15 @@ Route::get('/viewchangePassword', 'UsersController@viewchangePassword');
 
 Route::post('/changePassword', 'UsersController@changePassword');
 
+Route::get('/exportCertified', 'EventsController@exportCertified');
+Route::get('/addCertifieds', 'EventsController@addCertifieds');
+
+Route::post('/manageEvents/addCertified', 'EventsController@addCertified');
+
+
+
+
+
 
 
 

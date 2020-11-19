@@ -15,7 +15,7 @@
           <br>
         </div>
         <div class="col-12" v-if="my_courses1.length > 0">
-          <h2 class="text-center text-primary" >Mis Actividades de formación matriculadas</h2>
+          <h2 class="text-center" >Mis Actividades de formación matriculadas</h2>
           <hr>
 
         </div>
@@ -28,6 +28,7 @@
                 <th scope="col">Tipo</th>
                 <th scope="col">Estado</th>
                 <th scope="col">Opciones</th>
+                <th scope="col">Certificado <i class="fas fa-file-pdf"></i></th>
               </tr>
             </thead>
             <tbody>
@@ -39,6 +40,9 @@
                 <td><button class="btn btn-secondary" type="button" name="button" v-on:click="openShowModal(my_course.id_group, my_course.id_course_parent)">Ver <i class="far fa-question-circle"></i></button> <button class="btn btn-danger" type="button" name="button"
                   v-if="my_course.status == 'Matriculado' || my_course.status == 'En curso'" v-on:click="confirmCancelCourse(my_course.id)">Cancelar <i class="far fa-times-circle"></i></button>
                 </td>
+                <td class="text-center"><a v-if="my_course.url_certified != null" v-bind:href="my_course.url_certified" download>
+                  <i class="fas fa-download fa-lg"></i>
+                </a></td>
 
               </tr>
             </tbody>

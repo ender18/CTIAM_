@@ -9,6 +9,7 @@ use DB;
 use App\User;
 use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class EventsController extends Controller
 {
@@ -648,10 +649,30 @@ class EventsController extends Controller
     public function myEventsAliado(Request $request){
       $courses = Course::join('groups', 'courses.id', '=', 'groups.id_course_parent')
                         ->join('groups_tutors', 'groups_tutors.id_group', '=', 'groups.id')
+                        ->select('courses.title',
+                        'courses.description',
+                        'courses.type',
+                        'courses.duration',
+                        'courses.duration_type',
+                        'courses.url_image',
+                        'courses.fecha_inicio',
+                        'courses.fecha_fin',
+                        'courses.fecha_inicio_inscription',
+                        'courses.fecha_fin_inscription',
+                        'courses.cost',
+                        'courses.id_owner',
+                        'courses.status',
+                        'groups.id',
+                        'groups.name',
+                        'groups.id_course_parent',
+                        'groups.quota',
+                        'groups.schedule',
+                        'groups.place',
+                        'groups.status_group'
+                        )
                         ->where('groups_tutors.id_tutor', auth()->user()->id)->get();
 
       return view('ally.myEvents', compact('courses'));
-
 
     }
 
@@ -695,18 +716,8 @@ class EventsController extends Controller
                   'updated_at' => $fecha_hoy
                 ]
               );
-
-
-
               }
-
-
-
           }
-
-
-
-
           return response()->json([
             'msj' => $msj,
             'type_msj' => $type_msj
@@ -750,4 +761,85 @@ class EventsController extends Controller
 
 
     }
+
+    public function exportCertified(Request $request){
+
+      // return view('management.certifiedCourse');
+
+      $course = Course::find(87);
+      $pdf = PDF::loadView('management.certifiedCourse', compact('course'))->setPaper('letter', 'landscape');
+      return $pdf->stream('certified.pdf');
+
+    }
+
+    public function addCertifieds(Request $request){
+
+
+      $course = Course::find($request->id_course);
+      $students  = User::join('groups_users', 'users.id', '=', 'groups_users.id_users')->join('groups', 'groups_users.id_group', '=', 'groups.id')
+      ->select('users.last_name',
+               'users.dni',
+               'users.name',
+               'users.email',
+               'users.phone',
+               'users.adress',
+               'users.neighborhood',
+               'groups.status_group',
+               'groups.name as nameGroup',
+               'groups_users.status',
+               'groups_users.id',
+               'groups_users.url_certified')
+      ->where('groups.id_course_parent', $request->id_course)
+      ->orderBy('nameGroup')->get();
+
+
+      return view('management.addCertifieds', compact('course', 'students'));
+
+    }
+
+
+    public function addCertified(Request $request){
+      if ($request->ajax()) {
+        // code...
+
+        $name='';
+        if($request->hasFile('file')){
+          $file = $request->file('file');
+          $name = '/certifieds/'.time().$file->getClientOriginalName();
+          $file->move(public_path().'/certifieds/',$name);
+        }
+
+        $affected = DB::table('groups_users')
+              ->where('id', $request->id)
+              ->update(['url_certified' => $name]);
+
+        $students  = User::join('groups_users', 'users.id', '=', 'groups_users.id_users')->join('groups', 'groups_users.id_group', '=', 'groups.id')
+              ->select('users.last_name',
+              'users.dni',
+              'users.name',
+              'users.email',
+              'users.phone',
+              'users.adress',
+              'users.neighborhood',
+              'groups.status_group',
+              'groups.name as nameGroup',
+              'groups_users.status',
+              'groups_users.id',
+              'groups_users.url_certified')
+              ->where('groups.id_course_parent', $request->id_course)
+              ->orderBy('nameGroup')->get();
+
+        $msj = 'El certificado se ha cargado exitosamente';
+
+        return response()->json([
+            'msj' => $msj,
+            'students' => $students
+        ],200);
+      }
+
+    }
+
+
+
+
 }

@@ -58,6 +58,7 @@
                   <a class="dropdown-item" href="#" v-if="foco.status != 'Cancelado' && foco.status != 'Finalizado'" v-on:click="changeStatus(foco.id, 'Cancelado')">Cancelar</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#" v-if="foco.status === 'Borrador' || foco.status === 'Publicado'" v-on:click="openModalAddBeneficiary(foco.id)" >Añadir Beneficiaria</a>
+                  <a class="dropdown-item" v-bind:href="'/addCertifieds?id_course='+foco.id" v-if="foco.status === 'Finalizado'" >Administrar Certificados</a>
                   <a class="dropdown-item" href="#" v-if="foco.status === 'Borrador' || foco.status === 'Publicado'" v-on:click="openModalContent(foco.id)" >Editar</a>
                   <a class="dropdown-item" href="#" v-if="foco.status === 'Borrador'" v-on:click="deleteEvent(foco.id)">Eliminar</a>
                 </div>

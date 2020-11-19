@@ -51,6 +51,11 @@ Vue.component('footer-component', require('./components/general/footerComponent.
 Vue.component('manage-users-component', require('./components/management/manageUsers.vue').default);
 Vue.component('change-password-component', require('./components/auth/changePassword.vue').default);
 
+Vue.component('certified-component', require('./components/management/certifiedComponent.vue').default);
+
+Vue.component('add-certifieds-component', require('./components/management/addCertifiedsComponent.vue').default);
+
+
 
 
 

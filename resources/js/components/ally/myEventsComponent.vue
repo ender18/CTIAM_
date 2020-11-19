@@ -183,6 +183,7 @@ methods:{
     this.view_schedule = elemento.schedule;
     this.view_place = elemento.place;
 
+    
     axios.post('/showGroup',{
       id_group: id_group, id_course: id_course
     })

@@ -41,7 +41,7 @@ class GroupsExport implements FromCollection, WithHeadings, WithTitle
         'quota',
         'place',
         'status_group',
-        'course.title')
+        'courses.title')
         ->join('courses', 'courses.id', '=', 'groups.id_course_parent')
         ->where('groups.id_course_parent', '=', $this->id)
         ->get();
