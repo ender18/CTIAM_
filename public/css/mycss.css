@@ -79,6 +79,67 @@ div.fullscreen {
 
 }
 
+.border-navbar {
+    border-bottom: 3px solid #C50088;
+}
+
+.border-top-element {
+    border-top: 3px solid #C50088;
+}
+
+.border-round {
+  border-radius: 20px
+}
+
+.border-color-pink{
+  border-color:  #c50088;
+}
+
+.color-pink{
+  color: #c50088;
+}
+
+.color-pink-soft{
+  color: #FFAEAE;
+}
+
+.color-black{
+  color: #000000;
+}
+
+.nav-bar-fixed{
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+}
+
+.pading-content{
+  padding-top: 75px;
+
+}
+
+.delete-padding{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.slider-gradient{
+  background: linear-gradient(0deg, black, rgba(0,0,0,0.8), rgba(0,0,0,0.4) , rgba(255,255,255,0));
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 15%;
+  left: 0%;
+  right: 0%;
+  bottom: 0%;
+}
+
+.border-image{
+  border-radius: 40px;
+}
+
+.background-color-pink{
+  background-color: #FFF5FC;
+}
 
 
 

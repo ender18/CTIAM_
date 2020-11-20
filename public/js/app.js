@@ -5861,18 +5861,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       sliders1: this.sliders,
       quienes_somos1: this.quienes_somos,
       que_hacemos1: this.que_hacemos,
-      proyectos_realizados1: this.proyectos_realizados
+      proyectos_realizados1: this.proyectos_realizados,
+      secciones: 0
     };
   },
   props: ['sliders', 'quienes_somos', 'que_hacemos', 'proyectos_realizados'],
   mounted: function mounted() {
     console.log(this.sliders1);
+    this.secciones = this.proyectos_realizados1.length / 3;
+
+    if (this.proyectos_realizados1.length % 3 > 0) {
+      this.secciones += 1;
+    }
+
+    this.secciones = Math.trunc(this.secciones);
+    console.log(this.secciones);
   }
 });
 
@@ -67126,154 +67153,247 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container shadow" }, [
-    _c(
-      "div",
-      { staticClass: "row" },
-      [
-        _c("div", { staticClass: "col-12" }, [
-          _c(
-            "div",
-            {
-              staticClass: "carousel slide",
-              attrs: {
-                id: "carouselExampleIndicators",
-                "data-ride": "carousel"
-              }
-            },
-            [
-              _c(
-                "ol",
-                { staticClass: "carousel-indicators" },
-                _vm._l(_vm.sliders1, function(slider) {
-                  return _c("li", {
-                    staticClass: "active",
-                    class: [slider.id === _vm.sliders[0].id ? "active" : ""],
-                    attrs: {
-                      "data-target": "#carouselExampleIndicators",
-                      "data-slide-to": "0"
-                    }
-                  })
-                }),
-                0
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "carousel-inner" },
-                _vm._l(_vm.sliders1, function(slider) {
-                  return _c(
-                    "div",
-                    {
-                      class: [
-                        "carousel-item",
-                        slider.id === _vm.sliders[0].id ? "active" : ""
-                      ]
-                    },
-                    [
-                      _c("img", {
-                        staticClass: "d-block w-100",
-                        attrs: { src: slider.file, alt: "Second slide" }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "carousel-caption d-none d-md-block",
-                          staticStyle: {
-                            "background-color": "rgba(255, 255, 255, 0.8)",
-                            right: "0%",
-                            left: "0%"
-                          }
-                        },
-                        [
-                          _c("h1", { staticClass: "text-primary display-6" }, [
-                            _vm._v(_vm._s(slider.content))
-                          ]),
-                          _vm._v(" "),
-                          _c("h5", { staticClass: "text-primary" }, [
-                            _vm._v(_vm._s(slider.content1))
-                          ])
-                        ]
-                      )
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12 delete-padding" }, [
+        _c(
+          "div",
+          {
+            staticClass: "carousel slide",
+            attrs: { id: "carouselExampleIndicators", "data-ride": "carousel" }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "carousel-inner" },
+              _vm._l(_vm.sliders1, function(slider) {
+                return _c(
+                  "div",
+                  {
+                    class: [
+                      "carousel-item",
+                      slider.id === _vm.sliders[0].id ? "active" : ""
                     ]
-                  )
-                }),
-                0
-              ),
-              _vm._v(" "),
-              _vm._m(0),
-              _vm._v(" "),
-              _vm._m(1)
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _vm._m(2),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-12 d-flex align-items-center" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-lg-6 col-sm-12" }, [
-              _c("div", { staticClass: "row" }, [
-                _vm._m(3),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-7 text-justify" }, [
-                  _c("p", [_vm._v(_vm._s(_vm.quienes_somos1[0].content))])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-5 " }, [
-                  _c("img", {
-                    staticClass: "img img-fluid",
-                    attrs: { src: _vm.quienes_somos1[0].file, alt: "" }
-                  })
-                ])
-              ])
-            ]),
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "d-block w-100",
+                      attrs: { src: slider.file, alt: "Second slide" }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "carousel-caption d-none d-md-block  slider-gradient"
+                      },
+                      [
+                        _c("h1", { staticClass: "text-white display-4" }, [
+                          _vm._v(_vm._s(slider.content))
+                        ]),
+                        _vm._v(" "),
+                        _c("h5", { staticClass: "text-white" }, [
+                          _vm._v(_vm._s(slider.content1))
+                        ])
+                      ]
+                    )
+                  ]
+                )
+              }),
+              0
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "col-lg-6 col-sm-12" }, [
-              _c("div", { staticClass: "row" }, [
-                _vm._m(4),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-7 text-justify" }, [
-                  _c("p", [_vm._v(_vm._s(_vm.que_hacemos1[0].content))])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-5 text-center" }, [
-                  _c("img", {
-                    staticClass: "img img-fluid",
-                    attrs: { src: _vm.que_hacemos1[0].file, alt: "" }
-                  })
-                ])
+            _vm._m(0),
+            _vm._v(" "),
+            _vm._m(1)
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row pt-4" }, [
+      _c(
+        "div",
+        { staticClass: "col-lg-6 col-md-12 d-flex align-items-center" },
+        [
+          _c("div", { staticClass: "row" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-12 pb-4" }, [
+              _c("h5", { staticClass: " text-center" }, [
+                _vm._v(_vm._s(_vm.quienes_somos1[0].content))
               ])
             ])
           ])
-        ]),
-        _vm._v(" "),
-        _vm._m(5),
-        _vm._v(" "),
-        _vm._l(_vm.proyectos_realizados, function(proyecto_realizado) {
-          return _c("div", { staticClass: "col-12" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-9" }, [
-                _c("h3", [_vm._v(_vm._s(proyecto_realizado.content))]),
-                _vm._v(" "),
-                _c("p", [_vm._v(_vm._s(proyecto_realizado.content1))])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-3" }, [
-                _c("img", {
-                  staticClass: "img img-fluid",
-                  attrs: { src: proyecto_realizado.file, alt: "" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("hr")
-          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-lg-6 col-md-12 d-lg-none delete-padding" },
+        [
+          _c("img", {
+            staticClass: "img img-fluid",
+            attrs: { src: _vm.quienes_somos1[0].file, alt: "" }
+          })
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-6 col-md-12 d-none d-lg-block" }, [
+        _c("img", {
+          staticClass: "img img-fluid border-image",
+          attrs: { src: _vm.quienes_somos1[0].file, alt: "" }
         })
-      ],
-      2
-    )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row pt-4" }, [
+      _c("div", { staticClass: "col-lg-6 col-md-12 d-none d-lg-block" }, [
+        _c("img", {
+          staticClass: "img img-fluid",
+          attrs: { src: _vm.que_hacemos1[0].file, alt: "" }
+        })
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-lg-6 col-md-12 d-flex align-items-center" },
+        [
+          _c("div", { staticClass: "row " }, [
+            _vm._m(3),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-12  pb-4" }, [
+              _c("h5", { staticClass: " text-center" }, [
+                _vm._v(_vm._s(_vm.que_hacemos1[0].content))
+              ])
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-lg-6 col-md-12 d-lg-none delete-padding" },
+        [
+          _c("img", {
+            staticClass: "img img-fluid",
+            attrs: { src: _vm.que_hacemos1[0].file, alt: "" }
+          })
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _vm._m(4),
+    _vm._v(" "),
+    _vm._m(5),
+    _vm._v(" "),
+    _c("section", { staticClass: "pt-2 pb-5" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row" }, [
+          _vm.secciones > 1
+            ? _c("div", { staticClass: "col-12 text-right" }, [
+                _vm._m(6),
+                _vm._v(" "),
+                _vm._m(7)
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-12" }, [
+            _c(
+              "div",
+              {
+                staticClass: "carousel slide",
+                attrs: {
+                  id: "carouselExampleIndicators2",
+                  "data-ride": "carousel"
+                }
+              },
+              [
+                _c(
+                  "div",
+                  { staticClass: "carousel-inner" },
+                  _vm._l(_vm.secciones, function(n) {
+                    return _c(
+                      "div",
+                      { class: ["carousel-item", n === 1 ? "active" : ""] },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "row" },
+                          _vm._l(3, function(m) {
+                            return n * 3 + m - 4 <
+                              _vm.proyectos_realizados1.length
+                              ? _c("div", { staticClass: "col-md-4 mb-3" }, [
+                                  _c(
+                                    "div",
+                                    { staticClass: "card shadow border-0" },
+                                    [
+                                      _c("img", {
+                                        staticClass:
+                                          "img img-fluid border-top-element",
+                                        attrs: {
+                                          src:
+                                            _vm.proyectos_realizados1[
+                                              n * 3 + m - 4
+                                            ].file,
+                                          alt: ""
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("div", { staticClass: "card-body" }, [
+                                        _c(
+                                          "h4",
+                                          {
+                                            staticClass:
+                                              "card-title text-center"
+                                          },
+                                          [
+                                            _c("strong", [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.proyectos_realizados1[
+                                                    n * 3 + m - 4
+                                                  ].content
+                                                )
+                                              )
+                                            ])
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "p",
+                                          {
+                                            staticClass: "card-text text-center"
+                                          },
+                                          [
+                                            _vm._v(
+                                              _vm._s(
+                                                _vm.proyectos_realizados1[
+                                                  n * 3 + m - 4
+                                                ].content1
+                                              )
+                                            )
+                                          ]
+                                        )
+                                      ])
+                                    ]
+                                  )
+                                ])
+                              : _vm._e()
+                          }),
+                          0
+                        )
+                      ]
+                    )
+                  }),
+                  0
+                )
+              ]
+            )
+          ])
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -67329,16 +67449,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 text-center" }, [
-      _c("br"),
-      _vm._v(" "),
-      _c("h1", {}, [
-        _c("span", { staticClass: " text-secondary  pl-2 pr-2 rounded-top" }, [
-          _vm._v(" Sobre Nosotros")
-        ])
+    return _c("div", { staticClass: "col-12" }, [
+      _c("h1", { staticClass: "text-center" }, [
+        _c("strong", [_vm._v(" ¿Quiénes somos?")])
       ]),
       _vm._v(" "),
-      _c("hr")
+      _c("br")
     ])
   },
   function() {
@@ -67346,36 +67462,70 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-12" }, [
-      _c("h3", { staticClass: "text-center " }, [_vm._v("¿Quienes somos? ")]),
-      _vm._v(" "),
-      _c("br")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 text-center" }, [
-      _c("h3", [_vm._v("¿Que hacemos en el programa? ")]),
-      _vm._v(" "),
-      _c("br")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 text-center" }, [
-      _c("br"),
-      _vm._v(" "),
-      _c("h1", {}, [
-        _c("span", { staticClass: " text-secondary" }, [
-          _vm._v("Experiencias de proyectos realizados")
-        ])
+      _c("h1", { staticClass: "text-center" }, [
+        _c("strong", [_vm._v("¿Qué hacemos en el programa?")])
       ]),
       _vm._v(" "),
-      _c("hr")
+      _c("br")
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row pt-5" }, [
+      _c("div", { staticClass: "col-12 text-center" }, [
+        _c("h1", {}, [
+          _c("strong", [_vm._v("Experiencias de proyectos realizados")])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12 text-center" }, [
+        _c("i", { staticClass: "fas fa-folder fa-3x color-pink-soft" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass:
+          "btn btn-white mb-3 mr-1 border-round color-pink border-color-pink",
+        attrs: {
+          href: "#carouselExampleIndicators2",
+          role: "button",
+          "data-slide": "prev"
+        }
+      },
+      [_c("i", { staticClass: "fa fa-arrow-left" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass:
+          "btn btn-white mb-3 border-round color-pink border-color-pink",
+        attrs: {
+          href: "#carouselExampleIndicators2",
+          role: "button",
+          "data-slide": "next"
+        }
+      },
+      [_c("i", { staticClass: "fa fa-arrow-right" })]
+    )
   }
 ]
 render._withStripped = true

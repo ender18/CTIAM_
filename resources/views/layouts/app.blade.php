@@ -39,7 +39,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-secondary shadow-sm  ">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm   border-navbar nav-bar-fixed">
             <div class="container">
               @guest
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -66,24 +66,24 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="mr-3">
-                              <a class="nav-link text-white" href="{{ route('conocenos')}}">Conócenos</a>
+                              <a class="nav-link text-dark" href="{{ route('conocenos')}}">Conócenos</a>
                             </li>
                             <li class="mr-3">
-                              <a class="nav-link text-white" href="{{ route('miembros')}}">Nuestros Miembros</a>
+                              <a class="nav-link text-dark" href="{{ route('miembros')}}">Nuestros Miembros</a>
                             </li>
                             <li class="mr-3">
-                              <a class="nav-link text-white" href="{{ route('fundadoras')}}">Fundadoras</a>
+                              <a class="nav-link text-dark" href="{{ route('fundadoras')}}">Fundadoras</a>
                             </li>
                             <li class="mr-3">
-                              <a class="nav-link text-white" href="{{ route('focos')}}">Focos</a>
+                              <a class="nav-link text-dark" href="{{ route('focos')}}">Focos</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="{{ route('login') }}"><button class="btn btn-light">Inicia Sesión</button></a>
+                                <a class="nav-link text-white" href="{{ route('login') }}"><button class="btn btn-light border-round border-color-pink color-pink">Inicia Sesión</button></a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" href="{{ route('register') }}"><button class="btn btn-dark">¡Registrate!</button></a>
+                                    <a class="nav-link text-white" href="{{ route('register') }}"><button class="btn btn-secondary border-round">¡Registrate!</button></a>
                                 </li>
                             @endif
                         @else
@@ -132,7 +132,7 @@
 
 
 
-        <div class="py-4 bg-white shadow">
+        <div class="container delete-padding pading-content bg-white">
             @yield('content')
         </div>
         <footer-component></footer-component>

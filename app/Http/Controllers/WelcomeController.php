@@ -15,7 +15,7 @@ class WelcomeController extends Controller
       $sliders = Content::where('name', 'primary_slider')->get();
       $quienes_somos = Content::where('name', 'quienes_somos')->get();
       $que_hacemos = Content::where('name', 'que_hacemos')->get();
-      $proyectos_realizados = Content::where('name', 'proyectos_realizados')->get();
+      $proyectos_realizados = Content::where('name', 'proyectos_realizados')->orderBy('id', 'desc')->get();
       return view('welcome', compact('sliders','quienes_somos', 'que_hacemos', 'proyectos_realizados'));
     }
 
@@ -35,7 +35,7 @@ class WelcomeController extends Controller
       //
       // $cantidad_cursos = DB::table('groups')->select('id_teacher', DB::raw('count(id_teacher) as total'))->groupBy('id_teacher')->orderBy('total', 'DESC')->get();
 
-      
+
       $members = Content::where('name', 'members')->get();
       return view('general.miembros', compact('members'));
     }
