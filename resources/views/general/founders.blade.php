@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('title')
+  <title>Fundadoras - CTIAM</title>
+
+@endsection
+
 @section('content')
 
 

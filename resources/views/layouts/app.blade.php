@@ -7,14 +7,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Bienvenido - CTIAM</title>
+    @yield('title')
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/bootstrap4-toggle.min.js') }}" defer></script>
     <script src="{{ asset('js/myjs.js') }}" defer></script>
     <script src="{{ asset('js/toastr.min.js') }}" defer></script>
-    <script src="https://kit.fontawesome.com/4aac046800.js" crossorigin="anonymous"></script>
+    {{-- <script src="https://kit.fontawesome.com/4aac046800.js" crossorigin="anonymous"></script> --}}
 
 
     <link rel="stylesheet" href="//unpkg.com/leaflet/dist/leaflet.css" />
@@ -36,9 +36,11 @@
     <link href="{{ asset('css/mycss.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap4-toggle.min.css') }}" rel="stylesheet">
 
+    <link rel="shortcut icon" href="/images/favicon.png" />
+
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="bg-white">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm   border-navbar nav-bar-fixed">
             <div class="container">
               @guest
@@ -79,16 +81,16 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="{{ route('login') }}"><button class="btn btn-light border-round border-color-pink color-pink">Inicia Sesión</button></a>
+                                <a class="nav-link text-dark" href="{{ route('login') }}"><button class="btn btn-light border-round border-color-pink color-pink">Inicia Sesión</button></a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" href="{{ route('register') }}"><button class="btn btn-secondary border-round">¡Registrate!</button></a>
+                                    <a class="nav-link text-dark" href="{{ route('register') }}"><button class="btn btn-secondary border-round">¡Registrate!</button></a>
                                 </li>
                             @endif
                         @else
                           <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                  <span class="caret">Página principal</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -100,10 +102,10 @@
                             </div>
                           </li>
                             <li class="mr-3">
-                              <a class="nav-link text-white" href="{{ route('home')}}">Dashboard</a>
+                              <a class="nav-link text-dark" href="{{ route('home')}}">Panel principal</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 

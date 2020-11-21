@@ -34,7 +34,7 @@
           <div class="row">
             <div class="col-12">
               <h1 class="text-center" ><strong> ¿Quiénes somos?</strong> </h1>
-              <br>
+              <hr class="hr-pink-center">
             </div>
             <div class="col-12 pb-4">
               <h5 class=" text-center">{{ quienes_somos1[0].content}}</h5 class="text-center">
@@ -60,7 +60,7 @@
               <div class="row ">
                 <div class="col-12">
                   <h1 class="text-center"><strong>¿Qué hacemos en el programa?</strong> </h1>
-                  <br>
+                  <hr class="hr-pink-center">
                 </div>
                 <div class="col-12  pb-4">
                   <h5 class=" text-center">{{ que_hacemos1[0].content}}</h5 class="text-center">

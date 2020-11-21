@@ -141,6 +141,37 @@ div.fullscreen {
   background-color: #FFF5FC;
 }
 
+.color-footer{
+  background-color: #F1F1F1;
+}
+
+.color-footer2{
+  background-color: black;
+}
+
+.hr-pink-left{
+  height: 3px;
+  margin-left: 0%;
+  margin-right: 90%;
+  background-color: #D50088;
+}
+
+.hr-pink-center{
+  height: 3px;
+  margin-left: 45%;
+  margin-right: 45%;
+  background-color: #D50088;
+}
+
+.flowers{
+  background-image: url('/images/flowers-1.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.toggle.ios, .toggle-on.ios, .toggle-off.ios { border-radius: 20rem; }
+.toggle.ios .toggle-handle { border-radius: 20rem; }
+
 
 
 

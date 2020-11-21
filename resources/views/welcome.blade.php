@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+  <title>Inicio - CTIAM</title>
+@endsection
+
 @section('content')
 
   <welcome-component

@@ -1,82 +1,40 @@
 <template >
-
-  <footer class="pt-4 bg-dark shadow-sm">
-    <!-- Footer Links -->
-    <div class="container text-center text-light text-md-left ">
-
-      <!-- Grid row -->
-      <div class="row">
-
-        <!-- Grid column -->
-        <div class="col-md-4 mt-md-0 mt-3">
-
-          <!-- Content -->
-          <h4 class="text-uppercase ">Descripción de nuestra red de conocimiento CTIAM</h4>
-          <small>{{description}}</small>
-
+  <footer class="pt-4 color-footer shadow-sm">
+    <div class="container text-center text-md-left ">
+      <div class="row py-lg-4">
+        <div class="col-md-3 mt-md-0 mt-3">
+          <p>{{description}}</p>
         </div>
-        <!-- Grid column -->
-
         <hr class="clearfix w-100 d-md-none pb-3">
-
-        <!-- Grid column -->
         <div class="col-md-4 mb-md-0 mb-3">
-
-          <!-- Links -->
           <h4 class="text-uppercase">CONTACTO</h4>
-
           <ul class="list-unstyled">
             <li>
-
               <span>Teléfono: {{phone}}</span>
             </li>
             <li>
-              <span >Correo electrónico: <a class="text-light" href="#">{{email}}</a> </span>
+              <span >Correo electrónico: <a class="" href="#">{{email}}</a> </span>
             </li>
           </ul>
-
         </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-3 mb-md-0 mb-3">
-
-          <!-- Links -->
+        <div class="col-md-3 mb-md-0 mb-3 text-center">
           <h4 class="text-uppercase">REDES SOCIALES</h4>
-
-          <ul class="list-unstyled">
-            <li>
-              <a :href="url_twitter" class="text-white" > <i class="fab fa-youtube fa-2x "></i><span> {{twitter}}</span> </a>
-            </li>
-            <li>
-              <a :href="url_instagram" class="text-white"> <i class="fab fa-facebook fa-2x "></i><span> {{facebook}}</span> </a>
-            </li>
-            <li>
-              <a :href="url_instagram" class="text-white"> <i class="fab fa-instagram fa-2x "></i><span> {{instagram}}</span> </a>
-            </li>
-          </ul>
-
+              <a :href="url_twitter" class="color-pink" > <i class="fab fa-youtube fa-3x "></i></a>
+              <a :href="url_instagram" class="color-pink"> <i class="fab fa-facebook fa-3x "></i> </a>
+              <a :href="url_instagram" class="color-pink"> <i class="fab fa-instagram fa-3x "></i> </a>
         </div>
-
-        <div class="col-md-1 mb-md-0 mb-3 d-none d-lg-block">
-
+        <div class="col-md-2 mb-md-0 mb-3 d-none d-lg-block">
           <img src="/images/logoufps.png" class="img img-fluid" alt="">
         </div>
-        <!-- Grid column -->
-
       </div>
-      <!-- Grid row -->
-
     </div>
-    <!-- Footer Links -->
-
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3 text-dark bg-light" >
-      <p> © 2020 Copyright: <a class="text-dark" href="https://ww2.ufps.edu.co/"> UFPS</a></p>
-
+    <div class="container-fluid">
+      <div class="row  d-flex align-items-center  color-footer2">
+        <div class="col-12 py-2 text-center text-white" >
+          <p class="mb-0 pb-0"><strong> © 2020 Copyright: <a class="text-white" href="https://ww2.ufps.edu.co/"> UFPS</a></strong></p>
+        </div>
+      </div>
     </div>
-    <!-- Copyright -->
-
   </footer>
 
 </template>

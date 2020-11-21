@@ -1,19 +1,20 @@
 
 <template >
 
-  <div class="container shadow">
+  <div class="container">
     <spinner v-show="spinner"></spinner>
 
-      <div class="row justify-content-center">
+      <div class="row justify-content-center pt-4 pb-3">
           <div class="col-md-8">
-              <div class="card">
-                <div class="card-header text-center">
+              <div class="card border-0 shadow">
+                <div class="card-header text-center border-0 bg-white">
                   <div class="row">
                     <div class="col-12">
-                      <h3>Formulario de Registro - <strong>{{tipo_registro}}</strong> </h3>
+                      <h1>Formulario de Registro - <strong>{{tipo_registro}}</strong> </h1>
                     </div>
                     <div class="col-12">
                       <p>Tambien puedes registrarte como: <a href="#" class="text-secondary" v-on:click="cambiar_registro(rol_button1, '1')"> {{rol_button1}} </a>  o  <a href="#" class="text-secondary" v-on:click="cambiar_registro(rol_button2, '2')"> {{rol_button2}} </a></p>
+                      <hr class="hr-pink-center">
                     </div>
                   </div>
                 </div>
@@ -22,12 +23,12 @@
                       <form class="form-group" method="POST" action="" v-on:submit.prevent="saveUser()">
                         <div class="row">
                           <div class="col-12">
-                            <h5>Información Básica</h5>
-                            <hr>
+                            <h5><strong>Información Básica</strong></h5>
+                            <hr class="hr-pink-left">
                           </div>
                           <div class="col-12 col-lg-6 form-group">
                             <label for="">Tipo de Documento</label>
-                            <select class="form-control" v-model="type_dni" id="tipo_documento" >
+                            <select class="form-control border-round" v-model="type_dni" id="tipo_documento" >
                               <option>Cedula de Ciudadanía</option>
                               <option>NIT</option>
                               <option>Cedula de extranjeria</option>
@@ -37,31 +38,37 @@
                           </div>
                           <div class="col-12 col-lg-6 form-group">
                             <label for="">Número de identificación</label>
-                            <input type="number" name="" class="form-control" v-model="dni">
+                            <input type="number" name="" class="form-control  border-round " v-model="dni">
                           </div>
                           <div class="col-12 col-lg-6 form-group">
-                            <label for="">Nombres</label>
-                            <input type="text" name="" class="form-control" v-model="name">
+                            <label for="" v-if="type_dni != 'NIT'">Nombres</label>
+                            <label for="" v-if="type_dni == 'NIT'">Razón social</label>
+                            <input type="text" name="" class="form-control border-round " v-model="name" required>
                           </div>
-                          <div class="col-12 col-lg-6 form-group">
+                          <transition name="fade">
+                          <div class="col-12 col-lg-6 form-group" v-if="type_dni != 'NIT'">
                             <label for="">Apellidos</label>
-                            <input type="text" name="" class="form-control" v-model="last_name">
+                            <input type="text" name="" class="form-control border-round " v-model="last_name">
                           </div>
+                        </transition>
                           <div class="col-12 col-lg-6 form-group">
                             <label for="">Correo</label>
-                            <input id="email" type="email" name="" class="form-control" v-model="email" required>
+                            <input id="email" type="email" name="" class="form-control border-round " v-model="email" required>
                           </div>
-                          <div class="col-12 col-lg-6 form-group">
+                          <transition name="fade">
+                          <div class="col-12 col-lg-6 form-group" v-if="type_dni != 'NIT'">
                             <label for="">Fecha de Nacimiento</label>
-                            <input type="date" name="" class="form-control" v-model="birthdate">
+                            <input type="date" name="" class="form-control border-round " v-model="birthdate" :max="fecha_minima">
                           </div>
+                        </transition>
+
                           <div class="col-12 col-lg-6 form-group">
-                            <label for="">Dirección de residencia</label>
-                            <input type="text" name="" class="form-control" v-model="adress">
+                            <label for="">Dirección</label>
+                            <input type="text" name="" class="form-control border-round " v-model="adress">
                           </div>
                           <div class="col-12 col-lg-6 form-group">
                             <label for="">Barrio / Sector</label>
-                            <select class="form-control" v-model="neighborhood">
+                            <select class="form-control border-round " v-model="neighborhood">
                               <option value='OTRO'>OTRO</option>
                               <option value='8- 1 DE MAYO B. PALMERAS (PARTE BAJA)'>1 DE MAYO B. PALMERAS (PARTE BAJA)</option>
                               <option value='8- A H. 13 DE MAYO'>A H. 13 DE MAYO</option>
@@ -300,38 +307,40 @@
                           </div>
 
                           <div class="col-12 col-lg-6 form-group" v-if="neighborhood ==='OTRO'">
-                              <label for="">¿Cual?</label>
-                              <input type="text" name="" class="form-control" v-model="neighborhood1">
+                              <label for="">¿Cual barrio o sector?</label>
+                              <input type="text" name="" class="form-control border-round " v-model="neighborhood1">
                           </div>
                           <div class="col-12 col-lg-6 form-group">
                             <label for="">Teléfono</label>
-                            <input type="text" name="" class="form-control"  v-model="phone">
+                            <input type="text" name="" class="form-control border-round "  v-model="phone">
                           </div>
                           <div class="col-12 col-lg-6 form-group" v-if="neighborhood !=='OTRO'">
                           </div>
                           <div class="col-12" v-show="tipo_registro != 'Aliado'">
                             <div class="row">
-                              <div class="col-12 col-lg-7 form-group">
+                              <div class="col-12 col-lg-6 form-group">
                                 <label for="">¿Pertenezco a un aliado de la Red de Conocimiento?</label>
                                 <br>
-                                <input id="toggle-ihave-ally"  type="checkbox" data-toggle="toggle" data-onstyle="secondary" data-offstyle="light" data-on="Si" data-off="No" v-model="study_actually">
+                                <input id="toggle-ihave-ally"   type="checkbox" data-toggle="toggle" data-onstyle="secondary" data-offstyle="light"  data-style="ios" data-on="Si" data-off="No" v-model="study_actually">
                               </div>
-                              <div class="col-12 col-lg-5 form-group" v-if="view_ihave_ally">
+                              <transition name="fade">
+                              <div class="col-12 col-lg-6 form-group" v-if="view_ihave_ally">
                                 <label for="">¿Cúal?</label>
-                                <select class="form-control" v-model="ihave_ally">
+                                <select class="form-control  border-round " v-model="ihave_ally">
                                   <option v-for="aliado in aliados1" :value="aliado.user_id" >{{aliado.last_name}} {{aliado.name}}</option>
                                 </select>
                               </div>
+                            </transition>
                             </div>
                           </div>
                           <div class="col-12 col-lg-6 form-group">
-                              <label>Nueva Contraseña</label>
+                              <label>Contraseña</label>
                               <div class="row">
                                 <div class="col-md-12">
                                   <div class="input-group">
-                                    <input :type="type_password_new" ref="password_new" class="form-control" v-on:keyup="validarSeguridad()" v-model="password" required>
+                                    <input :type="type_password_new" ref="password_new" class="form-control  border-round " v-on:keyup="validarSeguridad()" v-model="password" required>
                                     <div class="input-group-append">
-                                      <button class="btn btn-primary" type="button" v-on:click="showHidePassword('new_password')">
+                                      <button class="btn btn-primary  border-round " type="button" v-on:click="showHidePassword('new_password')">
                                         <i :class="icon_password_new"></i>
                                       </button>
                                     </div>
@@ -357,9 +366,9 @@
                               <div class="row">
                                 <div class="col-12">
                                   <div class="input-group pl-0">
-                                    <input :type="type_password_verify" class="form-control" v-model="password1" v-on:keyup="compararContrasenas()" required>
+                                    <input :type="type_password_verify" class="form-control  border-round " v-model="password1" v-on:keyup="compararContrasenas()" required>
                                     <div class="input-group-append">
-                                      <button class="btn btn-primary" type="button" v-on:click="showHidePassword('verify_password')">
+                                      <button class="btn btn-primary  border-round " type="button" v-on:click="showHidePassword('verify_password')">
                                         <i :class="icon_password_verify"></i>
                                       </button>
                                     </div>
@@ -373,17 +382,20 @@
 
                           </div>
                         </div>
+
+                        <transition name="fade">
+
                         <div class="row" v-show="tipo_registro === 'Beneficiaria'">
 
 
                           <div class="col-12" >
-                            <br>
-                            <h5>Información Complementaria</h5>
-                            <hr>
+
+                            <h5><strong>Información Complementaria</strong></h5>
+                            <hr class="hr-pink-left">
                           </div>
                           <div class="col-12 col-lg-6 form-group">
                             <label for="">Estado civil</label>
-                            <select class="form-control" v-model="civil_status">
+                            <select class="form-control  border-round " v-model="civil_status">
                               <option>Soltera</option>
                               <option>Unión libre</option>
                               <option>Casada</option>
@@ -394,11 +406,11 @@
                           <div class="col-12 col-lg-6 form-group">
                             <label for="">¿Tiene hijos?</label>
                             <br>
-                            <input id="toggle-has-children"  type="checkbox" data-toggle="toggle" data-onstyle="secondary" data-offstyle="light" data-on="Si" data-off="No" v-model="has_children">
+                            <input id="toggle-has-children"  data-style="ios" type="checkbox" data-toggle="toggle" data-onstyle="secondary" data-offstyle="light" data-on="Si" data-off="No" v-model="has_children">
                           </div>
                           <div class="col-12 col-lg-4 form-group">
                             <label for="">Nivel de estudio</label>
-                            <select class="form-control" v-model="level_study">
+                            <select class="form-control  border-round" v-model="level_study">
                               <option>Profesional</option>
                               <option>Tecnóloga</option>
                               <option>Técnica</option>
@@ -408,9 +420,10 @@
                             </select>
                           </div>
                           <div class="col-12 col-lg-4 form-group">
+                            <transition name="fade">
                             <div class="" v-if="level_study === 'Profesional' || level_study === 'Tecnóloga' || level_study === 'Técnica'">
                               <label for="">Título obtenido</label >
-                                <select class="form-control" v-model="last_study">
+                                <select class="form-control  border-round" v-model="last_study">
                                   <option>Pregrado</option>
                                   <option>Especialista</option>
                                   <option>Magister</option>
@@ -421,23 +434,27 @@
                                   </optgroup>
                                 </select>
                             </div>
+                          </transition>
                           </div>
                           <div class="col-12 col-lg-4 form-group">
-                            <div class="" v-if="last_study != '' && level_study === 'Profesional' || level_study === 'Tecnóloga' || level_study === 'Técnica'">
+                            <transition name="fade">
+                            <div class="" v-if="level_study === 'Profesional' || level_study === 'Tecnóloga' || level_study === 'Técnica'">
                               <label for="">Nombre del título obtenido</label>
-                              <input type="text" name="" value="" class="form-control" v-model="degree">
+                              <input type="text" name="" value="" class="form-control  border-round" v-model="degree">
                             </div>
+                          </transition>
                           </div>
                           <div class="col-12 col-lg-4 form-group">
                             <label for="">¿Actualmente estudia?</label>
                             <br>
-                            <input id="toggle-study-actually"  type="checkbox" data-toggle="toggle" data-onstyle="secondary" data-offstyle="light" data-on="Si" data-off="No" v-model="study_actually">
+                            <input id="toggle-study-actually" data-style="ios" type="checkbox" data-toggle="toggle" data-onstyle="secondary" data-offstyle="light" data-on="Si" data-off="No" v-model="study_actually">
 
                           </div>
                           <div class="col-12 col-lg-8 form-group">
+                            <transition name="fade">
                             <div class="" v-if="study_actually">
                               <label for="">¿Qué está estudiando?</label>
-                              <select class="form-control" v-model="what_studies">
+                              <select class="form-control  border-round" v-model="what_studies">
                                 <option>Primaria</option>
                                 <option>Secundaria</option>
                                 <option>Tecnica</option>
@@ -445,19 +462,20 @@
                                 <option>Pregrado</option>
                                 <option>Postgrado</option>
                               </select>
-
                             </div>
+                          </transition>
                           </div>
                           <div class="col-12 col-lg-4 form-group">
                             <label for="">¿Actualmente labora?</label>
                             <br>
-                            <input id="toggle-work-actually"  type="checkbox" data-toggle="toggle" data-onstyle="secondary" data-offstyle="light" data-on="Si" data-off="No" v-model="work_actually">
+                            <input id="toggle-work-actually" data-style="ios" type="checkbox" data-toggle="toggle" data-onstyle="secondary" data-offstyle="light" data-on="Si" data-off="No" v-model="work_actually">
 
                           </div>
                           <div class="col-12 col-lg-8 form-group">
+                            <transition name="fade">
                             <div class="" v-if="work_actually">
                               <label for="">Sector en el que labora</label>
-                              <select class="form-control" v-model="laboral_sector">
+                              <select class="form-control border-round" v-model="laboral_sector">
                                 <option>Agricultura, Ganadería, Caza, Silvicultura y Pesca</option>
                                 <option>Explotación de Minas y Canteras </option>
                                 <option>Industrias Manufactureras </option>
@@ -476,42 +494,50 @@
                                 <option>Otras Actividades de Servicios</option>
                               </select>
                             </div>
+                          </transition>
                           </div>
                           <div class="col-12 col-lg-4 form-group" >
+                            <transition name="fade">
                             <div class="" v-show="work_actually && laboral_sector != ''">
                               <label for="">Tiene negocio propio</label>
                               <br>
-                              <input id="toggle-bussiness-owner"  type="checkbox" data-toggle="toggle" data-onstyle="secondary" data-offstyle="light" data-on="Si" data-off="No" v-model="bussiness_owner">
+                              <input id="toggle-bussiness-owner" data-style="ios" type="checkbox" data-toggle="toggle" data-onstyle="secondary" data-offstyle="light" data-on="Si" data-off="No" v-model="bussiness_owner">
 
                             </div>
+                          </transition>
 
                           </div>
                           <div class="col-12 col-lg-4 form-group">
+                            <transition name="fade">
                             <div class="" v-if="bussiness_owner && work_actually">
                               <label for="">¿De que manera trabaja?</label>
                               <br>
-                              <select class="form-control" v-model="way_working">
+                              <select class="form-control  border-round" v-model="way_working">
                                 <option>Formal</option>
                                 <option>Informal</option>
                               </select>
                             </div>
+                          </transition>
                           </div>
                           <div class="col-12 col-lg-4 form-group">
+                            <transition name="fade">
                             <div class="" v-if="way_working ==='Formal' && work_actually">
                               <label for="">Tipo de empresa</label>
                               <br>
-                              <select class="form-control" v-model="type_company">
+                              <select class="form-control  border-round" v-model="type_company">
                                 <option>Pública</option>
                                 <option>Privada</option>
                               </select>
 
                             </div>
+                          </transition>
                           </div>
                           <div class="col-12 col-lg-6 form-group">
+                            <transition name="fade">
                             <div class="" v-if="!work_actually && !work_actually1">
                               <label for="">¿Desde hace cuánto tiempo no labora?</label>
                               <br>
-                              <select class="form-control" v-model="time_not_to_work">
+                              <select class="form-control  border-round" v-model="time_not_to_work">
                                 <option>Nunca he trabajado</option>
                                 <option>Menos de un año</option>
                                 <option>De 1 a 5 años</option>
@@ -519,12 +545,16 @@
                               </select>
 
                             </div>
+                          </transition>
                           </div>
                         </div>
+
+                        </transition>
+
                         <div class="row">
                           <div class="col-12 text-center">
                             <hr>
-                            <button class="btn btn-secondary btn-lg" type="submit" name="button">¡Registrarme!</button>
+                            <button class="btn btn-secondary btn-lg  border-round" type="submit" name="button"><strong>¡Registrarme!</strong></button>
                           </div>
                         </div>
 
@@ -604,6 +634,7 @@ export default {
         verify_msj : '',
         verify_class : '',
         spinner: false,
+        fecha_minima: ""
 
 
     }
@@ -878,7 +909,18 @@ export default {
           }
         });
 
+        var dtToday = new Date();
+        var month = dtToday.getMonth() + 1;     // getMonth() is zero-based
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear()-5;
+        if(month < 10)
+              month = '0' + month.toString();
+        if(day < 10)
+              day = '0' + day.toString();
 
+        var maxDate = year + '-' + month + '-' + day;
+
+        self.fecha_minima = maxDate;
 
 
   }
@@ -886,4 +928,12 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0
+}
+
 </style>

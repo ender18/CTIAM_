@@ -1,52 +1,72 @@
 @extends('layouts.app')
 
+@section('title')
+
+<title>Bienvenido, {{ Auth::user()->name }}</title>
+@endsection
+
 @section('content')
   <div class="container">
-    <div class="row">
+    <div class="row pt-4">
       <div class="col-12 d-flex align-items-center text-center">
-        <h2 class="">Bienvenid@, {{ Auth::user()->name }} {{ Auth::user()->last_name }}</h2>
+        <h2 class=""><strong>Bienvenid@, {{ Auth::user()->name }} {{ Auth::user()->last_name }}</strong></h2>
       </div>
+      <div class="col-12">
+        <hr class="hr-pink-left">
+      </div>
+    </div>
 
       {{-- Vista de Beneficiaria --}}
-
       @if (!Auth::user()->authorizedRoles('beneficiaria') && !Auth::user()->authorizedRoles('aliado') && !Auth::user()->authorizedRoles('admin') && !Auth::user()->authorizedRoles('tutor'))
-        <div class="col-12">
-          <hr>
-          <br>
-        </div>
-        <div class="col-12 d-flex align-items-center">
-          <h4 class=""><strong>Su cuenta se encuentra desactivada o no posee ningun rol, por favor comuníquese con el administrador.</strong></h4>
-        </div>
+      <div class="row">
+          <div class="col-12 d-flex align-items-center pt-5 pb-5">
+            <h4 class=""><strong>Su cuenta se encuentra desactivada o no posee ningun rol, por favor comuníquese con el administrador.</strong></h4>
+          </div>
+      </div>
       @endif
 
+      @if ( Auth::user()->authorizedRoles('beneficiaria'))
+      <div class="row">
+        <div class="col-12 d-flex align-items-center">
+          <h3 class=""><strong>Panel Beneficiaria</strong></h3>
+        </div>
+      </div>
+      @endif
 
       @if ( Auth::user()->authorizedRoles('beneficiaria'))
-      <div class="col-12">
-          <hr>
-        </div>
-      <div class="col-12 d-flex align-items-center">
-        <h4 class="">Panel Beneficiaria</h4>
-      </div>
-      <div class="col-6 col-lg-3 mt-2">
-        <div class="card">
-          <a href="/showEvents"><img class="card-img-top img-fluid" src="{{URL('/images/courses.png')}}" alt=""></a>
-          <div class="card-body text-center">
-            <h5 class="card-tittle">Actividades de formación disponibles </h5>
-            <p class="card-text">Aqui puedes los ver los cursos, talleres, capacitaciones disponibles para ti</p>
-            <a href="/showEvents" class="btn btn-primary">Ingresa</a>
+      <div class="row">
+        <div class="col-6 col-lg-3 mt-2  d-flex align-items-stretch">
+          <div class="card border-0 shadow card-img-top">
+            <div class="container">
+              <div class="row text-center pt-5 pb-4 d-flex align-items-center">
+                <div class="col-12">
+                  <a href="/showEvents"><i class="fas fa-book fa-5x color-pink"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-tittle">Actividades de formación disponibles </h5>
+              <p class="card-text d-none d-lg-block">Aqui puedes los ver los cursos, talleres, capacitaciones disponibles para ti</p>
+              <a href="/showEvents" class="btn btn-primary border-round">Ingresa</a>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-6 col-lg-3 mt-2">
-        <div class="card">
-          <a href="/myEvents"><img class="card-img-top img-fluid" src="{{URL('/images/my_courses.png')}}" alt=""></a>
-          <div class="card-body text-center">
-            <h5 class="card-tittle">Mis Actividades de formación </h5>
-            <p class="card-text">Mira el estado de las actividades de formación en las que me he inscrito</p>
-            <a href="/myEvents" class="btn btn-primary">Ingresa</a>
+        <div class="col-6 col-lg-3 mt-2  d-flex align-items-stretch">
+          <div class="card border-0 shadow">
+            <div class="container">
+              <div class="row text-center pt-5 pb-4 d-flex align-items-center">
+                <div class="col-12">
+                  <a href="/myEvents"><i class="fas fa-brain fa-5x color-pink"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-tittle">Mis Actividades de formación </h5>
+              <p class="card-text d-none d-lg-block">Mira el estado de las actividades de formación en las que me he inscrito</p>
+              <a href="/myEvents" class="btn btn-primary border-round">Ingresa</a>
+            </div>
           </div>
         </div>
-      </div>
       {{-- <div class="col-6 col-lg-3 mt-2">
         <div class="card">
           <a href="/manageUsers/editInformation"><img class="card-img-top img-fluid" src="{{URL('/images/settings.png')}}" alt=""></a>
@@ -57,126 +77,198 @@
           </div>
         </div>
       </div> --}}
+       </div>
       @endif
+      {{-- Fin Vista Beneficiaria --}}
 
-      {{-- Vista de Alidado --}}
+      {{-- Vista de Tutor --}}
       @if ( Auth::user()->authorizedRoles('tutor'))
-      <div class="col-12">
-        <hr>
+      <div class="row">
+        <div class="col-12 d-flex align-items-center">
+          <h3 class=""><strong>Panel Tutor</strong></h3>
+        </div>
+        <div class="">
+          <hr class="hr-pink-left">
+        </div>
       </div>
-      <div class="col-12 d-flex align-items-center">
-        <h4 class="">Panel Tutor</h4>
-      </div>
-      <div class="col-6 col-lg-3 mt-2">
-        <div class="card">
-          <a href="/myEventsAliado"><img class="card-img-top img-fluid" src="{{URL('/images/manage_courses.png')}}" alt=""></a>
-          <div class="card-body text-center">
-            <h5 class="card-tittle">Mis Actividades de Formación</h5>
-            <p class="card-text">Encuentra las actividades asignadas</p>
-            <a href="/myEventsAliado" class="btn btn-primary">Ingresa</a>
+      @endif
+      @if ( Auth::user()->authorizedRoles('tutor'))
+      <div class="row d-flex justify-content-center justify-content-lg-start ">
+        <div class="col-6 col-lg-3 mt-2 d-flex align-items-stretch">
+          <div class="card border-0 shadow">
+            <div class="container">
+              <div class="row text-center pt-5 pb-4 d-flex align-items-center">
+                <div class="col-12">
+                  <a href="/myEventsAliado"><i class="fas fa-calendar-alt fa-5x color-pink"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-tittle">Mis Actividades de Formación</h5>
+              <p class="card-text  d-none d-lg-block">Encuentra las actividades asignadas</p>
+              <a href="/myEventsAliado" class="btn btn-primary border-round">Ingresa</a>
+            </div>
           </div>
         </div>
       </div>
+    @endif
+    {{-- Fin vista del Tutor --}}
+
+    {{-- Inicio Vista Aliado --}}
+    @if ( Auth::user()->authorizedRoles('aliado'))
+    <div class="row">
+      <div class="col-12 d-flex align-items-center">
+        <h3 class=""><strong>Panel Aliado</strong></h3>
+      </div>
+      <div class="">
+        <hr class="hr-pink-left">
+      </div>
+    </div>
     @endif
 
     @if ( Auth::user()->authorizedRoles('aliado'))
-    <div class="col-12">
-      <hr>
-    </div>
-    <div class="col-12 d-flex align-items-center">
-      <h4 class="">Panel Alidado</h4>
-    </div>
-    <div class="col-6 col-lg-3 mt-2">
-      <div class="card">
-        <a href="/myEventsAlly"><img class="card-img-top img-fluid" src="{{URL('/images/statistics.png')}}" alt=""></a>
-        <div class="card-body text-center">
-          <h5 class="card-tittle">Mis Actividades</h5>
-          <p class="card-text">Encuentra estadísticas de mis actividades de formación</p>
-          <a href="/myEventsAlly" class="btn btn-primary">Ingresa</a>
+      <div class="row">
+      <div class="col-6 col-lg-3 mt-2  d-flex align-items-stretch">
+        <div class="card border-0 shadow card-img-top">
+          <div class="container">
+            <div class="row text-center pt-5 pb-4 d-flex align-items-center">
+              <div class="col-12">
+                <a href="/myEventsAlly"><i class="fas fa-book fa-5x color-pink"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-tittle">Mis Actividades</h5>
+            <p class="card-text d-none d-lg-block">Encuentra estadísticas de mis actividades de formación</p>
+            <a href="/myEventsAlly" class="btn btn-primary border-round">Ingresa</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3 mt-2  d-flex align-items-stretch">
+        <div class="card border-0 shadow">
+          <div class="container">
+            <div class="row text-center pt-5 pb-4 d-flex align-items-center">
+              <div class="col-12">
+                <a href="/myBeneficiaryAlly"><i class="fas fa-users fa-5x color-pink"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-tittle">&nbsp Mis  Usuarios &nbsp  &nbsp</h5>
+            <p class="card-text d-none d-lg-block">Encuentra información de tus beneficiarias y tutores</p>
+            <a href="/myBeneficiaryAlly" class="btn btn-primary border-round">Ingresa</a>
+          </div>
         </div>
       </div>
     </div>
-
-    <div class="col-6 col-lg-3 mt-2">
-      <div class="card">
-        <a href="/myBeneficiaryAlly"><img class="card-img-top img-fluid" src="{{URL('/images/beneficiaries.png')}}" alt=""></a>
-        <div class="card-body text-center">
-          <h5 class="card-tittle">Mis Usuarios</h5>
-          <p class="card-text">Encuentra información de tus beneficiarias y tutores</p>
-          <a href="/myBeneficiaryAlly" class="btn btn-primary">Ingresa</a>
-        </div>
-      </div>
-    </div>
-
   @endif
+  {{-- Fin Vista aliado --}}
 
       {{-- Vista de Administrador --}}
+
+
       @if ( Auth::user()->authorizedRoles('admin'))
-
-
-
-      <div class="col-12">
-        <hr>
-      </div>
-      <div class="col-12 d-flex align-items-center">
-        <h4 class="">Panel Administrador</h4>
-      </div>
-
-      <div class="col-6 col-lg-3 mt-2">
-        <div class="card">
-          <a href="/manageEvents"><img class="card-img-top img-fluid" src="{{URL('/images/manage_courses.png')}}" alt=""></a>
-          <div class="card-body text-center">
-            <h5 class="card-tittle">Gestionar Actividades de Formación</h5>
-            <p class="card-text">Agrega, edita y elimina</p>
-            <a href="/manageEvents" class="btn btn-primary">Ingresa</a>
-          </div>
+      <div class="row">
+        <div class="col-12 d-flex align-items-center">
+          <h3 class=""><strong>Panel Administrador</strong></h3>
+        </div>
+        <div class="">
+          <hr class="hr-pink-left">
         </div>
       </div>
+      @endif
+      @if ( Auth::user()->authorizedRoles('admin'))
+      <div class="row">
 
-      <div class="col-6 col-lg-3 mt-2">
-        <div class="card">
-          <a href="/manageContent"><img class="card-img-top img-fluid" src="{{URL('/images/settings.png')}}" alt=""></a>
-          <div class="card-body text-center">
-            <h5 class="card-tittle">Gestión de contenido</h5>
-            <p class="card-text">Administra el contenido del sitio</p>
-            <a href="/manageContent" class="btn btn-primary">Ingresa</a>
+        <div class="col-6 col-lg-3 mt-2  d-flex align-items-stretch">
+          <div class="card border-0 shadow">
+            <div class="container">
+              <div class="row text-center pt-5 pb-4 d-flex align-items-center">
+                <div class="col-12">
+                  <a href="/manageEvents"><i class="fas fa-book fa-5x color-pink"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-tittle">Gestionar Actividades de Formación</h5>
+              <p class="card-text d-none d-lg-block">Agrega, edita y elimina</p>
+              <a href="/manageEvents" class="btn btn-primary border-round">Ingresa</a>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-6 col-lg-3 mt-2">
-        <div class="card">
-          <a href="/manage_focus"><img class="card-img-top img-fluid" src="{{URL('/images/manage_focus.png')}}" alt=""></a>
-          <div class="card-body text-center">
-            <h5 class="card-tittle">Gestión de Focos</h5>
-            <p class="card-text">Administra la clasificación de focos</p>
-            <a href="/manage_focus" class="btn btn-primary">Ingresa</a>
+        <div class="col-6 col-lg-3 mt-2  d-flex align-items-stretch">
+          <div class="card border-0 shadow">
+            <div class="container">
+              <div class="row text-center pt-5 pb-4 d-flex align-items-center">
+                <div class="col-12">
+                  <a href="/manageContent"><i class="fas fa-cogs fa-5x color-pink"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-tittle">Gestión de contenido</h5>
+              <p class="card-text d-none d-lg-block">Administra el contenido del sitio</p>
+              <a href="/manageContent" class="btn btn-primary border-round">Ingresa</a>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-6 col-lg-3 mt-2">
-        <div class="card">
-          <a href="/manageUsers"><img class="card-img-top img-fluid" src="{{URL('/images/manage_users.png')}}" alt=""></a>
-          <div class="card-body text-center">
-            <h5 class="card-tittle">Administrar Usuarios</h5>
-            <p class="card-text">Asigna roles, activa y desactiva usuarios</p>
-            <a href="/manageUsers" class="btn btn-primary">Ingresa</a>
+        <div class="col-6 col-lg-3 mt-2  d-flex align-items-stretch">
+          <div class="card border-0 shadow">
+            <div class="container">
+              <div class="row text-center pt-5 pb-4 d-flex align-items-center">
+                <div class="col-12">
+                  <a href="/manage_focus"><i class="fas fa-bullseye fa-5x color-pink"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-tittle">Gestión de focos</h5>
+              <p class="card-text d-none d-lg-block">Administra la clasificación de focos</p>
+              <a href="/manage_focus" class="btn btn-primary border-round">Ingresa</a>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-6 col-lg-3 mt-2">
-        <div class="card">
-          <a href="/statisticsInfo"><img class="card-img-top img-fluid" src="{{URL('/images/statistics.png')}}" alt=""></a>
-          <div class="card-body text-center">
-            <h5 class="card-tittle">Estadísticas</h5>
-            <p class="card-text">Accede al mapa de beneficiarias, cantidad de cursos...</p>
-            <a href="/statisticsInfo" class="btn btn-primary">Ingresa</a>
+        <div class="col-6 col-lg-3 mt-2  d-flex align-items-stretch">
+          <div class="card border-0 shadow">
+            <div class="container">
+              <div class="row text-center pt-5 pb-4 d-flex align-items-center">
+                <div class="col-12">
+                  <a href="/manageUsers"><i class="fas fa-users-cog fa-5x color-pink"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-tittle">Administrar usuarios</h5>
+              <p class="card-text d-none d-lg-block">Asigna roles, activa y desactiva usuarios</p>
+              <a href="/manageUsers" class="btn btn-primary border-round">Ingresa</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3 mt-2  d-flex align-items-stretch">
+          <div class="card border-0 shadow">
+            <div class="container">
+              <div class="row text-center pt-5 pb-4 d-flex align-items-center">
+                <div class="col-12">
+                  <a href="/statisticsInfo"><i class="fas fa-chart-bar fa-5x color-pink"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-tittle">&nbsp &nbsp Estadísticas  &nbsp &nbsp</h5>
+              <p class="card-text d-none d-lg-block">Accede al mapa de beneficiarias, cantidad de cursos...</p>
+              <a href="/statisticsInfo" class="btn btn-primary border-round">Ingresa</a>
+            </div>
           </div>
         </div>
       </div>
     @endif
 
+    <div class="row pb-4">
+
+    </div>
+
       {{-- Vista de Super Administrador --}}
-      @if ( Auth::user()->authorizedRoles('superadmin'))
+      {{-- @if ( Auth::user()->authorizedRoles('superadmin'))
       <div class="col-12">
         <hr>
       </div>
@@ -209,7 +301,7 @@
 
 
 
-    </div>
+    </div> --}}
 
   </div>
 

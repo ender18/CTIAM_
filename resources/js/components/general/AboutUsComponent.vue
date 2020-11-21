@@ -1,147 +1,143 @@
 <template >
 
-  <div class="container shadow">
-    <div class="row">
-
-      <!-- Vista de Misión Imagen a la derecha -->
-      <div class="col-12">
-        <div class="row">
-          <div class="col-lg-9 col-md-12 d-flex align-items-center">
-            <div class="row col-12">
-              <div class="col-12 text-center">
-                <h2 class="" >
-                  <span class="text-secondary  pl-2 pr-2 rounded-top  border-4 ">Misión</span></h2>
-              </div>
-              <div class="col-12 d-flex align-items-center">
-                <p class="text-justify" >{{mision[0].content}}</p>
+    <div class="container">
+    <!-- Inicio Misión -->
+      <div class="row pt-4">
+        <div class="col-lg-6 col-md-12 d-flex align-items-center">
+          <div class="row">
+            <div class="col-12">
+              <h1 class="text-center" ><strong> Misión</strong> </h1>
+              <hr class="hr-pink-center">
+            </div>
+            <div class="col-12 pb-4">
+              <h5 class=" text-justify">{{ mision[0].content}}</h5>
               </div>
             </div>
           </div>
-          <div class="col-lg-2 d-none d-lg-block">
-            <div class="row">
-              <div class="col-12">
-                <img v-bind:src="mision[0].file" alt="" class="img img-fluid">
-              </div>
+          <div class="col-lg-6 col-md-12 d-lg-none delete-padding">
+            <img  v-bind:src="mision[0].file" alt="" class="img img-fluid">
+          </div>
+          <div class="col-lg-6 col-md-12 d-none d-lg-block">
+            <img  v-bind:src="mision[0].file" alt="" class="img img-fluid border-image">
+          </div>
+        </div>
+    <!-- Fin de la misión -->
+
+    <!-- Inicio de Visión -->
+    <div class="row pt-4">
+      <div class="col-lg-6 col-md-12 d-none d-lg-block">
+        <img  v-bind:src="vision[0].file" alt="" class="img img-fluid">
+      </div>
+      <div class="col-lg-6 col-md-12 d-flex align-items-center flowers">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="text-center pt-4 pt-lg-0"><strong>Visión</strong> </h1>
+            <hr class="hr-pink-left">
+          </div>
+          <div class="col-12  pb-4">
+            <h5 class=" text-justify">{{ vision[0].content}}</h5 class="text-center">
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- Fin de la vista misión -->
-
-      <div class="col-12">
-        <hr>
-      </div>
-
-      <!-- Vista de Visión Imagen a la izquierda -->
-      <div class="col-12">
-        <div class="row">
-          <div class="col-lg-9 col-md-12 d-flex align-items-center">
-            <div class="row col-12">
-              <div class="col-12 text-center">
-                <h2 class="" >
-                  <span class="text-secondary">Visión</span></h2>
-                </div>
-                <div class="col-12 d-flex align-items-center">
-                  <p class="text-justify">{{vision[0].content}}</p>
-                </div>
-              </div>
-            </div>
-          <div class="col-lg-2 d-none d-lg-block">
-            <div class="row">
-              <div class="col-12">
-                <img v-bind:src="vision[0].file" alt="" class="img img-fluid">
-              </div>
-            </div>
-          </div>
+        <div class="col-lg-6 col-md-12 d-lg-none delete-padding  pt-5 pt-lg-0">
+          <img  v-bind:src="vision[0].file" alt="" class="img img-fluid">
         </div>
       </div>
-      <!-- Fin de la vista visión -->
+      <!-- Fin de Visión -->
 
-      <div class="col-12">
-        <hr>
-      </div>
-
-      <!-- Vista de Objetivo General Imagen a la derecha -->
-      <div class="col-12">
-        <div class="row">
-          <div class="col-lg-9 col-md-12 d-flex align-items-center">
-            <div class="row col-12">
-              <div class="col-12 text-center">
-                <h2 class="" >
-                  <span class="text-secondary">Objetivo general</span></h2>
-              </div>
-              <div class="col-12 d-flex align-items-center">
-                <p class="text-justify">{{obj_general[0].content}}</p>
+      <!-- Inicio Objetivo General -->
+      <div class="row pt-4">
+        <div class="col-lg-6 col-md-12 d-flex align-items-center">
+          <div class="row">
+            <div class="col-12">
+              <h1 class="text-center" ><strong> Objetivo General</strong> </h1>
+              <hr class="hr-pink-center">
+            </div>
+            <div class="col-12 pb-4">
+              <h5 class=" text-justify">{{ obj_general[0].content}}</h5>
               </div>
             </div>
           </div>
-          <div class="col-lg-2 d-none d-lg-block">
-            <div class="row">
-              <div class="col-12">
-                <img v-bind:src="obj_general[0].file" alt="" class="img img-fluid">
-              </div>
-            </div>
+          <div class="col-lg-6 col-md-12 d-lg-none delete-padding">
+            <img  v-bind:src="obj_general[0].file" alt="" class="img img-fluid">
+          </div>
+          <div class="col-lg-6 col-md-12 d-none d-lg-block">
+            <img  v-bind:src="obj_general[0].file" alt="" class="img img-fluid border-image">
           </div>
         </div>
-      </div>
-      <!-- Fin de la vista Objetivo General -->
+      <!-- Fin Objetivo General -->
 
-      <div class="col-12">
-        <hr>
-      </div>
-
-      <!-- Vista de Objetivos Específicos Imagen a la izquierda -->
-      <div class="col-12">
-        <div class="row">
-          <div class="col-lg-9 col-md-12 d-flex align-items-center">
-            <div class="row col-12">
-              <div class="col-12 text-center">
-                <h3 class="" >
-                  <span class="text-secondary">Objetivos Específicos</span></h3>
-                </div>
-                <div class="col-12">
-                  <p class="text-justify" v-for="obj_esp in obj_especifico">{{obj_esp.content}}</p>
-                </div>
-              </div>
-            </div>
-          <div class="col-lg-2 d-none d-lg-block">
-            <div class="row ">
-              <div class="col-12 ">
-                <img v-bind:src="img_obj_especifico[0].file" alt="" class="img img-fluid">
-              </div>
-            </div>
+      <!-- Inicio Objetivos Especificos -->
+      <div class="row pt-4">
+        <div class="col-lg-6 col-md-12 d-none d-lg-block">
+          <img  v-bind:src="img_obj_especifico[0].file" alt="" class="img img-fluid">
+        </div>
+        <div class="col-lg-6 col-md-12 d-flex align-items-center">
+          <div class="row">
+             <div class="col-12">
+              <h1 class="text-center"><strong>Objetivos específicos</strong> </h1>
+              <hr class="hr-pink-center">
+             </div>
+             <div class="col-12 pb-1" v-for="obj_esp in obj_especifico">
+               <div class="row">
+                 <div class="col-1 d-none d-lg-block">
+                   <i class="fas fa-check fa-lg color-pink"></i>
+                 </div>
+                 <div class="col-lg-11 col-md-12">
+                   <h5 class="text-justify" > {{obj_esp.content}}</h5>
+                 </div>
+               </div>
+             </div>
+           </div>
+          </div>
+          <div class="col-lg-6 col-md-12 d-lg-none delete-padding">
+            <img  v-bind:src="img_obj_especifico[0].file" alt="" class="img img-fluid">
           </div>
         </div>
+      <!-- Fin de objetivos especificos -->
+
+      <!-- Inicio Marco Normativo y Funcional -->
+
+      <div class="row pt-5">
+        <div class="col-12 text-center">
+          <h1 class="" ><strong>Marco normativo y funcional</strong></h1>
+        </div>
       </div>
-      <!-- Fin de laObjetivos Específicos visión -->
-      <div class="col-12">
-        <hr>
+      <div class="row">
+        <div class="col-12 text-center">
+          <i class="fas fa-file-pdf fa-3x color-pink-soft"></i>
+        </div>
       </div>
+
+      <!-- Fin Marco Normativo y funcional -->
+
 
       <!-- Vista de   Normativo y funcional Imagen a la izquierda -->
-      <div class="col-12">
-        <div class="row">
-          <div class="col-12 text-center">
-            <h3 class="" >
-              <span class="text-secondary">Marco Normativo y funcional</span>
-            </h3>
-          </div>
-          <div class="col-lg-2 col-4" v-for="mn in marco_normativo">
-            <br>
-            <a v-bind:href="mn.file" download>
-              <img src="https://image.flaticon.com/icons/png/512/337/337946.png" alt="" class="img img-fluid">
-            </a>
-            <span class="text-center">{{mn.content}}</span>
-          </div>
-        </div>
+    <div class="row d-flex justify-content-center pt-4">
+      <div class="col-lg-6 col-md-12">
+          <table class="table">
+            <tbody>
+              <tr v-for="mn in marco_normativo" >
+                <td class="text-center">
+                  <a v-bind:href="mn.file" download>
+                  <i class="fas fa-file-download fa-2x color-pink"></i>
+                </a>
+                </td>
+                <td class="text-center">
+                  <a v-bind:href="mn.file" download>
+                  {{mn.content}}
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
       </div>
-
-
-
-      <!-- Fin de Marco Normativo y funcional -->
     </div>
-  </div>
+    <!-- Fin de Marco Normativo y funcional -->
+
+
+
+    </div>
 
 
 

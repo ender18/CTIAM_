@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('title')
+  <title>Conócenos - CTIAM</title>
+
+@endsection
+
 @section('content')
 
   <aboutus-component

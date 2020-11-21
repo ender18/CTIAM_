@@ -5220,10 +5220,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {};
@@ -5270,8 +5266,54 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['focus']
+  data: function data() {
+    return {
+      focus2: this.focus1,
+      numero: 0
+    };
+  },
+  props: ['focus1'],
+  mounted: function mounted() {
+    this.numero = this.focus2.length;
+  }
 });
 
 /***/ }),
@@ -5285,6 +5327,54 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5737,6 +5827,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {};
@@ -5914,48 +6008,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -7975,6 +8027,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -8030,7 +8112,8 @@ __webpack_require__.r(__webpack_exports__);
       // Variables de verificar contraseña
       verify_msj: '',
       verify_class: '',
-      spinner: false
+      spinner: false,
+      fecha_minima: ""
     };
   },
   props: ['aliados'],
@@ -8286,6 +8369,15 @@ __webpack_require__.r(__webpack_exports__);
         self.ihave_ally = '';
       }
     });
+    var dtToday = new Date();
+    var month = dtToday.getMonth() + 1; // getMonth() is zero-based
+
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear() - 5;
+    if (month < 10) month = '0' + month.toString();
+    if (day < 10) day = '0' + day.toString();
+    var maxDate = year + '-' + month + '-' + day;
+    self.fecha_minima = maxDate;
   }
 });
 
@@ -12734,6 +12826,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, "\n.spinnerPantallaCompleta {\r\n  width: 100%;\r\n  min-height: 100%;\r\n  height: auto !important;\r\n  position: fixed !important;\r\n  z-index:50;\r\n  top:0;\r\n  left:0;\r\n  background-color: rgba(255, 255, 255, 0.8);\n}\n.loader {\r\n  font-size: 10px;\r\n  margin: 50px auto;\r\n  text-indent: -9999em;\r\n  width: 11em;\r\n  height: 11em;\r\n  background-color: white;\r\n  border-radius: 50%;\r\n  background: #c50083;\r\n  background: linear-gradient(to right, #c50083 10%, rgba(197,0,131, 0) 42%);\r\n  display:block;\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  position: relative;\r\n  -webkit-animation: load3 1.4s infinite linear;\r\n  animation: load3 1.4s infinite linear;\r\n  transform: translateZ(0);\n}\n.loader:before {\r\n  width: 50%;\r\n  height: 50%;\r\n  background: #c50083;\r\n  border-radius: 100% 0 0 0;\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  content: '';\n}\n.loader:after {\r\n  background: #ffffff;\r\n  width: 75%;\r\n  height: 75%;\r\n  border-radius: 50%;\r\n  content: '';\r\n  margin: auto;\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  bottom: 0;\r\n  right: 0;\n}\n@-webkit-keyframes load3 {\n0% {\r\n    transform: rotate(0deg);\n}\n100% {\r\n    transform: rotate(360deg);\n}\n}\n@keyframes load3 {\n0% {\r\n    transform: rotate(0deg);\n}\n100% {\r\n    transform: rotate(360deg);\n}\n}\r\n\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/registerComponent.vue?vue&type=style&index=0&id=35e21442&lang=css&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/registerComponent.vue?vue&type=style&index=0&id=35e21442&lang=css&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.fade-enter-active[data-v-35e21442], .fade-leave-active[data-v-35e21442] {\r\n  transition: opacity .5s\n}\n.fade-enter[data-v-35e21442], .fade-leave-to[data-v-35e21442] /* .fade-leave-active below version 2.1.8 */ {\r\n  opacity: 0\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -58001,6 +58112,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/registerComponent.vue?vue&type=style&index=0&id=35e21442&lang=css&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/registerComponent.vue?vue&type=style&index=0&id=35e21442&lang=css&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./registerComponent.vue?vue&type=style&index=0&id=35e21442&lang=css&scoped=true& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/registerComponent.vue?vue&type=style&index=0&id=35e21442&lang=css&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/lib/addStyles.js":
 /*!****************************************************!*\
   !*** ./node_modules/style-loader/lib/addStyles.js ***!
@@ -66048,175 +66189,200 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container shadow" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12" }, [
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col-lg-9 col-md-12 d-flex align-items-center" },
-            [
-              _c("div", { staticClass: "row col-12" }, [
-                _vm._m(0),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-12 d-flex align-items-center" }, [
-                  _c("p", { staticClass: "text-justify" }, [
-                    _vm._v(_vm._s(_vm.mision[0].content))
-                  ])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-lg-2 d-none d-lg-block" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-12" }, [
-                _c("img", {
-                  staticClass: "img img-fluid",
-                  attrs: { src: _vm.mision[0].file, alt: "" }
-                })
-              ])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _vm._m(1),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-12" }, [
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col-lg-9 col-md-12 d-flex align-items-center" },
-            [
-              _c("div", { staticClass: "row col-12" }, [
-                _vm._m(2),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-12 d-flex align-items-center" }, [
-                  _c("p", { staticClass: "text-justify" }, [
-                    _vm._v(_vm._s(_vm.vision[0].content))
-                  ])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-lg-2 d-none d-lg-block" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-12" }, [
-                _c("img", {
-                  staticClass: "img img-fluid",
-                  attrs: { src: _vm.vision[0].file, alt: "" }
-                })
-              ])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _vm._m(3),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-12" }, [
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col-lg-9 col-md-12 d-flex align-items-center" },
-            [
-              _c("div", { staticClass: "row col-12" }, [
-                _vm._m(4),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-12 d-flex align-items-center" }, [
-                  _c("p", { staticClass: "text-justify" }, [
-                    _vm._v(_vm._s(_vm.obj_general[0].content))
-                  ])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-lg-2 d-none d-lg-block" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-12" }, [
-                _c("img", {
-                  staticClass: "img img-fluid",
-                  attrs: { src: _vm.obj_general[0].file, alt: "" }
-                })
-              ])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _vm._m(5),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-12" }, [
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col-lg-9 col-md-12 d-flex align-items-center" },
-            [
-              _c("div", { staticClass: "row col-12" }, [
-                _vm._m(6),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-12" },
-                  _vm._l(_vm.obj_especifico, function(obj_esp) {
-                    return _c("p", { staticClass: "text-justify" }, [
-                      _vm._v(_vm._s(obj_esp.content))
-                    ])
-                  }),
-                  0
-                )
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-lg-2 d-none d-lg-block" }, [
-            _c("div", { staticClass: "row " }, [
-              _c("div", { staticClass: "col-12 " }, [
-                _c("img", {
-                  staticClass: "img img-fluid",
-                  attrs: { src: _vm.img_obj_especifico[0].file, alt: "" }
-                })
-              ])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _vm._m(7),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-12" }, [
-        _c(
-          "div",
-          { staticClass: "row" },
-          [
-            _vm._m(8),
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row pt-4" }, [
+      _c(
+        "div",
+        { staticClass: "col-lg-6 col-md-12 d-flex align-items-center" },
+        [
+          _c("div", { staticClass: "row" }, [
+            _vm._m(0),
             _vm._v(" "),
+            _c("div", { staticClass: "col-12 pb-4" }, [
+              _c("h5", { staticClass: " text-justify" }, [
+                _vm._v(_vm._s(_vm.mision[0].content))
+              ])
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-lg-6 col-md-12 d-lg-none delete-padding" },
+        [
+          _c("img", {
+            staticClass: "img img-fluid",
+            attrs: { src: _vm.mision[0].file, alt: "" }
+          })
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-6 col-md-12 d-none d-lg-block" }, [
+        _c("img", {
+          staticClass: "img img-fluid border-image",
+          attrs: { src: _vm.mision[0].file, alt: "" }
+        })
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row pt-4" }, [
+      _c("div", { staticClass: "col-lg-6 col-md-12 d-none d-lg-block" }, [
+        _c("img", {
+          staticClass: "img img-fluid",
+          attrs: { src: _vm.vision[0].file, alt: "" }
+        })
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-lg-6 col-md-12 d-flex align-items-center flowers" },
+        [
+          _c("div", { staticClass: "row" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-12  pb-4" }, [
+              _c("h5", { staticClass: " text-justify" }, [
+                _vm._v(_vm._s(_vm.vision[0].content))
+              ])
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "col-lg-6 col-md-12 d-lg-none delete-padding  pt-5 pt-lg-0"
+        },
+        [
+          _c("img", {
+            staticClass: "img img-fluid",
+            attrs: { src: _vm.vision[0].file, alt: "" }
+          })
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row pt-4" }, [
+      _c(
+        "div",
+        { staticClass: "col-lg-6 col-md-12 d-flex align-items-center" },
+        [
+          _c("div", { staticClass: "row" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-12 pb-4" }, [
+              _c("h5", { staticClass: " text-justify" }, [
+                _vm._v(_vm._s(_vm.obj_general[0].content))
+              ])
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-lg-6 col-md-12 d-lg-none delete-padding" },
+        [
+          _c("img", {
+            staticClass: "img img-fluid",
+            attrs: { src: _vm.obj_general[0].file, alt: "" }
+          })
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-6 col-md-12 d-none d-lg-block" }, [
+        _c("img", {
+          staticClass: "img img-fluid border-image",
+          attrs: { src: _vm.obj_general[0].file, alt: "" }
+        })
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row pt-4" }, [
+      _c("div", { staticClass: "col-lg-6 col-md-12 d-none d-lg-block" }, [
+        _c("img", {
+          staticClass: "img img-fluid",
+          attrs: { src: _vm.img_obj_especifico[0].file, alt: "" }
+        })
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-lg-6 col-md-12 d-flex align-items-center" },
+        [
+          _c(
+            "div",
+            { staticClass: "row" },
+            [
+              _vm._m(3),
+              _vm._v(" "),
+              _vm._l(_vm.obj_especifico, function(obj_esp) {
+                return _c("div", { staticClass: "col-12 pb-1" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _vm._m(4, true),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-lg-11 col-md-12" }, [
+                      _c("h5", { staticClass: "text-justify" }, [
+                        _vm._v(" " + _vm._s(obj_esp.content))
+                      ])
+                    ])
+                  ])
+                ])
+              })
+            ],
+            2
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-lg-6 col-md-12 d-lg-none delete-padding" },
+        [
+          _c("img", {
+            staticClass: "img img-fluid",
+            attrs: { src: _vm.img_obj_especifico[0].file, alt: "" }
+          })
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _vm._m(5),
+    _vm._v(" "),
+    _vm._m(6),
+    _vm._v(" "),
+    _c("div", { staticClass: "row d-flex justify-content-center pt-4" }, [
+      _c("div", { staticClass: "col-lg-6 col-md-12" }, [
+        _c("table", { staticClass: "table" }, [
+          _c(
+            "tbody",
             _vm._l(_vm.marco_normativo, function(mn) {
-              return _c("div", { staticClass: "col-lg-2 col-4" }, [
-                _c("br"),
-                _vm._v(" "),
-                _c("a", { attrs: { href: mn.file, download: "" } }, [
-                  _c("img", {
-                    staticClass: "img img-fluid",
-                    attrs: {
-                      src:
-                        "https://image.flaticon.com/icons/png/512/337/337946.png",
-                      alt: ""
-                    }
-                  })
+              return _c("tr", [
+                _c("td", { staticClass: "text-center" }, [
+                  _c("a", { attrs: { href: mn.file, download: "" } }, [
+                    _c("i", {
+                      staticClass: "fas fa-file-download fa-2x color-pink"
+                    })
+                  ])
                 ]),
                 _vm._v(" "),
-                _c("span", { staticClass: "text-center" }, [
-                  _vm._v(_vm._s(mn.content))
+                _c("td", { staticClass: "text-center" }, [
+                  _c("a", { attrs: { href: mn.file, download: "" } }, [
+                    _vm._v(
+                      "\n              " +
+                        _vm._s(mn.content) +
+                        "\n              "
+                    )
+                  ])
                 ])
               ])
-            })
-          ],
-          2
-        )
+            }),
+            0
+          )
+        ])
       ])
     ])
   ])
@@ -66226,13 +66392,65 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 text-center" }, [
-      _c("h2", {}, [
-        _c(
-          "span",
-          { staticClass: "text-secondary  pl-2 pr-2 rounded-top  border-4 " },
-          [_vm._v("Misión")]
-        )
+    return _c("div", { staticClass: "col-12" }, [
+      _c("h1", { staticClass: "text-center" }, [
+        _c("strong", [_vm._v(" Misión")])
+      ]),
+      _vm._v(" "),
+      _c("hr", { staticClass: "hr-pink-center" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-12" }, [
+      _c("h1", { staticClass: "text-center pt-4 pt-lg-0" }, [
+        _c("strong", [_vm._v("Visión")])
+      ]),
+      _vm._v(" "),
+      _c("hr", { staticClass: "hr-pink-left" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-12" }, [
+      _c("h1", { staticClass: "text-center" }, [
+        _c("strong", [_vm._v(" Objetivo General")])
+      ]),
+      _vm._v(" "),
+      _c("hr", { staticClass: "hr-pink-center" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-12" }, [
+      _c("h1", { staticClass: "text-center" }, [
+        _c("strong", [_vm._v("Objetivos específicos")])
+      ]),
+      _vm._v(" "),
+      _c("hr", { staticClass: "hr-pink-center" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-1 d-none d-lg-block" }, [
+      _c("i", { staticClass: "fas fa-check fa-lg color-pink" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row pt-5" }, [
+      _c("div", { staticClass: "col-12 text-center" }, [
+        _c("h1", {}, [_c("strong", [_vm._v("Marco normativo y funcional")])])
       ])
     ])
   },
@@ -66240,69 +66458,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12" }, [_c("hr")])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 text-center" }, [
-      _c("h2", {}, [
-        _c("span", { staticClass: "text-secondary" }, [_vm._v("Visión")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12" }, [_c("hr")])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 text-center" }, [
-      _c("h2", {}, [
-        _c("span", { staticClass: "text-secondary" }, [
-          _vm._v("Objetivo general")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12" }, [_c("hr")])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 text-center" }, [
-      _c("h3", {}, [
-        _c("span", { staticClass: "text-secondary" }, [
-          _vm._v("Objetivos Específicos")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12" }, [_c("hr")])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 text-center" }, [
-      _c("h3", {}, [
-        _c("span", { staticClass: "text-secondary" }, [
-          _vm._v("Marco Normativo y funcional")
-        ])
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12 text-center" }, [
+        _c("i", { staticClass: "fas fa-file-pdf fa-3x color-pink-soft" })
       ])
     ])
   }
@@ -66328,71 +66486,143 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container shadow" }, [
-    _c(
-      "div",
-      { staticClass: "row d-flex justify-content-between" },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _vm._l(_vm.focus, function(focu) {
-          return _c(
-            "div",
-            {
-              staticClass:
-                "col-lg-4 col-sm-12 mt-2 d-flex justify-content-center"
-            },
-            [
-              _c(
-                "div",
-                { staticClass: "card", staticStyle: { width: "18rem" } },
-                [
-                  _c("img", {
-                    staticClass: "card-img-top img-fluid",
-                    attrs: { src: focu.url_image, alt: "Card image cap" }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-body" }, [
-                    _c("h5", { staticClass: "card-title" }, [
-                      _vm._v(_vm._s(focu.name))
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "card-text" }, [
-                      _vm._v(_vm._s(focu.description))
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._l(_vm.numero, function(n) {
+        return _c("div", {}, [
+          (n - 1) % 2 == 0
+            ? _c("div", { staticClass: "row pt-4" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "col-lg-6 col-md-12 d-flex align-items-center"
+                  },
+                  [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-12" }, [
+                        _c("h1", { staticClass: "text-center" }, [
+                          _c("strong", [
+                            _vm._v(" " + _vm._s(_vm.focus2[n - 1].name))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("hr", { staticClass: "hr-pink-center" })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-12 pb-4" }, [
+                        _c("h5", { staticClass: " text-justify" }, [
+                          _vm._v(_vm._s(_vm.focus2[n - 1].description))
+                        ])
+                      ])
                     ])
-                  ])
-                ]
-              )
-            ]
-          )
-        }),
-        _vm._v(" "),
-        _vm._m(1)
-      ],
-      2
-    )
-  ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "col-lg-6 col-md-12 d-lg-none delete-padding"
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "img img-fluid",
+                      attrs: { src: _vm.focus2[n - 1].url_image, alt: "" }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-lg-6 col-md-12 d-none d-lg-block" },
+                  [
+                    _c("img", {
+                      staticClass: "img img-fluid border-image",
+                      attrs: { src: _vm.focus2[n - 1].url_image, alt: "" }
+                    })
+                  ]
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.focus1[n] != null && n % 2 == 1
+            ? _c("div", { staticClass: "row pt-4" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-lg-6 col-md-12 d-none d-lg-block" },
+                  [
+                    _c("img", {
+                      staticClass: "img img-fluid",
+                      attrs: { src: _vm.focus1[n].url_image, alt: "" }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "col-lg-6 col-md-12 d-flex align-items-center flowers"
+                  },
+                  [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-12" }, [
+                        _c("h1", { staticClass: "text-center pt-4" }, [
+                          _c("strong", [
+                            _vm._v(" " + _vm._s(_vm.focus1[n].name))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("hr", { staticClass: "hr-pink-left" })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-12  pb-4" }, [
+                        _c("h5", { staticClass: " text-justify" }, [
+                          _vm._v(_vm._s(_vm.focus1[n].description))
+                        ])
+                      ])
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "col-lg-6 col-md-12 d-lg-none delete-padding  pt-4 pt-lg-0"
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "img img-fluid",
+                      attrs: { src: _vm.focus1[n].url_image, alt: "" }
+                    })
+                  ]
+                )
+              ])
+            : _vm._e()
+        ])
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "pb-5" })
+    ],
+    2
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 text-center" }, [
-      _c("h2", {}, [
-        _c("span", { staticClass: "text-secondary" }, [
-          _vm._v("Focos caracterizados del proyecto")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("hr")
+    return _c("div", { staticClass: "row pt-4" }, [
+      _c("div", { staticClass: "col-12 text-center" }, [
+        _c("h1", {}, [_c("strong", [_vm._v("Focos de nuestro proyecto")])]),
+        _vm._v(" "),
+        _c("hr", { staticClass: "hr-pink-center" })
+      ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12" }, [_c("br")])
   }
 ]
 render._withStripped = true
@@ -66416,68 +66646,86 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container shadow" }, [
+  return _c("div", { staticClass: "container" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
     _c(
       "div",
-      { staticClass: "row d-flex justify-content-between" },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _vm._l(_vm.founders, function(founder) {
-          return _c(
-            "div",
-            {
-              staticClass:
-                "col-lg-4 col-sm-12 mt-2 d-flex justify-content-center"
-            },
-            [
-              _c(
-                "div",
-                { staticClass: "card", staticStyle: { width: "18rem" } },
-                [
-                  _c("img", {
-                    staticClass: "card-img-top img-fluid",
-                    attrs: { src: founder.file, alt: "Card image cap" }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-body" }, [
-                    _c("h5", { staticClass: "card-title" }, [
-                      _vm._v(_vm._s(founder.content))
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "card-text" }, [
-                      _vm._v("Profesión: " + _vm._s(founder.content2))
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "card-text" }, [
-                      _vm._v(_vm._s(founder.content1))
-                    ])
-                  ])
-                ]
-              )
-            ]
-          )
-        }),
-        _vm._v(" "),
-        _vm._m(1),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-12 d-flex justify-content-center" }, [
-          _c("iframe", {
-            attrs: {
-              width: "1080",
-              height: "608",
-              src:
-                "https://www.youtube.com/embed/" + this.video_haz_parte.content,
-              frameborder: "0",
-              allow:
-                "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture",
-              allowfullscreen: ""
-            }
-          })
-        ])
-      ],
-      2
-    )
+      {
+        staticClass:
+          "row pb-5 d-flex justify-content-center justify-content-lg-between "
+      },
+      _vm._l(_vm.founders, function(founder) {
+        return _c(
+          "div",
+          {
+            staticClass: "col-9 col-lg-3 pt-4 d-lg-flex align-items-lg-stretch"
+          },
+          [
+            _c("div", { staticClass: "card  shadow border-0" }, [
+              _c("img", {
+                staticClass: "img img-fluid border-top-element",
+                attrs: { src: founder.file, alt: "" }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("h4", { staticClass: "card-title text-center" }, [
+                  _c("strong", [_vm._v(_vm._s(founder.content))])
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "card-text" }, [
+                  _vm._v("Profesión: " + _vm._s(founder.content2))
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "card-text" }, [
+                  _vm._v(_vm._s(founder.content1))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "d-flex justify-content-center" }, [
+                  _c(
+                    "a",
+                    { attrs: { href: founder.content2, target: "_blank" } },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary border-round",
+                          attrs: { type: "button", name: "button" }
+                        },
+                        [_vm._v("Ver CV")]
+                      )
+                    ]
+                  )
+                ])
+              ])
+            ])
+          ]
+        )
+      }),
+      0
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "row pt-4 pb-3" }, [
+      _vm._m(2),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-12 col-lg-7" }, [
+        _c("iframe", {
+          staticClass: "border-round",
+          attrs: {
+            width: "100%",
+            height: "358px",
+            src:
+              "https://www.youtube.com/embed/" + this.video_haz_parte.content,
+            frameborder: "0",
+            allow:
+              "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture",
+            allowfullscreen: ""
+          }
+        })
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -66485,29 +66733,43 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 text-center" }, [
-      _c("h2", {}, [
-        _c("span", { staticClass: "text-secondary" }, [_vm._v("Fundadoras")])
-      ]),
-      _vm._v(" "),
-      _c("hr")
+    return _c("div", { staticClass: "row pt-4" }, [
+      _c("div", { staticClass: "col-12 text-center" }, [
+        _c("h1", [_c("strong", [_vm._v("Fundadoras")])])
+      ])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 text-center" }, [
-      _c("br"),
-      _vm._v(" "),
-      _c("h2", {}, [
-        _c("span", { staticClass: "text-secondary" }, [
-          _vm._v("¡Haz parte de nuestro equipo!")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("hr")
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12 text-center" }, [
+        _c("i", { staticClass: "fas fa-flag fa-3x color-pink-soft" })
+      ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "col-12 col-lg-5  d-flex align-items-center" },
+      [
+        _c("div", { staticClass: "row  d-flex align-items-center" }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c("h1", { staticClass: "display-4 text-center" }, [
+              _vm._v("¡Haz parte de nuestro equipo!")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-12" }, [
+            _c("hr", { staticClass: "hr-pink-center" })
+          ])
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -67059,60 +67321,66 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container shadow" }, [
+  return _c("div", { staticClass: "container" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
     _c(
       "div",
-      { staticClass: "row d-flex justify-content-between" },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _vm._l(_vm.members, function(member) {
-          return _c(
-            "div",
-            {
-              staticClass:
-                "col-lg-3 col-sm-6 mt-4 d-flex justify-content-center"
-            },
-            [
-              _c(
-                "div",
-                { staticClass: "card", staticStyle: { width: "18rem" } },
-                [
-                  _c("img", {
-                    staticClass: "card-img-top img-fluid",
-                    attrs: { src: member.file, alt: "Card image cap" }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-body" }, [
-                    _c("h5", { staticClass: "card-title" }, [
-                      _vm._v(_vm._s(member.content))
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "card-text" }, [
-                      _vm._v(_vm._s(member.content1))
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "card-text" }, [
-                      _c("strong", [_vm._v("Aportes:")]),
-                      _vm._v(" " + _vm._s(member.content3))
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "btn btn-primary",
-                        attrs: { href: member.content2, target: "_blank" }
-                      },
-                      [_vm._v("Ir al sitio web")]
-                    )
-                  ])
-                ]
-              )
-            ]
-          )
-        })
-      ],
-      2
+      {
+        staticClass:
+          "row pb-5 d-flex justify-content-center justify-content-lg-start "
+      },
+      _vm._l(_vm.members, function(member) {
+        return _c(
+          "div",
+          {
+            staticClass: "col-9 col-lg-3 pt-4 d-lg-flex align-items-lg-stretch"
+          },
+          [
+            _c("div", { staticClass: "card  shadow border-0" }, [
+              _c("img", {
+                staticClass: "img img-fluid border-top-element",
+                attrs: { src: member.file, alt: "" }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("h4", { staticClass: "card-title text-center" }, [
+                  _c("strong", [_vm._v(_vm._s(member.content))])
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "card-text text-justify" }, [
+                  _vm._v(_vm._s(member.content1))
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "card-text" }, [
+                  _c("strong", [_vm._v("Aportes:")]),
+                  _vm._v(" " + _vm._s(member.content3))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "d-flex justify-content-center" }, [
+                  _c(
+                    "a",
+                    { attrs: { href: member.content2, target: "_blank" } },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary border-round",
+                          attrs: { type: "button", name: "button" }
+                        },
+                        [_vm._v("Ir al sitio Web")]
+                      )
+                    ]
+                  )
+                ])
+              ])
+            ])
+          ]
+        )
+      }),
+      0
     )
   ])
 }
@@ -67121,14 +67389,22 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 text-center" }, [
-      _c("h2", {}, [
-        _c("span", { staticClass: "text-secondary" }, [
-          _vm._v("Miembros de nuestra Red de Conocimiento")
+    return _c("div", { staticClass: "row pt-4" }, [
+      _c("div", { staticClass: "col-12 text-center" }, [
+        _c("h1", [
+          _c("strong", [_vm._v("Miembros de nuestra Red de Conocimiento")])
         ])
-      ]),
-      _vm._v(" "),
-      _c("hr")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12 text-center" }, [
+        _c("i", { staticClass: "fas fa-brain fa-3x color-pink-soft" })
+      ])
     ])
   }
 ]
@@ -67454,7 +67730,7 @@ var staticRenderFns = [
         _c("strong", [_vm._v(" ¿Quiénes somos?")])
       ]),
       _vm._v(" "),
-      _c("br")
+      _c("hr", { staticClass: "hr-pink-center" })
     ])
   },
   function() {
@@ -67466,7 +67742,7 @@ var staticRenderFns = [
         _c("strong", [_vm._v("¿Qué hacemos en el programa?")])
       ]),
       _vm._v(" "),
-      _c("br")
+      _c("hr", { staticClass: "hr-pink-center" })
     ])
   },
   function() {
@@ -67549,95 +67825,57 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("footer", { staticClass: "pt-4 bg-dark shadow-sm" }, [
-    _c(
-      "div",
-      { staticClass: "container text-center text-light text-md-left " },
-      [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-4 mt-md-0 mt-3" }, [
-            _c("h4", { staticClass: "text-uppercase " }, [
-              _vm._v("Descripción de nuestra red de conocimiento CTIAM")
-            ]),
-            _vm._v(" "),
-            _c("small", [_vm._v(_vm._s(_vm.description))])
-          ]),
+  return _c("footer", { staticClass: "pt-4 color-footer shadow-sm" }, [
+    _c("div", { staticClass: "container text-center text-md-left " }, [
+      _c("div", { staticClass: "row py-lg-4" }, [
+        _c("div", { staticClass: "col-md-3 mt-md-0 mt-3" }, [
+          _c("p", [_vm._v(_vm._s(_vm.description))])
+        ]),
+        _vm._v(" "),
+        _c("hr", { staticClass: "clearfix w-100 d-md-none pb-3" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-4 mb-md-0 mb-3" }, [
+          _c("h4", { staticClass: "text-uppercase" }, [_vm._v("CONTACTO")]),
           _vm._v(" "),
-          _c("hr", { staticClass: "clearfix w-100 d-md-none pb-3" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-4 mb-md-0 mb-3" }, [
-            _c("h4", { staticClass: "text-uppercase" }, [_vm._v("CONTACTO")]),
+          _c("ul", { staticClass: "list-unstyled" }, [
+            _c("li", [_c("span", [_vm._v("Teléfono: " + _vm._s(_vm.phone))])]),
             _vm._v(" "),
-            _c("ul", { staticClass: "list-unstyled" }, [
-              _c("li", [
-                _c("span", [_vm._v("Teléfono: " + _vm._s(_vm.phone))])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("span", [
-                  _vm._v("Correo electrónico: "),
-                  _c("a", { staticClass: "text-light", attrs: { href: "#" } }, [
-                    _vm._v(_vm._s(_vm.email))
-                  ])
-                ])
+            _c("li", [
+              _c("span", [
+                _vm._v("Correo electrónico: "),
+                _c("a", { attrs: { href: "#" } }, [_vm._v(_vm._s(_vm.email))])
               ])
             ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3 mb-md-0 mb-3 text-center" }, [
+          _c("h4", { staticClass: "text-uppercase" }, [
+            _vm._v("REDES SOCIALES")
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-3 mb-md-0 mb-3" }, [
-            _c("h4", { staticClass: "text-uppercase" }, [
-              _vm._v("REDES SOCIALES")
-            ]),
-            _vm._v(" "),
-            _c("ul", { staticClass: "list-unstyled" }, [
-              _c("li", [
-                _c(
-                  "a",
-                  {
-                    staticClass: "text-white",
-                    attrs: { href: _vm.url_twitter }
-                  },
-                  [
-                    _c("i", { staticClass: "fab fa-youtube fa-2x " }),
-                    _c("span", [_vm._v(" " + _vm._s(_vm.twitter))])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c(
-                  "a",
-                  {
-                    staticClass: "text-white",
-                    attrs: { href: _vm.url_instagram }
-                  },
-                  [
-                    _c("i", { staticClass: "fab fa-facebook fa-2x " }),
-                    _c("span", [_vm._v(" " + _vm._s(_vm.facebook))])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c(
-                  "a",
-                  {
-                    staticClass: "text-white",
-                    attrs: { href: _vm.url_instagram }
-                  },
-                  [
-                    _c("i", { staticClass: "fab fa-instagram fa-2x " }),
-                    _c("span", [_vm._v(" " + _vm._s(_vm.instagram))])
-                  ]
-                )
-              ])
-            ])
-          ]),
+          _c(
+            "a",
+            { staticClass: "color-pink", attrs: { href: _vm.url_twitter } },
+            [_c("i", { staticClass: "fab fa-youtube fa-3x " })]
+          ),
           _vm._v(" "),
-          _vm._m(0)
-        ])
-      ]
-    ),
+          _c(
+            "a",
+            { staticClass: "color-pink", attrs: { href: _vm.url_instagram } },
+            [_c("i", { staticClass: "fab fa-facebook fa-3x " })]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            { staticClass: "color-pink", attrs: { href: _vm.url_instagram } },
+            [_c("i", { staticClass: "fab fa-instagram fa-3x " })]
+          )
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
+      ])
+    ]),
     _vm._v(" "),
     _vm._m(1)
   ])
@@ -67649,7 +67887,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      { staticClass: "col-md-1 mb-md-0 mb-3 d-none d-lg-block" },
+      { staticClass: "col-md-2 mb-md-0 mb-3 d-none d-lg-block" },
       [
         _c("img", {
           staticClass: "img img-fluid",
@@ -67662,23 +67900,29 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "footer-copyright text-center py-3 text-dark bg-light" },
-      [
-        _c("p", [
-          _vm._v(" © 2020 Copyright: "),
-          _c(
-            "a",
-            {
-              staticClass: "text-dark",
-              attrs: { href: "https://ww2.ufps.edu.co/" }
-            },
-            [_vm._v(" UFPS")]
-          )
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "container-fluid" }, [
+      _c(
+        "div",
+        { staticClass: "row  d-flex align-items-center  color-footer2" },
+        [
+          _c("div", { staticClass: "col-12 py-2 text-center text-white" }, [
+            _c("p", { staticClass: "mb-0 pb-0" }, [
+              _c("strong", [
+                _vm._v(" © 2020 Copyright: "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "text-white",
+                    attrs: { href: "https://ww2.ufps.edu.co/" }
+                  },
+                  [_vm._v(" UFPS")]
+                )
+              ])
+            ])
+          ])
+        ]
+      )
+    ])
   }
 ]
 render._withStripped = true
@@ -71054,7 +71298,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container shadow" },
+    { staticClass: "container" },
     [
       _c("spinner", {
         directives: [
@@ -71067,52 +71311,58 @@ var render = function() {
         ]
       }),
       _vm._v(" "),
-      _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "row justify-content-center pt-4 pb-3" }, [
         _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header text-center" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-12" }, [
-                  _c("h3", [
-                    _vm._v("Formulario de Registro - "),
-                    _c("strong", [_vm._v(_vm._s(_vm.tipo_registro))])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-12" }, [
-                  _c("p", [
-                    _vm._v("Tambien puedes registrarte como: "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "text-secondary",
-                        attrs: { href: "#" },
-                        on: {
-                          click: function($event) {
-                            return _vm.cambiar_registro(_vm.rol_button1, "1")
+          _c("div", { staticClass: "card border-0 shadow" }, [
+            _c(
+              "div",
+              { staticClass: "card-header text-center border-0 bg-white" },
+              [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-12" }, [
+                    _c("h1", [
+                      _vm._v("Formulario de Registro - "),
+                      _c("strong", [_vm._v(_vm._s(_vm.tipo_registro))])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-12" }, [
+                    _c("p", [
+                      _vm._v("Tambien puedes registrarte como: "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "text-secondary",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              return _vm.cambiar_registro(_vm.rol_button1, "1")
+                            }
                           }
-                        }
-                      },
-                      [_vm._v(" " + _vm._s(_vm.rol_button1) + " ")]
-                    ),
-                    _vm._v("  o  "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "text-secondary",
-                        attrs: { href: "#" },
-                        on: {
-                          click: function($event) {
-                            return _vm.cambiar_registro(_vm.rol_button2, "2")
+                        },
+                        [_vm._v(" " + _vm._s(_vm.rol_button1) + " ")]
+                      ),
+                      _vm._v("  o  "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "text-secondary",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              return _vm.cambiar_registro(_vm.rol_button2, "2")
+                            }
                           }
-                        }
-                      },
-                      [_vm._v(" " + _vm._s(_vm.rol_button2) + " ")]
-                    )
+                        },
+                        [_vm._v(" " + _vm._s(_vm.rol_button2) + " ")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("hr", { staticClass: "hr-pink-center" })
                   ])
                 ])
-              ])
-            ]),
+              ]
+            ),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
               _c(
@@ -71128,2007 +71378,2148 @@ var render = function() {
                   }
                 },
                 [
-                  _c("div", { staticClass: "row" }, [
-                    _vm._m(0),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-12 col-lg-6 form-group" }, [
-                      _c("label", { attrs: { for: "" } }, [
-                        _vm._v("Tipo de Documento")
-                      ]),
+                  _c(
+                    "div",
+                    { staticClass: "row" },
+                    [
+                      _vm._m(0),
                       _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.type_dni,
-                              expression: "type_dni"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { id: "tipo_documento" },
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.type_dni = $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            }
-                          }
-                        },
-                        [
-                          _c("option", [_vm._v("Cedula de Ciudadanía")]),
-                          _vm._v(" "),
-                          _c("option", [_vm._v("NIT")]),
-                          _vm._v(" "),
-                          _c("option", [_vm._v("Cedula de extranjeria")]),
-                          _vm._v(" "),
-                          _c("option", [_vm._v("Pasaporte")]),
-                          _vm._v(" "),
-                          _c("option", [_vm._v("Tarjeta de identidad")])
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-12 col-lg-6 form-group" }, [
-                      _c("label", { attrs: { for: "" } }, [
-                        _vm._v("Número de identificación")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
+                      _c("div", { staticClass: "col-12 col-lg-6 form-group" }, [
+                        _c("label", { attrs: { for: "" } }, [
+                          _vm._v("Tipo de Documento")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "select",
                           {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.dni,
-                            expression: "dni"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "number", name: "" },
-                        domProps: { value: _vm.dni },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.dni = $event.target.value
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-12 col-lg-6 form-group" }, [
-                      _c("label", { attrs: { for: "" } }, [_vm._v("Nombres")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.name,
-                            expression: "name"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "text", name: "" },
-                        domProps: { value: _vm.name },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.name = $event.target.value
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-12 col-lg-6 form-group" }, [
-                      _c("label", { attrs: { for: "" } }, [
-                        _vm._v("Apellidos")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.last_name,
-                            expression: "last_name"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "text", name: "" },
-                        domProps: { value: _vm.last_name },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.last_name = $event.target.value
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-12 col-lg-6 form-group" }, [
-                      _c("label", { attrs: { for: "" } }, [_vm._v("Correo")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.email,
-                            expression: "email"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          id: "email",
-                          type: "email",
-                          name: "",
-                          required: ""
-                        },
-                        domProps: { value: _vm.email },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.email = $event.target.value
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-12 col-lg-6 form-group" }, [
-                      _c("label", { attrs: { for: "" } }, [
-                        _vm._v("Fecha de Nacimiento")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.birthdate,
-                            expression: "birthdate"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "date", name: "" },
-                        domProps: { value: _vm.birthdate },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.birthdate = $event.target.value
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-12 col-lg-6 form-group" }, [
-                      _c("label", { attrs: { for: "" } }, [
-                        _vm._v("Dirección de residencia")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.adress,
-                            expression: "adress"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "text", name: "" },
-                        domProps: { value: _vm.adress },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.adress = $event.target.value
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-12 col-lg-6 form-group" }, [
-                      _c("label", { attrs: { for: "" } }, [
-                        _vm._v("Barrio / Sector")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.neighborhood,
-                              expression: "neighborhood"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.neighborhood = $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            }
-                          }
-                        },
-                        [
-                          _c("option", { attrs: { value: "OTRO" } }, [
-                            _vm._v("OTRO")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value: "8- 1 DE MAYO B. PALMERAS (PARTE BAJA)"
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.type_dni,
+                                expression: "type_dni"
                               }
-                            },
-                            [_vm._v("1 DE MAYO B. PALMERAS (PARTE BAJA)")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- A H. 13 DE MAYO" } },
-                            [_vm._v("A H. 13 DE MAYO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "7- A. COLOMBIA I" } },
-                            [_vm._v("A. COLOMBIA I")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: { value: "7- A. CRISPIN DURAN PARTE BAJA" }
-                            },
-                            [_vm._v("A. CRISPIN DURAN PARTE BAJA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- A. ESPIRITU SANTO" } },
-                            [_vm._v("A. ESPIRITU SANTO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "7- A. GUADALUPE" } },
-                            [_vm._v("A. GUADALUPE")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "7- A. H. CRISPIN DURAN" } },
-                            [_vm._v("A. H. CRISPIN DURAN")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- A. H. EL DORADO" } },
-                            [_vm._v("A. H. EL DORADO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- A. H. EL SALADO" } },
-                            [_vm._v("A. H. EL SALADO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- A. JUAN PABLO II" } },
-                            [_vm._v("A. JUAN PABLO II")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- A. LA CONQUISTA" } },
-                            [_vm._v("A. LA CONQUISTA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "9- A. MARIA TERESA" } },
-                            [_vm._v("A. MARIA TERESA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- A. NUEVA ESPERANZA" } },
-                            [_vm._v("A. NUEVA ESPERANZA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- A. SEIS DE MAYO P. ALTA" } },
-                            [_vm._v("A. SEIS DE MAYO P. ALTA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "7- A. VILLA PAZ" } },
-                            [_vm._v("A. VILLA PAZ")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- A.H CAMPO ALEGRE" } },
-                            [_vm._v("A.H CAMPO ALEGRE")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: { value: "7- A.H. BRISAS DE LA HERMITA" }
-                            },
-                            [_vm._v("A.H. BRISAS DE LA HERMITA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- A.H. BRISAS DEL PARAISO" } },
-                            [_vm._v("A.H. BRISAS DEL PARAISO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: { value: "6- A.H. CARLOS GARCIA LOZADA" }
-                            },
-                            [_vm._v("A.H. CARLOS GARCIA LOZADA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- A.H. MARIA AUXILIADORA" } },
-                            [_vm._v("A.H. MARIA AUXILIADORA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- A.H. VILLA NUEVA" } },
-                            [_vm._v("A.H. VILLA NUEVA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "3- AGUAS CALIENTES" } },
-                            [_vm._v("AGUAS CALIENTES")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "9- ARNULFO BRICEÑO" } },
-                            [_vm._v("ARNULFO BRICEÑO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value: "7- ASENT. BRISAS DE LA HERMITA.II."
+                            ],
+                            staticClass: "form-control border-round",
+                            attrs: { id: "tipo_documento" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.type_dni = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
                               }
-                            },
-                            [_vm._v("ASENT. BRISAS DE LA HERMITA.II.")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: { value: "8- ASENT. BRISAS, PAZ Y FUTURO" }
-                            },
-                            [_vm._v("ASENT. BRISAS, PAZ Y FUTURO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- ASENT. H. LA FE." } },
-                            [_vm._v("ASENT. H. LA FE.")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- ASENT. H. LA ISLA." } },
-                            [_vm._v("ASENT. H. LA ISLA.")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- ASENT. H. TORREMOLINOS" } },
-                            [_vm._v("ASENT. H. TORREMOLINOS")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: { value: "8- ASENT. HUM. BRISAS DEL SOL." }
-                            },
-                            [_vm._v("ASENT. HUM. BRISAS DEL SOL.")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- ASENT. HUM. EL OASIS." } },
-                            [_vm._v("ASENT. HUM. EL OASIS.")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "7- ASENT. JOSE BERNAL." } },
-                            [_vm._v("ASENT. JOSE BERNAL.")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "3- ASENT. NUEVO MILENIO" } },
-                            [_vm._v("ASENT. NUEVO MILENIO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "4- B. 13 DE MARZO" } },
-                            [_vm._v("B. 13 DE MARZO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "9- B. 28 DE FEBRERO" } },
-                            [_vm._v("B. 28 DE FEBRERO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- B. AEROPUERTO" } },
-                            [_vm._v("B. AEROPUERTO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "10- B. ALFONSO LOPEZ" } },
-                            [_vm._v("B. ALFONSO LOPEZ")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "6- B. ALONCITO" } }, [
-                            _vm._v("B. ALONCITO")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "4- B. ALTO PAMPLONITA" } },
-                            [_vm._v("B. ALTO PAMPLONITA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- B. ANTONIA SANTOS" } },
-                            [_vm._v("B. ANTONIA SANTOS")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "9- B. BELEN" } }, [
-                            _vm._v("B. BELEN")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- B. BELISARIO" } },
-                            [_vm._v("B. BELISARIO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "3- B. BELLA VISTA" } },
-                            [_vm._v("B. BELLA VISTA")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "3- B. BOGOTA" } }, [
-                            _vm._v("B. BOGOTA")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- B. BRISAS DEL PORVENIR" } },
-                            [_vm._v("B. BRISAS DEL PORVENIR")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "7- B. BUENOS AIRES" } },
-                            [_vm._v("B. BUENOS AIRES")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "7- B. CAMILO DAZA" } },
-                            [_vm._v("B. CAMILO DAZA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "10- B. CAMILO TORRES" } },
-                            [_vm._v("B. CAMILO TORRES")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- B. CAÑO LIMON-COVEÑAS" } },
-                            [_vm._v("B. CAÑO LIMON-COVEÑAS")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- B. CARLOS RAMIREZ P." } },
-                            [_vm._v("B. CARLOS RAMIREZ P.")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- B. CARLOS TOLEDO PLATA" } },
-                            [_vm._v("B. CARLOS TOLEDO PLATA")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "9- B. CARORA" } }, [
-                            _vm._v("B. CARORA")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "2- B. CEIBA-QTA.BOSCH" } },
-                            [_vm._v("B. CEIBA-QTA.BOSCH")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- B. CERRO NORTE" } },
-                            [_vm._v("B. CERRO NORTE")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "7- B. CHAPINERO" } },
-                            [_vm._v("B. CHAPINERO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "10- B. CIRCUNVALACION" } },
-                            [_vm._v("B. CIRCUNVALACION")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "5- B. CIUDAD JARDIN" } },
-                            [_vm._v("B. CIUDAD JARDIN")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "7- B. CLARET" } }, [
-                            _vm._v("B. CLARET")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "5- B. COLPET" } }, [
-                            _vm._v("B. COLPET")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "10- B. CUBEROS NIÑO" } },
-                            [_vm._v("B. CUBEROS NIÑO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- B. CUCUTA 75" } },
-                            [_vm._v("B. CUCUTA 75")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "9- B. CUNDINAMARCA" } },
-                            [_vm._v("B. CUNDINAMARCA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- B. DIVINO NIÑO" } },
-                            [_vm._v("B. DIVINO NIÑO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- B. DOÑA NIDIA" } },
-                            [_vm._v("B. DOÑA NIDIA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "1- B. EL CALLEJON" } },
-                            [_vm._v("B. EL CALLEJON")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "1- B. EL CONTENTO" } },
-                            [_vm._v("B. EL CONTENTO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- B. EL DESIERTO" } },
-                            [_vm._v("B. EL DESIERTO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "7- B. EL PARAISO" } },
-                            [_vm._v("B. EL PARAISO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "1- B. EL PARAMO" } },
-                            [_vm._v("B. EL PARAMO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- B. EL PORVENIR" } },
-                            [_vm._v("B. EL PORVENIR")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- B. EL PROGRESO" } },
-                            [_vm._v("B. EL PROGRESO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "7- B. EL ROSAL DEL NORTE" } },
-                            [_vm._v("B. EL ROSAL DEL NORTE")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- B. FLORIDA BLANCA" } },
-                            [_vm._v("B. FLORIDA BLANCA")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "10- B. GAITAN" } }, [
-                            _vm._v("B. GAITAN")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "5- B. GUAIMARAL" } },
-                            [_vm._v("B. GUAIMARAL")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "10- B. JOSE A. GALAN" } },
-                            [_vm._v("B. JOSE A. GALAN")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- B. JUAN ATALAYA III ETP." } },
-                            [_vm._v("B. JUAN ATALAYA III ETP.")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "10- B. LA CABRERA" } },
-                            [_vm._v("B. LA CABRERA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "7- B. LA FLORIDA" } },
-                            [_vm._v("B. LA FLORIDA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "7- B. LA HERMITA" } },
-                            [_vm._v("B. LA HERMITA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- B. LA INSULA" } },
-                            [_vm._v("B. LA INSULA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "7- B. LA LAGUNA" } },
-                            [_vm._v("B. LA LAGUNA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "3- B. LA LIBERTAD" } },
-                            [_vm._v("B. LA LIBERTAD")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "1- B. LA PLAYA" } }, [
-                            _vm._v("B. LA PLAYA")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "7- B. LA PRIMAVERA" } },
-                            [_vm._v("B. LA PRIMAVERA")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "3- B. LA UNION" } }, [
-                            _vm._v("B. LA UNION")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- B. LA VICTORIA" } },
-                            [_vm._v("B. LA VICTORIA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- B. LAS PALMERAS ALTA" } },
-                            [_vm._v("B. LAS PALMERAS ALTA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "2- B. LIBERT.-CAOBOS" } },
-                            [_vm._v("B. LIBERT.-CAOBOS")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "1- B. LLANO" } }, [
-                            _vm._v("B. LLANO")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "5- B. LLERAS RESTREPO" } },
-                            [_vm._v("B. LLERAS RESTREPO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "9- B. LOMA DE BOLIVAR" } },
-                            [_vm._v("B. LOMA DE BOLIVAR")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- B. LOS ALMENDROS" } },
-                            [_vm._v("B. LOS ALMENDROS")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "9- B. LOS ALPES" } },
-                            [_vm._v("B. LOS ALPES")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "7- B. LOS CARACOLES" } },
-                            [_vm._v("B. LOS CARACOLES")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "7- B. LOS COMUNEROS" } },
-                            [_vm._v("B. LOS COMUNEROS")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- B. LOS LAURELES" } },
-                            [_vm._v("B. LOS LAURELES")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "7- B. LOS MOTILONES" } },
-                            [_vm._v("B. LOS MOTILONES")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- B. LOS OLIVOS" } },
-                            [_vm._v("B. LOS OLIVOS")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "10- B. MAGDALENA" } },
-                            [_vm._v("B. MAGDALENA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- B. MARIA PAZ" } },
-                            [_vm._v("B. MARIA PAZ")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "7- B. MARIANO OSPINA PEREZ" } },
-                            [_vm._v("B. MARIANO OSPINA PEREZ")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- B. METROPOLI" } },
-                            [_vm._v("B. METROPOLI")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- B. NIÑA CECI" } },
-                            [_vm._v("B. NIÑA CECI")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "4- B. NUEVA SANTA CLARA" } },
-                            [_vm._v("B. NUEVA SANTA CLARA")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "9- B. NUEVO" } }, [
-                            _vm._v("B. NUEVO")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- B. NUEVO HORIZONTE" } },
-                            [_vm._v("B. NUEVO HORIZONTE")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "3- B. P - SALAVARRIETA" } },
-                            [_vm._v("B. P - SALAVARRIETA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "4- B. PAMPLONITA" } },
-                            [_vm._v("B. PAMPLONITA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- B. PANAMERICANO" } },
-                            [_vm._v("B. PANAMERICANO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "5- B. PESCADERO" } },
-                            [_vm._v("B. PESCADERO")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "2- B. POPULAR" } }, [
-                            _vm._v("B. POPULAR")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "9- B. PUEBLO NUEVO" } },
-                            [_vm._v("B. PUEBLO NUEVO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "10- B. PUENTE BARCO" } },
-                            [_vm._v("B. PUENTE BARCO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- B. RAFAEL NUÑEZ" } },
-                            [_vm._v("B. RAFAEL NUÑEZ")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "9- B. RUDESINDO SOTO" } },
-                            [_vm._v("B. RUDESINDO SOTO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "5- B. SAN EDUARDO II ETP." } },
-                            [_vm._v("B. SAN EDUARDO II ETP.")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- B. SAN GERARDO" } },
-                            [_vm._v("B. SAN GERARDO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "7- B. SAN JERONIMO" } },
-                            [_vm._v("B. SAN JERONIMO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "10- B. SAN JOSE" } },
-                            [_vm._v("B. SAN JOSE")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "4- B. SAN LUIS" } }, [
-                            _vm._v("B. SAN LUIS")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "4- B. SAN MARTIN" } },
-                            [_vm._v("B. SAN MARTIN")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "3- B. SAN MATEO" } },
-                            [_vm._v("B. SAN MATEO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "9- B. SAN MIGUEL" } },
-                            [_vm._v("B. SAN MIGUEL")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "10- B. SAN RAFAEL" } },
-                            [_vm._v("B. SAN RAFAEL")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "3- B. SANTA ANA" } },
-                            [_vm._v("B. SANTA ANA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "4- B. SANTA CLARA" } },
-                            [_vm._v("B. SANTA CLARA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "4- B. SANTA TERESITA" } },
-                            [_vm._v("B. SANTA TERESITA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "10- B. SANTANDER" } },
-                            [_vm._v("B. SANTANDER")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "10- B. SANTO DOMINGO" } },
-                            [_vm._v("B. SANTO DOMINGO")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "5- B. SEVILLA" } }, [
-                            _vm._v("B. SEVILLA")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- B. SIETE DE AGOSTO" } },
-                            [_vm._v("B. SIETE DE AGOSTO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- B. SIMON BOLIVAR" } },
-                            [_vm._v("B. SIMON BOLIVAR")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "7- B. TUCUNARE" } }, [
-                            _vm._v("B. TUCUNARE")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "3- B. VALLE ESTHER" } },
-                            [_vm._v("B. VALLE ESTHER")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- B. VIRGILIO BARCO V." } },
-                            [_vm._v("B. VIRGILIO BARCO V.")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "5- B.MERCED-JUANA RANGEL" } },
-                            [_vm._v("B.MERCED-JUANA RANGEL")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "9- BELEN DE UMBRIA" } },
-                            [_vm._v("BELEN DE UMBRIA")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "3- BOCONO" } }, [
-                            _vm._v("BOCONO")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- BRISAS DE LOS MOLINOS ." } },
-                            [_vm._v("BRISAS DE LOS MOLINOS .")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- BRISAS DEL AEROPUERTO" } },
-                            [_vm._v("BRISAS DEL AEROPUERTO")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "4- CAÑAFISTOLO" } }, [
-                            _vm._v("CAÑAFISTOLO")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- CARLOS PIZARRO" } },
-                            [_vm._v("CARLOS PIZARRO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- CASERIO EL CERRITO" } },
-                            [_vm._v("CASERIO EL CERRITO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- CECILIA CASTRO" } },
-                            [_vm._v("CECILIA CASTRO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- CGTO. EL RODEO" } },
-                            [_vm._v("CGTO. EL RODEO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- CIUDADELA EL PROGRESO" } },
-                            [_vm._v("CIUDADELA EL PROGRESO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "2- COLSAG Y LA RIVIERA" } },
-                            [_vm._v("COLSAG Y LA RIVIERA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: { value: "9- CUNDINAMARCA. SECTOR ALTO" }
-                            },
-                            [_vm._v("CUNDINAMARCA. SECTOR ALTO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "9- D.P. BRISAS DE LOS ANDES" } },
-                            [_vm._v("D.P. BRISAS DE LOS ANDES")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "9- DIEGO JARAMILLO" } },
-                            [_vm._v("DIEGO JARAMILLO")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "4- EL ESCOBAL" } }, [
-                            _vm._v("EL ESCOBAL")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "4- EL NUEVO ESCOBAL" } },
-                            [_vm._v("EL NUEVO ESCOBAL")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "9- EL REPOSO" } }, [
-                            _vm._v("EL REPOSO")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value:
-                                  "4- GUSTAVO ARARAT NEGRON - U. PRADOS DEL ESTE"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "GUSTAVO ARARAT NEGRON - U. PRADOS DEL ESTE"
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- JERONIMO URIBE ." } },
-                            [_vm._v("JERONIMO URIBE .")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: { value: "7- JUAN BAUTISTA SCALABRINNI" }
-                            },
-                            [_vm._v("JUAN BAUTISTA SCALABRINNI")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- JUANA RANGEL DE CUELLAR" } },
-                            [_vm._v("JUANA RANGEL DE CUELLAR")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- JVC A.H. PAZ Y PROGRESO" } },
-                            [_vm._v("JVC A.H. PAZ Y PROGRESO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- JVC EL TUNAL" } },
-                            [_vm._v("JVC EL TUNAL")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- JVC MINUTO DE DIOS" } },
-                            [_vm._v("JVC MINUTO DE DIOS")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "4- LA CAMPIÑA ESCOBAL II" } },
-                            [_vm._v("LA CAMPIÑA ESCOBAL II")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "9- LA DIVINA PASTORA" } },
-                            [_vm._v("LA DIVINA PASTORA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "3- LA ESMERALDA" } },
-                            [_vm._v("LA ESMERALDA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- LAS CUMBRES DEL NORTE" } },
-                            [_vm._v("LAS CUMBRES DEL NORTE")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "9- LAS DELICIAS" } },
-                            [_vm._v("LAS DELICIAS")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- LOS CANARIOS DEL RODEO" } },
-                            [_vm._v("LOS CANARIOS DEL RODEO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- MANUELA BELTRAN" } },
-                            [_vm._v("MANUELA BELTRAN")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- MARIA GRACIA." } },
-                            [_vm._v("MARIA GRACIA.")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "2- PICAVIGO" } }, [
-                            _vm._v("PICAVIGO")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "2- PROCERES -URAPANES" } },
-                            [_vm._v("PROCERES -URAPANES")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "2- QUINTA ORIENTAL" } },
-                            [_vm._v("QUINTA ORIENTAL")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- SABANA VERDE" } },
-                            [_vm._v("SABANA VERDE")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "3- SIMON BOL.-U.SANT. ANA" } },
-                            [_vm._v("SIMON BOL.-U.SANT. ANA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "4- TORCOROMA III" } },
-                            [_vm._v("TORCOROMA III")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "7- TUCUNARE PARTE ALTA." } },
-                            [_vm._v("TUCUNARE PARTE ALTA.")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "4- U. ANIVERSARIO" } },
-                            [_vm._v("U. ANIVERSARIO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "4- U. ANIVERSARIO II ETP." } },
-                            [_vm._v("U. ANIVERSARIO II ETP.")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: { value: "4- U. BOSQUES DEL PAMPLONITA" }
-                            },
-                            [_vm._v("U. BOSQUES DEL PAMPLONITA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: { value: "6- U. COLINAS DE LA VICTORIA" }
-                            },
-                            [_vm._v("U. COLINAS DE LA VICTORIA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value: "4- U. EDO. TRUJILLO-S.MARTIN II"
-                              }
-                            },
-                            [_vm._v("U. EDO. TRUJILLO-S.MARTIN II")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "5- U. EL BOSQUE" } },
-                            [_vm._v("U. EL BOSQUE")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "5- U. GRATAMIRA" } },
-                            [_vm._v("U. GRATAMIRA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "4- U. HELIOPOLIS" } },
-                            [_vm._v("U. HELIOPOLIS")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "4- U. JOSE DE TORCOROMA" } },
-                            [_vm._v("U. JOSE DE TORCOROMA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- U. JUAN ATALAYA I ETP." } },
-                            [_vm._v("U. JUAN ATALAYA I ETP.")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "4- U. LA ALAMEDA" } },
-                            [_vm._v("U. LA ALAMEDA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- U. LA CONCORDIA" } },
-                            [_vm._v("U. LA CONCORDIA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "4- U. LA QUINTA" } },
-                            [_vm._v("U. LA QUINTA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- U. LAS AMERICAS" } },
-                            [_vm._v("U. LAS AMERICAS")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "3- U. LAS MARGARITAS" } },
-                            [_vm._v("U. LAS MARGARITAS")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "2- U. LOS ACACIOS" } },
-                            [_vm._v("U. LOS ACACIOS")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- U. MOLINOS DEL NORTE" } },
-                            [_vm._v("U. MOLINOS DEL NORTE")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "5- U. NIZA SUR" } }, [
-                            _vm._v("U. NIZA SUR")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "4- U. NUEVA ESPERANZA" } },
-                            [_vm._v("U. NUEVA ESPERANZA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- U. PORTAL DE LAS AMERCAS" } },
-                            [_vm._v("U. PORTAL DE LAS AMERCAS")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "5- U. PRADOS DEL NORTE" } },
-                            [_vm._v("U. PRADOS DEL NORTE")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- U. RAFAEL GARCIA-HERRERO" } },
-                            [_vm._v("U. RAFAEL GARCIA-HERRERO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "5- U. SAN EDUARDO" } },
-                            [_vm._v("U. SAN EDUARDO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "5- U. SANTA ELENA" } },
-                            [_vm._v("U. SANTA ELENA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "2- U. SANTA LUCIA" } },
-                            [_vm._v("U. SANTA LUCIA")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "5- U. TASAJERO" } }, [
-                            _vm._v("U. TASAJERO")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "4- U. TORCOROMA" } },
-                            [_vm._v("U. TORCOROMA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: { value: "4- U. TORCOROMA 2 SECT 1,2,3" }
-                            },
-                            [_vm._v("U. TORCOROMA 2 SECT 1,2,3")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "4- U. TORCOROMA II" } },
-                            [_vm._v("U. TORCOROMA II")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "4- U. TORCOROMA SIGLO XXI" } },
-                            [_vm._v("U. TORCOROMA SIGLO XXI")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "5- U. ZULIMA I ETP" } },
-                            [_vm._v("U. ZULIMA I ETP")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "5- U. ZULIMA III ETP." } },
-                            [_vm._v("U. ZULIMA III ETP.")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "5- U. ZULIMA IV ETP." } },
-                            [_vm._v("U. ZULIMA IV ETP.")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "2- URB. ALCALA" } }, [
-                            _vm._v("URB. ALCALA")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "2- URB. CEIBA II" } },
-                            [_vm._v("URB. CEIBA II")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- URB. CIUDAD RODEO" } },
-                            [_vm._v("URB. CIUDAD RODEO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "7- URB. CORMORANES" } },
-                            [_vm._v("URB. CORMORANES")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- URB. ESTORAQUES" } },
-                            [_vm._v("URB. ESTORAQUES")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value: "6- URB. GARCIA HERREROS ETAP III, Y IV."
-                              }
-                            },
-                            [_vm._v("URB. GARCIA HERREROS ETAP III, Y IV.")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "10- URB. LA AURORA" } },
-                            [_vm._v("URB. LA AURORA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "9- URB. LA COLINA" } },
-                            [_vm._v("URB. LA COLINA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- URB. LA CORALINA" } },
-                            [_vm._v("URB. LA CORALINA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "2- URB. LA ESPERANZA" } },
-                            [_vm._v("URB. LA ESPERANZA")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "5- URB. LA MAR" } }, [
-                            _vm._v("URB. LA MAR")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- URB. MINUTO DE DIOS" } },
-                            [_vm._v("URB. MINUTO DE DIOS")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "5- URB. NIZA NORTE" } },
-                            [_vm._v("URB. NIZA NORTE")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- URB. PANAMERICANA" } },
-                            [_vm._v("URB. PANAMERICANA")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "5- URB. PORTACHUELO" } },
-                            [_vm._v("URB. PORTACHUELO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: { value: "8- URB. SAN FERNANDO DEL RODEO" }
-                            },
-                            [_vm._v("URB. SAN FERNANDO DEL RODEO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- URB. TRIGAL DEL NORTE" } },
-                            [_vm._v("URB. TRIGAL DEL NORTE")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- VALLES DE GIRÓN" } },
-                            [_vm._v("VALLES DE GIRÓN")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "8- VALLES DEL RODEO" } },
-                            [_vm._v("VALLES DEL RODEO")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- VILLA DE LOS TEJARES" } },
-                            [_vm._v("VILLA DE LOS TEJARES")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "9- VILLAS DE LA PAZ" } },
-                            [_vm._v("VILLAS DE LA PAZ")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "6- VILLAS DE LAS AMERICAS" } },
-                            [_vm._v("VILLAS DE LAS AMERICAS")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "5- ZULIMA II ETP" } },
-                            [_vm._v("ZULIMA II ETP")]
-                          )
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _vm.neighborhood === "OTRO"
-                      ? _c(
-                          "div",
-                          { staticClass: "col-12 col-lg-6 form-group" },
+                            }
+                          },
                           [
-                            _c("label", { attrs: { for: "" } }, [
-                              _vm._v("¿Cual?")
-                            ]),
+                            _c("option", [_vm._v("Cedula de Ciudadanía")]),
                             _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.neighborhood1,
-                                  expression: "neighborhood1"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: { type: "text", name: "" },
-                              domProps: { value: _vm.neighborhood1 },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.neighborhood1 = $event.target.value
-                                }
-                              }
-                            })
+                            _c("option", [_vm._v("NIT")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Cedula de extranjeria")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Pasaporte")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("Tarjeta de identidad")])
                           ]
                         )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-12 col-lg-6 form-group" }, [
-                      _c("label", { attrs: { for: "" } }, [_vm._v("Teléfono")]),
+                      ]),
                       _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.phone,
-                            expression: "phone"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "text", name: "" },
-                        domProps: { value: _vm.phone },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+                      _c("div", { staticClass: "col-12 col-lg-6 form-group" }, [
+                        _c("label", { attrs: { for: "" } }, [
+                          _vm._v("Número de identificación")
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.dni,
+                              expression: "dni"
                             }
-                            _vm.phone = $event.target.value
+                          ],
+                          staticClass: "form-control  border-round ",
+                          attrs: { type: "number", name: "" },
+                          domProps: { value: _vm.dni },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.dni = $event.target.value
+                            }
                           }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _vm.neighborhood !== "OTRO"
-                      ? _c("div", { staticClass: "col-12 col-lg-6 form-group" })
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        directives: [
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-12 col-lg-6 form-group" }, [
+                        _vm.type_dni != "NIT"
+                          ? _c("label", { attrs: { for: "" } }, [
+                              _vm._v("Nombres")
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.type_dni == "NIT"
+                          ? _c("label", { attrs: { for: "" } }, [
+                              _vm._v("Razón social")
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.name,
+                              expression: "name"
+                            }
+                          ],
+                          staticClass: "form-control border-round ",
+                          attrs: { type: "text", name: "", required: "" },
+                          domProps: { value: _vm.name },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.name = $event.target.value
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("transition", { attrs: { name: "fade" } }, [
+                        _vm.type_dni != "NIT"
+                          ? _c(
+                              "div",
+                              { staticClass: "col-12 col-lg-6 form-group" },
+                              [
+                                _c("label", { attrs: { for: "" } }, [
+                                  _vm._v("Apellidos")
+                                ]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.last_name,
+                                      expression: "last_name"
+                                    }
+                                  ],
+                                  staticClass: "form-control border-round ",
+                                  attrs: { type: "text", name: "" },
+                                  domProps: { value: _vm.last_name },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.last_name = $event.target.value
+                                    }
+                                  }
+                                })
+                              ]
+                            )
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-12 col-lg-6 form-group" }, [
+                        _c("label", { attrs: { for: "" } }, [_vm._v("Correo")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.email,
+                              expression: "email"
+                            }
+                          ],
+                          staticClass: "form-control border-round ",
+                          attrs: {
+                            id: "email",
+                            type: "email",
+                            name: "",
+                            required: ""
+                          },
+                          domProps: { value: _vm.email },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.email = $event.target.value
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("transition", { attrs: { name: "fade" } }, [
+                        _vm.type_dni != "NIT"
+                          ? _c(
+                              "div",
+                              { staticClass: "col-12 col-lg-6 form-group" },
+                              [
+                                _c("label", { attrs: { for: "" } }, [
+                                  _vm._v("Fecha de Nacimiento")
+                                ]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.birthdate,
+                                      expression: "birthdate"
+                                    }
+                                  ],
+                                  staticClass: "form-control border-round ",
+                                  attrs: {
+                                    type: "date",
+                                    name: "",
+                                    max: _vm.fecha_minima
+                                  },
+                                  domProps: { value: _vm.birthdate },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.birthdate = $event.target.value
+                                    }
+                                  }
+                                })
+                              ]
+                            )
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-12 col-lg-6 form-group" }, [
+                        _c("label", { attrs: { for: "" } }, [
+                          _vm._v("Dirección")
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.adress,
+                              expression: "adress"
+                            }
+                          ],
+                          staticClass: "form-control border-round ",
+                          attrs: { type: "text", name: "" },
+                          domProps: { value: _vm.adress },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.adress = $event.target.value
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-12 col-lg-6 form-group" }, [
+                        _c("label", { attrs: { for: "" } }, [
+                          _vm._v("Barrio / Sector")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "select",
                           {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.tipo_registro != "Aliado",
-                            expression: "tipo_registro != 'Aliado'"
-                          }
-                        ],
-                        staticClass: "col-12"
-                      },
-                      [
-                        _c("div", { staticClass: "row" }, [
-                          _c(
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.neighborhood,
+                                expression: "neighborhood"
+                              }
+                            ],
+                            staticClass: "form-control border-round ",
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.neighborhood = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              }
+                            }
+                          },
+                          [
+                            _c("option", { attrs: { value: "OTRO" } }, [
+                              _vm._v("OTRO")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value: "8- 1 DE MAYO B. PALMERAS (PARTE BAJA)"
+                                }
+                              },
+                              [_vm._v("1 DE MAYO B. PALMERAS (PARTE BAJA)")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- A H. 13 DE MAYO" } },
+                              [_vm._v("A H. 13 DE MAYO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "7- A. COLOMBIA I" } },
+                              [_vm._v("A. COLOMBIA I")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value: "7- A. CRISPIN DURAN PARTE BAJA"
+                                }
+                              },
+                              [_vm._v("A. CRISPIN DURAN PARTE BAJA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- A. ESPIRITU SANTO" } },
+                              [_vm._v("A. ESPIRITU SANTO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "7- A. GUADALUPE" } },
+                              [_vm._v("A. GUADALUPE")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "7- A. H. CRISPIN DURAN" } },
+                              [_vm._v("A. H. CRISPIN DURAN")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- A. H. EL DORADO" } },
+                              [_vm._v("A. H. EL DORADO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- A. H. EL SALADO" } },
+                              [_vm._v("A. H. EL SALADO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- A. JUAN PABLO II" } },
+                              [_vm._v("A. JUAN PABLO II")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- A. LA CONQUISTA" } },
+                              [_vm._v("A. LA CONQUISTA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "9- A. MARIA TERESA" } },
+                              [_vm._v("A. MARIA TERESA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- A. NUEVA ESPERANZA" } },
+                              [_vm._v("A. NUEVA ESPERANZA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: { value: "6- A. SEIS DE MAYO P. ALTA" }
+                              },
+                              [_vm._v("A. SEIS DE MAYO P. ALTA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "7- A. VILLA PAZ" } },
+                              [_vm._v("A. VILLA PAZ")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- A.H CAMPO ALEGRE" } },
+                              [_vm._v("A.H CAMPO ALEGRE")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: { value: "7- A.H. BRISAS DE LA HERMITA" }
+                              },
+                              [_vm._v("A.H. BRISAS DE LA HERMITA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: { value: "6- A.H. BRISAS DEL PARAISO" }
+                              },
+                              [_vm._v("A.H. BRISAS DEL PARAISO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: { value: "6- A.H. CARLOS GARCIA LOZADA" }
+                              },
+                              [_vm._v("A.H. CARLOS GARCIA LOZADA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- A.H. MARIA AUXILIADORA" } },
+                              [_vm._v("A.H. MARIA AUXILIADORA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- A.H. VILLA NUEVA" } },
+                              [_vm._v("A.H. VILLA NUEVA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "3- AGUAS CALIENTES" } },
+                              [_vm._v("AGUAS CALIENTES")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "9- ARNULFO BRICEÑO" } },
+                              [_vm._v("ARNULFO BRICEÑO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value: "7- ASENT. BRISAS DE LA HERMITA.II."
+                                }
+                              },
+                              [_vm._v("ASENT. BRISAS DE LA HERMITA.II.")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value: "8- ASENT. BRISAS, PAZ Y FUTURO"
+                                }
+                              },
+                              [_vm._v("ASENT. BRISAS, PAZ Y FUTURO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- ASENT. H. LA FE." } },
+                              [_vm._v("ASENT. H. LA FE.")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- ASENT. H. LA ISLA." } },
+                              [_vm._v("ASENT. H. LA ISLA.")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- ASENT. H. TORREMOLINOS" } },
+                              [_vm._v("ASENT. H. TORREMOLINOS")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value: "8- ASENT. HUM. BRISAS DEL SOL."
+                                }
+                              },
+                              [_vm._v("ASENT. HUM. BRISAS DEL SOL.")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- ASENT. HUM. EL OASIS." } },
+                              [_vm._v("ASENT. HUM. EL OASIS.")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "7- ASENT. JOSE BERNAL." } },
+                              [_vm._v("ASENT. JOSE BERNAL.")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "3- ASENT. NUEVO MILENIO" } },
+                              [_vm._v("ASENT. NUEVO MILENIO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "4- B. 13 DE MARZO" } },
+                              [_vm._v("B. 13 DE MARZO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "9- B. 28 DE FEBRERO" } },
+                              [_vm._v("B. 28 DE FEBRERO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- B. AEROPUERTO" } },
+                              [_vm._v("B. AEROPUERTO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "10- B. ALFONSO LOPEZ" } },
+                              [_vm._v("B. ALFONSO LOPEZ")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- B. ALONCITO" } },
+                              [_vm._v("B. ALONCITO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "4- B. ALTO PAMPLONITA" } },
+                              [_vm._v("B. ALTO PAMPLONITA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- B. ANTONIA SANTOS" } },
+                              [_vm._v("B. ANTONIA SANTOS")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "9- B. BELEN" } }, [
+                              _vm._v("B. BELEN")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- B. BELISARIO" } },
+                              [_vm._v("B. BELISARIO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "3- B. BELLA VISTA" } },
+                              [_vm._v("B. BELLA VISTA")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "3- B. BOGOTA" } }, [
+                              _vm._v("B. BOGOTA")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- B. BRISAS DEL PORVENIR" } },
+                              [_vm._v("B. BRISAS DEL PORVENIR")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "7- B. BUENOS AIRES" } },
+                              [_vm._v("B. BUENOS AIRES")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "7- B. CAMILO DAZA" } },
+                              [_vm._v("B. CAMILO DAZA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "10- B. CAMILO TORRES" } },
+                              [_vm._v("B. CAMILO TORRES")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- B. CAÑO LIMON-COVEÑAS" } },
+                              [_vm._v("B. CAÑO LIMON-COVEÑAS")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- B. CARLOS RAMIREZ P." } },
+                              [_vm._v("B. CARLOS RAMIREZ P.")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- B. CARLOS TOLEDO PLATA" } },
+                              [_vm._v("B. CARLOS TOLEDO PLATA")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "9- B. CARORA" } }, [
+                              _vm._v("B. CARORA")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "2- B. CEIBA-QTA.BOSCH" } },
+                              [_vm._v("B. CEIBA-QTA.BOSCH")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- B. CERRO NORTE" } },
+                              [_vm._v("B. CERRO NORTE")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "7- B. CHAPINERO" } },
+                              [_vm._v("B. CHAPINERO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "10- B. CIRCUNVALACION" } },
+                              [_vm._v("B. CIRCUNVALACION")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "5- B. CIUDAD JARDIN" } },
+                              [_vm._v("B. CIUDAD JARDIN")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "7- B. CLARET" } }, [
+                              _vm._v("B. CLARET")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "5- B. COLPET" } }, [
+                              _vm._v("B. COLPET")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "10- B. CUBEROS NIÑO" } },
+                              [_vm._v("B. CUBEROS NIÑO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- B. CUCUTA 75" } },
+                              [_vm._v("B. CUCUTA 75")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "9- B. CUNDINAMARCA" } },
+                              [_vm._v("B. CUNDINAMARCA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- B. DIVINO NIÑO" } },
+                              [_vm._v("B. DIVINO NIÑO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- B. DOÑA NIDIA" } },
+                              [_vm._v("B. DOÑA NIDIA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "1- B. EL CALLEJON" } },
+                              [_vm._v("B. EL CALLEJON")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "1- B. EL CONTENTO" } },
+                              [_vm._v("B. EL CONTENTO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- B. EL DESIERTO" } },
+                              [_vm._v("B. EL DESIERTO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "7- B. EL PARAISO" } },
+                              [_vm._v("B. EL PARAISO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "1- B. EL PARAMO" } },
+                              [_vm._v("B. EL PARAMO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- B. EL PORVENIR" } },
+                              [_vm._v("B. EL PORVENIR")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- B. EL PROGRESO" } },
+                              [_vm._v("B. EL PROGRESO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "7- B. EL ROSAL DEL NORTE" } },
+                              [_vm._v("B. EL ROSAL DEL NORTE")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- B. FLORIDA BLANCA" } },
+                              [_vm._v("B. FLORIDA BLANCA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "10- B. GAITAN" } },
+                              [_vm._v("B. GAITAN")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "5- B. GUAIMARAL" } },
+                              [_vm._v("B. GUAIMARAL")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "10- B. JOSE A. GALAN" } },
+                              [_vm._v("B. JOSE A. GALAN")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: { value: "8- B. JUAN ATALAYA III ETP." }
+                              },
+                              [_vm._v("B. JUAN ATALAYA III ETP.")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "10- B. LA CABRERA" } },
+                              [_vm._v("B. LA CABRERA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "7- B. LA FLORIDA" } },
+                              [_vm._v("B. LA FLORIDA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "7- B. LA HERMITA" } },
+                              [_vm._v("B. LA HERMITA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- B. LA INSULA" } },
+                              [_vm._v("B. LA INSULA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "7- B. LA LAGUNA" } },
+                              [_vm._v("B. LA LAGUNA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "3- B. LA LIBERTAD" } },
+                              [_vm._v("B. LA LIBERTAD")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "1- B. LA PLAYA" } },
+                              [_vm._v("B. LA PLAYA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "7- B. LA PRIMAVERA" } },
+                              [_vm._v("B. LA PRIMAVERA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "3- B. LA UNION" } },
+                              [_vm._v("B. LA UNION")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- B. LA VICTORIA" } },
+                              [_vm._v("B. LA VICTORIA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- B. LAS PALMERAS ALTA" } },
+                              [_vm._v("B. LAS PALMERAS ALTA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "2- B. LIBERT.-CAOBOS" } },
+                              [_vm._v("B. LIBERT.-CAOBOS")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "1- B. LLANO" } }, [
+                              _vm._v("B. LLANO")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "5- B. LLERAS RESTREPO" } },
+                              [_vm._v("B. LLERAS RESTREPO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "9- B. LOMA DE BOLIVAR" } },
+                              [_vm._v("B. LOMA DE BOLIVAR")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- B. LOS ALMENDROS" } },
+                              [_vm._v("B. LOS ALMENDROS")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "9- B. LOS ALPES" } },
+                              [_vm._v("B. LOS ALPES")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "7- B. LOS CARACOLES" } },
+                              [_vm._v("B. LOS CARACOLES")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "7- B. LOS COMUNEROS" } },
+                              [_vm._v("B. LOS COMUNEROS")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- B. LOS LAURELES" } },
+                              [_vm._v("B. LOS LAURELES")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "7- B. LOS MOTILONES" } },
+                              [_vm._v("B. LOS MOTILONES")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- B. LOS OLIVOS" } },
+                              [_vm._v("B. LOS OLIVOS")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "10- B. MAGDALENA" } },
+                              [_vm._v("B. MAGDALENA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- B. MARIA PAZ" } },
+                              [_vm._v("B. MARIA PAZ")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: { value: "7- B. MARIANO OSPINA PEREZ" }
+                              },
+                              [_vm._v("B. MARIANO OSPINA PEREZ")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- B. METROPOLI" } },
+                              [_vm._v("B. METROPOLI")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- B. NIÑA CECI" } },
+                              [_vm._v("B. NIÑA CECI")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "4- B. NUEVA SANTA CLARA" } },
+                              [_vm._v("B. NUEVA SANTA CLARA")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "9- B. NUEVO" } }, [
+                              _vm._v("B. NUEVO")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- B. NUEVO HORIZONTE" } },
+                              [_vm._v("B. NUEVO HORIZONTE")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "3- B. P - SALAVARRIETA" } },
+                              [_vm._v("B. P - SALAVARRIETA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "4- B. PAMPLONITA" } },
+                              [_vm._v("B. PAMPLONITA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- B. PANAMERICANO" } },
+                              [_vm._v("B. PANAMERICANO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "5- B. PESCADERO" } },
+                              [_vm._v("B. PESCADERO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "2- B. POPULAR" } },
+                              [_vm._v("B. POPULAR")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "9- B. PUEBLO NUEVO" } },
+                              [_vm._v("B. PUEBLO NUEVO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "10- B. PUENTE BARCO" } },
+                              [_vm._v("B. PUENTE BARCO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- B. RAFAEL NUÑEZ" } },
+                              [_vm._v("B. RAFAEL NUÑEZ")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "9- B. RUDESINDO SOTO" } },
+                              [_vm._v("B. RUDESINDO SOTO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "5- B. SAN EDUARDO II ETP." } },
+                              [_vm._v("B. SAN EDUARDO II ETP.")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- B. SAN GERARDO" } },
+                              [_vm._v("B. SAN GERARDO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "7- B. SAN JERONIMO" } },
+                              [_vm._v("B. SAN JERONIMO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "10- B. SAN JOSE" } },
+                              [_vm._v("B. SAN JOSE")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "4- B. SAN LUIS" } },
+                              [_vm._v("B. SAN LUIS")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "4- B. SAN MARTIN" } },
+                              [_vm._v("B. SAN MARTIN")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "3- B. SAN MATEO" } },
+                              [_vm._v("B. SAN MATEO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "9- B. SAN MIGUEL" } },
+                              [_vm._v("B. SAN MIGUEL")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "10- B. SAN RAFAEL" } },
+                              [_vm._v("B. SAN RAFAEL")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "3- B. SANTA ANA" } },
+                              [_vm._v("B. SANTA ANA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "4- B. SANTA CLARA" } },
+                              [_vm._v("B. SANTA CLARA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "4- B. SANTA TERESITA" } },
+                              [_vm._v("B. SANTA TERESITA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "10- B. SANTANDER" } },
+                              [_vm._v("B. SANTANDER")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "10- B. SANTO DOMINGO" } },
+                              [_vm._v("B. SANTO DOMINGO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "5- B. SEVILLA" } },
+                              [_vm._v("B. SEVILLA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- B. SIETE DE AGOSTO" } },
+                              [_vm._v("B. SIETE DE AGOSTO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- B. SIMON BOLIVAR" } },
+                              [_vm._v("B. SIMON BOLIVAR")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "7- B. TUCUNARE" } },
+                              [_vm._v("B. TUCUNARE")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "3- B. VALLE ESTHER" } },
+                              [_vm._v("B. VALLE ESTHER")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- B. VIRGILIO BARCO V." } },
+                              [_vm._v("B. VIRGILIO BARCO V.")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "5- B.MERCED-JUANA RANGEL" } },
+                              [_vm._v("B.MERCED-JUANA RANGEL")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "9- BELEN DE UMBRIA" } },
+                              [_vm._v("BELEN DE UMBRIA")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "3- BOCONO" } }, [
+                              _vm._v("BOCONO")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: { value: "6- BRISAS DE LOS MOLINOS ." }
+                              },
+                              [_vm._v("BRISAS DE LOS MOLINOS .")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- BRISAS DEL AEROPUERTO" } },
+                              [_vm._v("BRISAS DEL AEROPUERTO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "4- CAÑAFISTOLO" } },
+                              [_vm._v("CAÑAFISTOLO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- CARLOS PIZARRO" } },
+                              [_vm._v("CARLOS PIZARRO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- CASERIO EL CERRITO" } },
+                              [_vm._v("CASERIO EL CERRITO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- CECILIA CASTRO" } },
+                              [_vm._v("CECILIA CASTRO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- CGTO. EL RODEO" } },
+                              [_vm._v("CGTO. EL RODEO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- CIUDADELA EL PROGRESO" } },
+                              [_vm._v("CIUDADELA EL PROGRESO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "2- COLSAG Y LA RIVIERA" } },
+                              [_vm._v("COLSAG Y LA RIVIERA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: { value: "9- CUNDINAMARCA. SECTOR ALTO" }
+                              },
+                              [_vm._v("CUNDINAMARCA. SECTOR ALTO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: { value: "9- D.P. BRISAS DE LOS ANDES" }
+                              },
+                              [_vm._v("D.P. BRISAS DE LOS ANDES")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "9- DIEGO JARAMILLO" } },
+                              [_vm._v("DIEGO JARAMILLO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "4- EL ESCOBAL" } },
+                              [_vm._v("EL ESCOBAL")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "4- EL NUEVO ESCOBAL" } },
+                              [_vm._v("EL NUEVO ESCOBAL")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "9- EL REPOSO" } }, [
+                              _vm._v("EL REPOSO")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value:
+                                    "4- GUSTAVO ARARAT NEGRON - U. PRADOS DEL ESTE"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "GUSTAVO ARARAT NEGRON - U. PRADOS DEL ESTE"
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- JERONIMO URIBE ." } },
+                              [_vm._v("JERONIMO URIBE .")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: { value: "7- JUAN BAUTISTA SCALABRINNI" }
+                              },
+                              [_vm._v("JUAN BAUTISTA SCALABRINNI")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: { value: "8- JUANA RANGEL DE CUELLAR" }
+                              },
+                              [_vm._v("JUANA RANGEL DE CUELLAR")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: { value: "6- JVC A.H. PAZ Y PROGRESO" }
+                              },
+                              [_vm._v("JVC A.H. PAZ Y PROGRESO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- JVC EL TUNAL" } },
+                              [_vm._v("JVC EL TUNAL")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- JVC MINUTO DE DIOS" } },
+                              [_vm._v("JVC MINUTO DE DIOS")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "4- LA CAMPIÑA ESCOBAL II" } },
+                              [_vm._v("LA CAMPIÑA ESCOBAL II")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "9- LA DIVINA PASTORA" } },
+                              [_vm._v("LA DIVINA PASTORA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "3- LA ESMERALDA" } },
+                              [_vm._v("LA ESMERALDA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- LAS CUMBRES DEL NORTE" } },
+                              [_vm._v("LAS CUMBRES DEL NORTE")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "9- LAS DELICIAS" } },
+                              [_vm._v("LAS DELICIAS")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- LOS CANARIOS DEL RODEO" } },
+                              [_vm._v("LOS CANARIOS DEL RODEO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- MANUELA BELTRAN" } },
+                              [_vm._v("MANUELA BELTRAN")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- MARIA GRACIA." } },
+                              [_vm._v("MARIA GRACIA.")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "2- PICAVIGO" } }, [
+                              _vm._v("PICAVIGO")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "2- PROCERES -URAPANES" } },
+                              [_vm._v("PROCERES -URAPANES")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "2- QUINTA ORIENTAL" } },
+                              [_vm._v("QUINTA ORIENTAL")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- SABANA VERDE" } },
+                              [_vm._v("SABANA VERDE")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "3- SIMON BOL.-U.SANT. ANA" } },
+                              [_vm._v("SIMON BOL.-U.SANT. ANA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "4- TORCOROMA III" } },
+                              [_vm._v("TORCOROMA III")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "7- TUCUNARE PARTE ALTA." } },
+                              [_vm._v("TUCUNARE PARTE ALTA.")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "4- U. ANIVERSARIO" } },
+                              [_vm._v("U. ANIVERSARIO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "4- U. ANIVERSARIO II ETP." } },
+                              [_vm._v("U. ANIVERSARIO II ETP.")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: { value: "4- U. BOSQUES DEL PAMPLONITA" }
+                              },
+                              [_vm._v("U. BOSQUES DEL PAMPLONITA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: { value: "6- U. COLINAS DE LA VICTORIA" }
+                              },
+                              [_vm._v("U. COLINAS DE LA VICTORIA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value: "4- U. EDO. TRUJILLO-S.MARTIN II"
+                                }
+                              },
+                              [_vm._v("U. EDO. TRUJILLO-S.MARTIN II")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "5- U. EL BOSQUE" } },
+                              [_vm._v("U. EL BOSQUE")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "5- U. GRATAMIRA" } },
+                              [_vm._v("U. GRATAMIRA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "4- U. HELIOPOLIS" } },
+                              [_vm._v("U. HELIOPOLIS")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "4- U. JOSE DE TORCOROMA" } },
+                              [_vm._v("U. JOSE DE TORCOROMA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- U. JUAN ATALAYA I ETP." } },
+                              [_vm._v("U. JUAN ATALAYA I ETP.")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "4- U. LA ALAMEDA" } },
+                              [_vm._v("U. LA ALAMEDA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- U. LA CONCORDIA" } },
+                              [_vm._v("U. LA CONCORDIA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "4- U. LA QUINTA" } },
+                              [_vm._v("U. LA QUINTA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- U. LAS AMERICAS" } },
+                              [_vm._v("U. LAS AMERICAS")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "3- U. LAS MARGARITAS" } },
+                              [_vm._v("U. LAS MARGARITAS")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "2- U. LOS ACACIOS" } },
+                              [_vm._v("U. LOS ACACIOS")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- U. MOLINOS DEL NORTE" } },
+                              [_vm._v("U. MOLINOS DEL NORTE")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "5- U. NIZA SUR" } },
+                              [_vm._v("U. NIZA SUR")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "4- U. NUEVA ESPERANZA" } },
+                              [_vm._v("U. NUEVA ESPERANZA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: { value: "6- U. PORTAL DE LAS AMERCAS" }
+                              },
+                              [_vm._v("U. PORTAL DE LAS AMERCAS")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "5- U. PRADOS DEL NORTE" } },
+                              [_vm._v("U. PRADOS DEL NORTE")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: { value: "6- U. RAFAEL GARCIA-HERRERO" }
+                              },
+                              [_vm._v("U. RAFAEL GARCIA-HERRERO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "5- U. SAN EDUARDO" } },
+                              [_vm._v("U. SAN EDUARDO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "5- U. SANTA ELENA" } },
+                              [_vm._v("U. SANTA ELENA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "2- U. SANTA LUCIA" } },
+                              [_vm._v("U. SANTA LUCIA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "5- U. TASAJERO" } },
+                              [_vm._v("U. TASAJERO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "4- U. TORCOROMA" } },
+                              [_vm._v("U. TORCOROMA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: { value: "4- U. TORCOROMA 2 SECT 1,2,3" }
+                              },
+                              [_vm._v("U. TORCOROMA 2 SECT 1,2,3")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "4- U. TORCOROMA II" } },
+                              [_vm._v("U. TORCOROMA II")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "4- U. TORCOROMA SIGLO XXI" } },
+                              [_vm._v("U. TORCOROMA SIGLO XXI")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "5- U. ZULIMA I ETP" } },
+                              [_vm._v("U. ZULIMA I ETP")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "5- U. ZULIMA III ETP." } },
+                              [_vm._v("U. ZULIMA III ETP.")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "5- U. ZULIMA IV ETP." } },
+                              [_vm._v("U. ZULIMA IV ETP.")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "2- URB. ALCALA" } },
+                              [_vm._v("URB. ALCALA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "2- URB. CEIBA II" } },
+                              [_vm._v("URB. CEIBA II")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- URB. CIUDAD RODEO" } },
+                              [_vm._v("URB. CIUDAD RODEO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "7- URB. CORMORANES" } },
+                              [_vm._v("URB. CORMORANES")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- URB. ESTORAQUES" } },
+                              [_vm._v("URB. ESTORAQUES")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value:
+                                    "6- URB. GARCIA HERREROS ETAP III, Y IV."
+                                }
+                              },
+                              [_vm._v("URB. GARCIA HERREROS ETAP III, Y IV.")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "10- URB. LA AURORA" } },
+                              [_vm._v("URB. LA AURORA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "9- URB. LA COLINA" } },
+                              [_vm._v("URB. LA COLINA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- URB. LA CORALINA" } },
+                              [_vm._v("URB. LA CORALINA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "2- URB. LA ESPERANZA" } },
+                              [_vm._v("URB. LA ESPERANZA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "5- URB. LA MAR" } },
+                              [_vm._v("URB. LA MAR")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- URB. MINUTO DE DIOS" } },
+                              [_vm._v("URB. MINUTO DE DIOS")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "5- URB. NIZA NORTE" } },
+                              [_vm._v("URB. NIZA NORTE")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- URB. PANAMERICANA" } },
+                              [_vm._v("URB. PANAMERICANA")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "5- URB. PORTACHUELO" } },
+                              [_vm._v("URB. PORTACHUELO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value: "8- URB. SAN FERNANDO DEL RODEO"
+                                }
+                              },
+                              [_vm._v("URB. SAN FERNANDO DEL RODEO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- URB. TRIGAL DEL NORTE" } },
+                              [_vm._v("URB. TRIGAL DEL NORTE")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- VALLES DE GIRÓN" } },
+                              [_vm._v("VALLES DE GIRÓN")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "8- VALLES DEL RODEO" } },
+                              [_vm._v("VALLES DEL RODEO")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- VILLA DE LOS TEJARES" } },
+                              [_vm._v("VILLA DE LOS TEJARES")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "9- VILLAS DE LA PAZ" } },
+                              [_vm._v("VILLAS DE LA PAZ")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "6- VILLAS DE LAS AMERICAS" } },
+                              [_vm._v("VILLAS DE LAS AMERICAS")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "5- ZULIMA II ETP" } },
+                              [_vm._v("ZULIMA II ETP")]
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _vm.neighborhood === "OTRO"
+                        ? _c(
                             "div",
-                            { staticClass: "col-12 col-lg-7 form-group" },
+                            { staticClass: "col-12 col-lg-6 form-group" },
                             [
                               _c("label", { attrs: { for: "" } }, [
-                                _vm._v(
-                                  "¿Pertenezco a un aliado de la Red de Conocimiento?"
-                                )
+                                _vm._v("¿Cual barrio o sector?")
                               ]),
-                              _vm._v(" "),
-                              _c("br"),
                               _vm._v(" "),
                               _c("input", {
                                 directives: [
                                   {
                                     name: "model",
                                     rawName: "v-model",
-                                    value: _vm.study_actually,
-                                    expression: "study_actually"
+                                    value: _vm.neighborhood1,
+                                    expression: "neighborhood1"
                                   }
                                 ],
-                                attrs: {
-                                  id: "toggle-ihave-ally",
-                                  type: "checkbox",
-                                  "data-toggle": "toggle",
-                                  "data-onstyle": "secondary",
-                                  "data-offstyle": "light",
-                                  "data-on": "Si",
-                                  "data-off": "No"
-                                },
-                                domProps: {
-                                  checked: Array.isArray(_vm.study_actually)
-                                    ? _vm._i(_vm.study_actually, null) > -1
-                                    : _vm.study_actually
-                                },
+                                staticClass: "form-control border-round ",
+                                attrs: { type: "text", name: "" },
+                                domProps: { value: _vm.neighborhood1 },
                                 on: {
-                                  change: function($event) {
-                                    var $$a = _vm.study_actually,
-                                      $$el = $event.target,
-                                      $$c = $$el.checked ? true : false
-                                    if (Array.isArray($$a)) {
-                                      var $$v = null,
-                                        $$i = _vm._i($$a, $$v)
-                                      if ($$el.checked) {
-                                        $$i < 0 &&
-                                          (_vm.study_actually = $$a.concat([
-                                            $$v
-                                          ]))
-                                      } else {
-                                        $$i > -1 &&
-                                          (_vm.study_actually = $$a
-                                            .slice(0, $$i)
-                                            .concat($$a.slice($$i + 1)))
-                                      }
-                                    } else {
-                                      _vm.study_actually = $$c
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
                                     }
+                                    _vm.neighborhood1 = $event.target.value
                                   }
                                 }
                               })
                             ]
-                          ),
-                          _vm._v(" "),
-                          _vm.view_ihave_ally
-                            ? _c(
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-12 col-lg-6 form-group" }, [
+                        _c("label", { attrs: { for: "" } }, [
+                          _vm._v("Teléfono")
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.phone,
+                              expression: "phone"
+                            }
+                          ],
+                          staticClass: "form-control border-round ",
+                          attrs: { type: "text", name: "" },
+                          domProps: { value: _vm.phone },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.phone = $event.target.value
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _vm.neighborhood !== "OTRO"
+                        ? _c("div", {
+                            staticClass: "col-12 col-lg-6 form-group"
+                          })
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.tipo_registro != "Aliado",
+                              expression: "tipo_registro != 'Aliado'"
+                            }
+                          ],
+                          staticClass: "col-12"
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "row" },
+                            [
+                              _c(
                                 "div",
-                                { staticClass: "col-12 col-lg-5 form-group" },
+                                { staticClass: "col-12 col-lg-6 form-group" },
                                 [
                                   _c("label", { attrs: { for: "" } }, [
-                                    _vm._v("¿Cúal?")
+                                    _vm._v(
+                                      "¿Pertenezco a un aliado de la Red de Conocimiento?"
+                                    )
                                   ]),
                                   _vm._v(" "),
-                                  _c(
-                                    "select",
-                                    {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: _vm.ihave_ally,
-                                          expression: "ihave_ally"
-                                        }
-                                      ],
-                                      staticClass: "form-control",
-                                      on: {
-                                        change: function($event) {
-                                          var $$selectedVal = Array.prototype.filter
-                                            .call(
-                                              $event.target.options,
-                                              function(o) {
-                                                return o.selected
-                                              }
-                                            )
-                                            .map(function(o) {
-                                              var val =
-                                                "_value" in o
-                                                  ? o._value
-                                                  : o.value
-                                              return val
-                                            })
-                                          _vm.ihave_ally = $event.target
-                                            .multiple
-                                            ? $$selectedVal
-                                            : $$selectedVal[0]
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.study_actually,
+                                        expression: "study_actually"
+                                      }
+                                    ],
+                                    attrs: {
+                                      id: "toggle-ihave-ally",
+                                      type: "checkbox",
+                                      "data-toggle": "toggle",
+                                      "data-onstyle": "secondary",
+                                      "data-offstyle": "light",
+                                      "data-style": "ios",
+                                      "data-on": "Si",
+                                      "data-off": "No"
+                                    },
+                                    domProps: {
+                                      checked: Array.isArray(_vm.study_actually)
+                                        ? _vm._i(_vm.study_actually, null) > -1
+                                        : _vm.study_actually
+                                    },
+                                    on: {
+                                      change: function($event) {
+                                        var $$a = _vm.study_actually,
+                                          $$el = $event.target,
+                                          $$c = $$el.checked ? true : false
+                                        if (Array.isArray($$a)) {
+                                          var $$v = null,
+                                            $$i = _vm._i($$a, $$v)
+                                          if ($$el.checked) {
+                                            $$i < 0 &&
+                                              (_vm.study_actually = $$a.concat([
+                                                $$v
+                                              ]))
+                                          } else {
+                                            $$i > -1 &&
+                                              (_vm.study_actually = $$a
+                                                .slice(0, $$i)
+                                                .concat($$a.slice($$i + 1)))
+                                          }
+                                        } else {
+                                          _vm.study_actually = $$c
                                         }
                                       }
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("transition", { attrs: { name: "fade" } }, [
+                                _vm.view_ihave_ally
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "col-12 col-lg-6 form-group"
+                                      },
+                                      [
+                                        _c("label", { attrs: { for: "" } }, [
+                                          _vm._v("¿Cúal?")
+                                        ]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "select",
+                                          {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value: _vm.ihave_ally,
+                                                expression: "ihave_ally"
+                                              }
+                                            ],
+                                            staticClass:
+                                              "form-control  border-round ",
+                                            on: {
+                                              change: function($event) {
+                                                var $$selectedVal = Array.prototype.filter
+                                                  .call(
+                                                    $event.target.options,
+                                                    function(o) {
+                                                      return o.selected
+                                                    }
+                                                  )
+                                                  .map(function(o) {
+                                                    var val =
+                                                      "_value" in o
+                                                        ? o._value
+                                                        : o.value
+                                                    return val
+                                                  })
+                                                _vm.ihave_ally = $event.target
+                                                  .multiple
+                                                  ? $$selectedVal
+                                                  : $$selectedVal[0]
+                                              }
+                                            }
+                                          },
+                                          _vm._l(_vm.aliados1, function(
+                                            aliado
+                                          ) {
+                                            return _c(
+                                              "option",
+                                              {
+                                                domProps: {
+                                                  value: aliado.user_id
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  _vm._s(aliado.last_name) +
+                                                    " " +
+                                                    _vm._s(aliado.name)
+                                                )
+                                              ]
+                                            )
+                                          }),
+                                          0
+                                        )
+                                      ]
+                                    )
+                                  : _vm._e()
+                              ])
+                            ],
+                            1
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-12 col-lg-6 form-group" }, [
+                        _c("label", [_vm._v("Contraseña")]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-md-12" }, [
+                            _c("div", { staticClass: "input-group" }, [
+                              _vm.type_password_new === "checkbox"
+                                ? _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.password,
+                                        expression: "password"
+                                      }
+                                    ],
+                                    ref: "password_new",
+                                    staticClass: "form-control  border-round ",
+                                    attrs: { required: "", type: "checkbox" },
+                                    domProps: {
+                                      checked: Array.isArray(_vm.password)
+                                        ? _vm._i(_vm.password, null) > -1
+                                        : _vm.password
                                     },
-                                    _vm._l(_vm.aliados1, function(aliado) {
-                                      return _c(
-                                        "option",
-                                        { domProps: { value: aliado.user_id } },
-                                        [
-                                          _vm._v(
-                                            _vm._s(aliado.last_name) +
-                                              " " +
-                                              _vm._s(aliado.name)
-                                          )
-                                        ]
-                                      )
-                                    }),
-                                    0
+                                    on: {
+                                      keyup: function($event) {
+                                        return _vm.validarSeguridad()
+                                      },
+                                      change: function($event) {
+                                        var $$a = _vm.password,
+                                          $$el = $event.target,
+                                          $$c = $$el.checked ? true : false
+                                        if (Array.isArray($$a)) {
+                                          var $$v = null,
+                                            $$i = _vm._i($$a, $$v)
+                                          if ($$el.checked) {
+                                            $$i < 0 &&
+                                              (_vm.password = $$a.concat([$$v]))
+                                          } else {
+                                            $$i > -1 &&
+                                              (_vm.password = $$a
+                                                .slice(0, $$i)
+                                                .concat($$a.slice($$i + 1)))
+                                          }
+                                        } else {
+                                          _vm.password = $$c
+                                        }
+                                      }
+                                    }
+                                  })
+                                : _vm.type_password_new === "radio"
+                                ? _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.password,
+                                        expression: "password"
+                                      }
+                                    ],
+                                    ref: "password_new",
+                                    staticClass: "form-control  border-round ",
+                                    attrs: { required: "", type: "radio" },
+                                    domProps: {
+                                      checked: _vm._q(_vm.password, null)
+                                    },
+                                    on: {
+                                      keyup: function($event) {
+                                        return _vm.validarSeguridad()
+                                      },
+                                      change: function($event) {
+                                        _vm.password = null
+                                      }
+                                    }
+                                  })
+                                : _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.password,
+                                        expression: "password"
+                                      }
+                                    ],
+                                    ref: "password_new",
+                                    staticClass: "form-control  border-round ",
+                                    attrs: {
+                                      required: "",
+                                      type: _vm.type_password_new
+                                    },
+                                    domProps: { value: _vm.password },
+                                    on: {
+                                      keyup: function($event) {
+                                        return _vm.validarSeguridad()
+                                      },
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.password = $event.target.value
+                                      }
+                                    }
+                                  }),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "input-group-append" }, [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass:
+                                      "btn btn-primary  border-round ",
+                                    attrs: { type: "button" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.showHidePassword(
+                                          "new_password"
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { class: _vm.icon_password_new })]
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", {}, [
+                              _c(
+                                "small",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: _vm.password.length < 5,
+                                      expression: "password.length < 5"
+                                    }
+                                  ],
+                                  staticClass: "form-text text-muted",
+                                  attrs: { id: "emailHelp" }
+                                },
+                                [
+                                  _vm._v(
+                                    "La nueva contraseña debe contener almenos 5 caracteres."
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "small",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: _vm.password.length >= 5,
+                                      expression: "password.length >= 5"
+                                    }
+                                  ],
+                                  staticClass: "form-text text-muted"
+                                },
+                                [
+                                  _vm._v("Nivel de seguridad:  "),
+                                  _c(
+                                    "span",
+                                    {
+                                      class:
+                                        "badge badge-" +
+                                        _vm.strong_password_color_msj
+                                    },
+                                    [_vm._v(_vm._s(_vm.strong_password_msj))]
                                   )
                                 ]
                               )
-                            : _vm._e()
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-12 col-lg-6 form-group" }, [
-                      _c("label", [_vm._v("Nueva Contraseña")]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "row" }, [
-                        _c("div", { staticClass: "col-md-12" }, [
-                          _c("div", { staticClass: "input-group" }, [
-                            _vm.type_password_new === "checkbox"
-                              ? _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.password,
-                                      expression: "password"
-                                    }
-                                  ],
-                                  ref: "password_new",
-                                  staticClass: "form-control",
-                                  attrs: { required: "", type: "checkbox" },
-                                  domProps: {
-                                    checked: Array.isArray(_vm.password)
-                                      ? _vm._i(_vm.password, null) > -1
-                                      : _vm.password
-                                  },
-                                  on: {
-                                    keyup: function($event) {
-                                      return _vm.validarSeguridad()
-                                    },
-                                    change: function($event) {
-                                      var $$a = _vm.password,
-                                        $$el = $event.target,
-                                        $$c = $$el.checked ? true : false
-                                      if (Array.isArray($$a)) {
-                                        var $$v = null,
-                                          $$i = _vm._i($$a, $$v)
-                                        if ($$el.checked) {
-                                          $$i < 0 &&
-                                            (_vm.password = $$a.concat([$$v]))
-                                        } else {
-                                          $$i > -1 &&
-                                            (_vm.password = $$a
-                                              .slice(0, $$i)
-                                              .concat($$a.slice($$i + 1)))
-                                        }
-                                      } else {
-                                        _vm.password = $$c
-                                      }
-                                    }
-                                  }
-                                })
-                              : _vm.type_password_new === "radio"
-                              ? _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.password,
-                                      expression: "password"
-                                    }
-                                  ],
-                                  ref: "password_new",
-                                  staticClass: "form-control",
-                                  attrs: { required: "", type: "radio" },
-                                  domProps: {
-                                    checked: _vm._q(_vm.password, null)
-                                  },
-                                  on: {
-                                    keyup: function($event) {
-                                      return _vm.validarSeguridad()
-                                    },
-                                    change: function($event) {
-                                      _vm.password = null
-                                    }
-                                  }
-                                })
-                              : _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.password,
-                                      expression: "password"
-                                    }
-                                  ],
-                                  ref: "password_new",
-                                  staticClass: "form-control",
-                                  attrs: {
-                                    required: "",
-                                    type: _vm.type_password_new
-                                  },
-                                  domProps: { value: _vm.password },
-                                  on: {
-                                    keyup: function($event) {
-                                      return _vm.validarSeguridad()
-                                    },
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.password = $event.target.value
-                                    }
-                                  }
-                                }),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "input-group-append" }, [
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-primary",
-                                  attrs: { type: "button" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.showHidePassword(
-                                        "new_password"
-                                      )
-                                    }
-                                  }
-                                },
-                                [_c("i", { class: _vm.icon_password_new })]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", {}, [
-                            _c(
-                              "small",
-                              {
-                                directives: [
-                                  {
-                                    name: "show",
-                                    rawName: "v-show",
-                                    value: _vm.password.length < 5,
-                                    expression: "password.length < 5"
-                                  }
-                                ],
-                                staticClass: "form-text text-muted",
-                                attrs: { id: "emailHelp" }
-                              },
-                              [
-                                _vm._v(
-                                  "La nueva contraseña debe contener almenos 5 caracteres."
-                                )
-                              ]
-                            ),
+                            ]),
                             _vm._v(" "),
                             _c(
-                              "small",
+                              "div",
                               {
                                 directives: [
                                   {
@@ -73138,789 +73529,286 @@ var render = function() {
                                     expression: "password.length >= 5"
                                   }
                                 ],
-                                staticClass: "form-text text-muted"
+                                staticClass: "progress",
+                                staticStyle: { height: "5px" }
                               },
                               [
-                                _vm._v("Nivel de seguridad:  "),
-                                _c(
-                                  "span",
-                                  {
-                                    class:
-                                      "badge badge-" +
-                                      _vm.strong_password_color_msj
-                                  },
-                                  [_vm._v(_vm._s(_vm.strong_password_msj))]
-                                )
-                              ]
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: _vm.password.length >= 5,
-                                  expression: "password.length >= 5"
-                                }
-                              ],
-                              staticClass: "progress",
-                              staticStyle: { height: "5px" }
-                            },
-                            [
-                              _c("div", {
-                                class:
-                                  "progress-bar bg-" +
-                                  _vm.strong_password_color_msj,
-                                style:
-                                  "width: " + _vm.percent_progress_bar + "%;",
-                                attrs: {
-                                  role: "progressbar",
-                                  "aria-valuenow": "25",
-                                  "aria-valuemin": "0",
-                                  "aria-valuemax": "100"
-                                }
-                              })
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("div", {}, [
-                            _c(
-                              "small",
-                              {
-                                directives: [
-                                  {
-                                    name: "show",
-                                    rawName: "v-show",
-                                    value:
-                                      _vm.password.length >= 5 &&
-                                      (_vm.strong_password_msj == "Bajo" ||
-                                        _vm.strong_password_msj == "Medio"),
-                                    expression:
-                                      "password.length >= 5 && (strong_password_msj == 'Bajo' || strong_password_msj == 'Medio'  ) "
-                                  }
-                                ],
-                                staticClass: "form-text text-muted"
-                              },
-                              [
-                                _c("em", [
-                                  _vm._v(
-                                    "Para mejorar la seguridad de la contraseña incluya números, letras minúsculas y mayúsculas"
-                                  )
-                                ])
-                              ]
-                            )
-                          ])
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-12 col-lg-6 form-group" }, [
-                      _c("label", [_vm._v("Verificar Contraseña")]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "row" }, [
-                        _c("div", { staticClass: "col-12" }, [
-                          _c("div", { staticClass: "input-group pl-0" }, [
-                            _vm.type_password_verify === "checkbox"
-                              ? _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.password1,
-                                      expression: "password1"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  attrs: { required: "", type: "checkbox" },
-                                  domProps: {
-                                    checked: Array.isArray(_vm.password1)
-                                      ? _vm._i(_vm.password1, null) > -1
-                                      : _vm.password1
-                                  },
-                                  on: {
-                                    keyup: function($event) {
-                                      return _vm.compararContrasenas()
-                                    },
-                                    change: function($event) {
-                                      var $$a = _vm.password1,
-                                        $$el = $event.target,
-                                        $$c = $$el.checked ? true : false
-                                      if (Array.isArray($$a)) {
-                                        var $$v = null,
-                                          $$i = _vm._i($$a, $$v)
-                                        if ($$el.checked) {
-                                          $$i < 0 &&
-                                            (_vm.password1 = $$a.concat([$$v]))
-                                        } else {
-                                          $$i > -1 &&
-                                            (_vm.password1 = $$a
-                                              .slice(0, $$i)
-                                              .concat($$a.slice($$i + 1)))
-                                        }
-                                      } else {
-                                        _vm.password1 = $$c
-                                      }
-                                    }
-                                  }
-                                })
-                              : _vm.type_password_verify === "radio"
-                              ? _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.password1,
-                                      expression: "password1"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  attrs: { required: "", type: "radio" },
-                                  domProps: {
-                                    checked: _vm._q(_vm.password1, null)
-                                  },
-                                  on: {
-                                    keyup: function($event) {
-                                      return _vm.compararContrasenas()
-                                    },
-                                    change: function($event) {
-                                      _vm.password1 = null
-                                    }
-                                  }
-                                })
-                              : _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.password1,
-                                      expression: "password1"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
+                                _c("div", {
+                                  class:
+                                    "progress-bar bg-" +
+                                    _vm.strong_password_color_msj,
+                                  style:
+                                    "width: " + _vm.percent_progress_bar + "%;",
                                   attrs: {
-                                    required: "",
-                                    type: _vm.type_password_verify
-                                  },
-                                  domProps: { value: _vm.password1 },
-                                  on: {
-                                    keyup: function($event) {
-                                      return _vm.compararContrasenas()
-                                    },
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.password1 = $event.target.value
-                                    }
+                                    role: "progressbar",
+                                    "aria-valuenow": "25",
+                                    "aria-valuemin": "0",
+                                    "aria-valuemax": "100"
                                   }
-                                }),
+                                })
+                              ]
+                            ),
                             _vm._v(" "),
-                            _c("div", { staticClass: "input-group-append" }, [
+                            _c("div", {}, [
                               _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-primary",
-                                  attrs: { type: "button" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.showHidePassword(
-                                        "verify_password"
-                                      )
-                                    }
-                                  }
-                                },
-                                [_c("i", { class: _vm.icon_password_verify })]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", {}, [
-                            _c(
-                              "small",
-                              {
-                                directives: [
-                                  {
-                                    name: "show",
-                                    rawName: "v-show",
-                                    value: _vm.password1.length > 0,
-                                    expression: "password1.length > 0"
-                                  }
-                                ],
-                                class: "form-text " + _vm.verify_class,
-                                attrs: { id: "emailHelp" }
-                              },
-                              [_vm._v(_vm._s(_vm.verify_msj))]
-                            )
-                          ])
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.tipo_registro === "Beneficiaria",
-                          expression: "tipo_registro === 'Beneficiaria'"
-                        }
-                      ],
-                      staticClass: "row"
-                    },
-                    [
-                      _vm._m(1),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-12 col-lg-6 form-group" }, [
-                        _c("label", { attrs: { for: "" } }, [
-                          _vm._v("Estado civil")
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "select",
-                          {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.civil_status,
-                                expression: "civil_status"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            on: {
-                              change: function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.civil_status = $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              }
-                            }
-                          },
-                          [
-                            _c("option", [_vm._v("Soltera")]),
-                            _vm._v(" "),
-                            _c("option", [_vm._v("Unión libre")]),
-                            _vm._v(" "),
-                            _c("option", [_vm._v("Casada")]),
-                            _vm._v(" "),
-                            _c("option", [_vm._v("Divorciada")]),
-                            _vm._v(" "),
-                            _c("option", [_vm._v("Viuda")])
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-12 col-lg-6 form-group" }, [
-                        _c("label", { attrs: { for: "" } }, [
-                          _vm._v("¿Tiene hijos?")
-                        ]),
-                        _vm._v(" "),
-                        _c("br"),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.has_children,
-                              expression: "has_children"
-                            }
-                          ],
-                          attrs: {
-                            id: "toggle-has-children",
-                            type: "checkbox",
-                            "data-toggle": "toggle",
-                            "data-onstyle": "secondary",
-                            "data-offstyle": "light",
-                            "data-on": "Si",
-                            "data-off": "No"
-                          },
-                          domProps: {
-                            checked: Array.isArray(_vm.has_children)
-                              ? _vm._i(_vm.has_children, null) > -1
-                              : _vm.has_children
-                          },
-                          on: {
-                            change: function($event) {
-                              var $$a = _vm.has_children,
-                                $$el = $event.target,
-                                $$c = $$el.checked ? true : false
-                              if (Array.isArray($$a)) {
-                                var $$v = null,
-                                  $$i = _vm._i($$a, $$v)
-                                if ($$el.checked) {
-                                  $$i < 0 &&
-                                    (_vm.has_children = $$a.concat([$$v]))
-                                } else {
-                                  $$i > -1 &&
-                                    (_vm.has_children = $$a
-                                      .slice(0, $$i)
-                                      .concat($$a.slice($$i + 1)))
-                                }
-                              } else {
-                                _vm.has_children = $$c
-                              }
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-12 col-lg-4 form-group" }, [
-                        _c("label", { attrs: { for: "" } }, [
-                          _vm._v("Nivel de estudio")
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "select",
-                          {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.level_study,
-                                expression: "level_study"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            on: {
-                              change: function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.level_study = $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              }
-                            }
-                          },
-                          [
-                            _c("option", [_vm._v("Profesional")]),
-                            _vm._v(" "),
-                            _c("option", [_vm._v("Tecnóloga")]),
-                            _vm._v(" "),
-                            _c("option", [_vm._v("Técnica")]),
-                            _vm._v(" "),
-                            _c("option", [_vm._v("Secundaria")]),
-                            _vm._v(" "),
-                            _c("option", [_vm._v("Primaria")]),
-                            _vm._v(" "),
-                            _c("option", [_vm._v("No tiene")])
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-12 col-lg-4 form-group" }, [
-                        _vm.level_study === "Profesional" ||
-                        _vm.level_study === "Tecnóloga" ||
-                        _vm.level_study === "Técnica"
-                          ? _c("div", {}, [
-                              _c("label", { attrs: { for: "" } }, [
-                                _vm._v("Título obtenido")
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "select",
+                                "small",
                                 {
                                   directives: [
                                     {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.last_study,
-                                      expression: "last_study"
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value:
+                                        _vm.password.length >= 5 &&
+                                        (_vm.strong_password_msj == "Bajo" ||
+                                          _vm.strong_password_msj == "Medio"),
+                                      expression:
+                                        "password.length >= 5 && (strong_password_msj == 'Bajo' || strong_password_msj == 'Medio'  ) "
                                     }
                                   ],
-                                  staticClass: "form-control",
-                                  on: {
-                                    change: function($event) {
-                                      var $$selectedVal = Array.prototype.filter
-                                        .call($event.target.options, function(
-                                          o
-                                        ) {
-                                          return o.selected
-                                        })
-                                        .map(function(o) {
-                                          var val =
-                                            "_value" in o ? o._value : o.value
-                                          return val
-                                        })
-                                      _vm.last_study = $event.target.multiple
-                                        ? $$selectedVal
-                                        : $$selectedVal[0]
-                                    }
-                                  }
+                                  staticClass: "form-text text-muted"
                                 },
                                 [
-                                  _c("option", [_vm._v("Pregrado")]),
-                                  _vm._v(" "),
-                                  _c("option", [_vm._v("Especialista")]),
-                                  _vm._v(" "),
-                                  _c("option", [_vm._v("Magister")]),
-                                  _vm._v(" "),
-                                  _c("option", [_vm._v("Doctorado")]),
-                                  _vm._v(" "),
-                                  _c("option", [_vm._v("Técnico")]),
-                                  _vm._v(" "),
-                                  _c("option", [_vm._v("Tecnólogo")])
-                                ]
-                              )
-                            ])
-                          : _vm._e()
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-12 col-lg-4 form-group" }, [
-                        (_vm.last_study != "" &&
-                          _vm.level_study === "Profesional") ||
-                        _vm.level_study === "Tecnóloga" ||
-                        _vm.level_study === "Técnica"
-                          ? _c("div", {}, [
-                              _c("label", { attrs: { for: "" } }, [
-                                _vm._v("Nombre del título obtenido")
-                              ]),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.degree,
-                                    expression: "degree"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: { type: "text", name: "", value: "" },
-                                domProps: { value: _vm.degree },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.degree = $event.target.value
-                                  }
-                                }
-                              })
-                            ])
-                          : _vm._e()
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-12 col-lg-4 form-group" }, [
-                        _c("label", { attrs: { for: "" } }, [
-                          _vm._v("¿Actualmente estudia?")
-                        ]),
-                        _vm._v(" "),
-                        _c("br"),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.study_actually,
-                              expression: "study_actually"
-                            }
-                          ],
-                          attrs: {
-                            id: "toggle-study-actually",
-                            type: "checkbox",
-                            "data-toggle": "toggle",
-                            "data-onstyle": "secondary",
-                            "data-offstyle": "light",
-                            "data-on": "Si",
-                            "data-off": "No"
-                          },
-                          domProps: {
-                            checked: Array.isArray(_vm.study_actually)
-                              ? _vm._i(_vm.study_actually, null) > -1
-                              : _vm.study_actually
-                          },
-                          on: {
-                            change: function($event) {
-                              var $$a = _vm.study_actually,
-                                $$el = $event.target,
-                                $$c = $$el.checked ? true : false
-                              if (Array.isArray($$a)) {
-                                var $$v = null,
-                                  $$i = _vm._i($$a, $$v)
-                                if ($$el.checked) {
-                                  $$i < 0 &&
-                                    (_vm.study_actually = $$a.concat([$$v]))
-                                } else {
-                                  $$i > -1 &&
-                                    (_vm.study_actually = $$a
-                                      .slice(0, $$i)
-                                      .concat($$a.slice($$i + 1)))
-                                }
-                              } else {
-                                _vm.study_actually = $$c
-                              }
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-12 col-lg-8 form-group" }, [
-                        _vm.study_actually
-                          ? _c("div", {}, [
-                              _c("label", { attrs: { for: "" } }, [
-                                _vm._v("¿Qué está estudiando?")
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "select",
-                                {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.what_studies,
-                                      expression: "what_studies"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  on: {
-                                    change: function($event) {
-                                      var $$selectedVal = Array.prototype.filter
-                                        .call($event.target.options, function(
-                                          o
-                                        ) {
-                                          return o.selected
-                                        })
-                                        .map(function(o) {
-                                          var val =
-                                            "_value" in o ? o._value : o.value
-                                          return val
-                                        })
-                                      _vm.what_studies = $event.target.multiple
-                                        ? $$selectedVal
-                                        : $$selectedVal[0]
-                                    }
-                                  }
-                                },
-                                [
-                                  _c("option", [_vm._v("Primaria")]),
-                                  _vm._v(" "),
-                                  _c("option", [_vm._v("Secundaria")]),
-                                  _vm._v(" "),
-                                  _c("option", [_vm._v("Tecnica")]),
-                                  _vm._v(" "),
-                                  _c("option", [_vm._v("Tecnología")]),
-                                  _vm._v(" "),
-                                  _c("option", [_vm._v("Pregrado")]),
-                                  _vm._v(" "),
-                                  _c("option", [_vm._v("Postgrado")])
-                                ]
-                              )
-                            ])
-                          : _vm._e()
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-12 col-lg-4 form-group" }, [
-                        _c("label", { attrs: { for: "" } }, [
-                          _vm._v("¿Actualmente labora?")
-                        ]),
-                        _vm._v(" "),
-                        _c("br"),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.work_actually,
-                              expression: "work_actually"
-                            }
-                          ],
-                          attrs: {
-                            id: "toggle-work-actually",
-                            type: "checkbox",
-                            "data-toggle": "toggle",
-                            "data-onstyle": "secondary",
-                            "data-offstyle": "light",
-                            "data-on": "Si",
-                            "data-off": "No"
-                          },
-                          domProps: {
-                            checked: Array.isArray(_vm.work_actually)
-                              ? _vm._i(_vm.work_actually, null) > -1
-                              : _vm.work_actually
-                          },
-                          on: {
-                            change: function($event) {
-                              var $$a = _vm.work_actually,
-                                $$el = $event.target,
-                                $$c = $$el.checked ? true : false
-                              if (Array.isArray($$a)) {
-                                var $$v = null,
-                                  $$i = _vm._i($$a, $$v)
-                                if ($$el.checked) {
-                                  $$i < 0 &&
-                                    (_vm.work_actually = $$a.concat([$$v]))
-                                } else {
-                                  $$i > -1 &&
-                                    (_vm.work_actually = $$a
-                                      .slice(0, $$i)
-                                      .concat($$a.slice($$i + 1)))
-                                }
-                              } else {
-                                _vm.work_actually = $$c
-                              }
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-12 col-lg-8 form-group" }, [
-                        _vm.work_actually
-                          ? _c("div", {}, [
-                              _c("label", { attrs: { for: "" } }, [
-                                _vm._v("Sector en el que labora")
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "select",
-                                {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.laboral_sector,
-                                      expression: "laboral_sector"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  on: {
-                                    change: function($event) {
-                                      var $$selectedVal = Array.prototype.filter
-                                        .call($event.target.options, function(
-                                          o
-                                        ) {
-                                          return o.selected
-                                        })
-                                        .map(function(o) {
-                                          var val =
-                                            "_value" in o ? o._value : o.value
-                                          return val
-                                        })
-                                      _vm.laboral_sector = $event.target
-                                        .multiple
-                                        ? $$selectedVal
-                                        : $$selectedVal[0]
-                                    }
-                                  }
-                                },
-                                [
-                                  _c("option", [
+                                  _c("em", [
                                     _vm._v(
-                                      "Agricultura, Ganadería, Caza, Silvicultura y Pesca"
+                                      "Para mejorar la seguridad de la contraseña incluya números, letras minúsculas y mayúsculas"
                                     )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("option", [
-                                    _vm._v("Explotación de Minas y Canteras ")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("option", [
-                                    _vm._v("Industrias Manufactureras ")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("option", [
-                                    _vm._v(
-                                      "Distribución de Agua; Evacuación y Tratamiento de Aguas Residuales, Gestión de Desechos y Actividades de Saneamiento Ambiental"
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("option", [_vm._v("Construcción ")]),
-                                  _vm._v(" "),
-                                  _c("option", [
-                                    _vm._v("Transporte y Almacenamiento")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("option", [
-                                    _vm._v("Alojamiento y servicios de comida")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("option", [
-                                    _vm._v("Información y Comunicaciones ")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("option", [
-                                    _vm._v(
-                                      "Actividades Financieras y de Seguros "
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("option", [
-                                    _vm._v("Actividades Inmobiliarias ")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("option", [
-                                    _vm._v(
-                                      "Actividades Profesionales, Científicas y Técnicas"
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("option", [
-                                    _vm._v("Actividades de Servicios ")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("option", [_vm._v("Educación")]),
-                                  _vm._v(" "),
-                                  _c("option", [
-                                    _vm._v(
-                                      "Actividades de Atención de la Salud"
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("option", [
-                                    _vm._v(
-                                      "Actividades Artísticas, de Entretenimiento y Recreación"
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("option", [
-                                    _vm._v("Otras Actividades de Servicios")
                                   ])
                                 ]
                               )
                             ])
-                          : _vm._e()
+                          ])
+                        ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-12 col-lg-4 form-group" }, [
+                      _c("div", { staticClass: "col-12 col-lg-6 form-group" }, [
+                        _c("label", [_vm._v("Verificar Contraseña")]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-12" }, [
+                            _c("div", { staticClass: "input-group pl-0" }, [
+                              _vm.type_password_verify === "checkbox"
+                                ? _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.password1,
+                                        expression: "password1"
+                                      }
+                                    ],
+                                    staticClass: "form-control  border-round ",
+                                    attrs: { required: "", type: "checkbox" },
+                                    domProps: {
+                                      checked: Array.isArray(_vm.password1)
+                                        ? _vm._i(_vm.password1, null) > -1
+                                        : _vm.password1
+                                    },
+                                    on: {
+                                      keyup: function($event) {
+                                        return _vm.compararContrasenas()
+                                      },
+                                      change: function($event) {
+                                        var $$a = _vm.password1,
+                                          $$el = $event.target,
+                                          $$c = $$el.checked ? true : false
+                                        if (Array.isArray($$a)) {
+                                          var $$v = null,
+                                            $$i = _vm._i($$a, $$v)
+                                          if ($$el.checked) {
+                                            $$i < 0 &&
+                                              (_vm.password1 = $$a.concat([
+                                                $$v
+                                              ]))
+                                          } else {
+                                            $$i > -1 &&
+                                              (_vm.password1 = $$a
+                                                .slice(0, $$i)
+                                                .concat($$a.slice($$i + 1)))
+                                          }
+                                        } else {
+                                          _vm.password1 = $$c
+                                        }
+                                      }
+                                    }
+                                  })
+                                : _vm.type_password_verify === "radio"
+                                ? _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.password1,
+                                        expression: "password1"
+                                      }
+                                    ],
+                                    staticClass: "form-control  border-round ",
+                                    attrs: { required: "", type: "radio" },
+                                    domProps: {
+                                      checked: _vm._q(_vm.password1, null)
+                                    },
+                                    on: {
+                                      keyup: function($event) {
+                                        return _vm.compararContrasenas()
+                                      },
+                                      change: function($event) {
+                                        _vm.password1 = null
+                                      }
+                                    }
+                                  })
+                                : _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.password1,
+                                        expression: "password1"
+                                      }
+                                    ],
+                                    staticClass: "form-control  border-round ",
+                                    attrs: {
+                                      required: "",
+                                      type: _vm.type_password_verify
+                                    },
+                                    domProps: { value: _vm.password1 },
+                                    on: {
+                                      keyup: function($event) {
+                                        return _vm.compararContrasenas()
+                                      },
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.password1 = $event.target.value
+                                      }
+                                    }
+                                  }),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "input-group-append" }, [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass:
+                                      "btn btn-primary  border-round ",
+                                    attrs: { type: "button" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.showHidePassword(
+                                          "verify_password"
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { class: _vm.icon_password_verify })]
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", {}, [
+                              _c(
+                                "small",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: _vm.password1.length > 0,
+                                      expression: "password1.length > 0"
+                                    }
+                                  ],
+                                  class: "form-text " + _vm.verify_class,
+                                  attrs: { id: "emailHelp" }
+                                },
+                                [_vm._v(_vm._s(_vm.verify_msj))]
+                              )
+                            ])
+                          ])
+                        ])
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("transition", { attrs: { name: "fade" } }, [
+                    _c(
+                      "div",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.tipo_registro === "Beneficiaria",
+                            expression: "tipo_registro === 'Beneficiaria'"
+                          }
+                        ],
+                        staticClass: "row"
+                      },
+                      [
+                        _c("div", { staticClass: "col-12" }, [
+                          _c("h5", [
+                            _c("strong", [_vm._v("Información Complementaria")])
+                          ]),
+                          _vm._v(" "),
+                          _c("hr", { staticClass: "hr-pink-left" })
+                        ]),
+                        _vm._v(" "),
                         _c(
                           "div",
-                          {
-                            directives: [
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value:
-                                  _vm.work_actually && _vm.laboral_sector != "",
-                                expression:
-                                  "work_actually && laboral_sector != ''"
-                              }
-                            ]
-                          },
+                          { staticClass: "col-12 col-lg-6 form-group" },
                           [
                             _c("label", { attrs: { for: "" } }, [
-                              _vm._v("Tiene negocio propio")
+                              _vm._v("Estado civil")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.civil_status,
+                                    expression: "civil_status"
+                                  }
+                                ],
+                                staticClass: "form-control  border-round ",
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.civil_status = $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  }
+                                }
+                              },
+                              [
+                                _c("option", [_vm._v("Soltera")]),
+                                _vm._v(" "),
+                                _c("option", [_vm._v("Unión libre")]),
+                                _vm._v(" "),
+                                _c("option", [_vm._v("Casada")]),
+                                _vm._v(" "),
+                                _c("option", [_vm._v("Divorciada")]),
+                                _vm._v(" "),
+                                _c("option", [_vm._v("Viuda")])
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col-12 col-lg-6 form-group" },
+                          [
+                            _c("label", { attrs: { for: "" } }, [
+                              _vm._v("¿Tiene hijos?")
                             ]),
                             _vm._v(" "),
                             _c("br"),
@@ -73930,12 +73818,13 @@ var render = function() {
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value: _vm.bussiness_owner,
-                                  expression: "bussiness_owner"
+                                  value: _vm.has_children,
+                                  expression: "has_children"
                                 }
                               ],
                               attrs: {
-                                id: "toggle-bussiness-owner",
+                                id: "toggle-has-children",
+                                "data-style": "ios",
                                 type: "checkbox",
                                 "data-toggle": "toggle",
                                 "data-onstyle": "secondary",
@@ -73944,13 +73833,13 @@ var render = function() {
                                 "data-off": "No"
                               },
                               domProps: {
-                                checked: Array.isArray(_vm.bussiness_owner)
-                                  ? _vm._i(_vm.bussiness_owner, null) > -1
-                                  : _vm.bussiness_owner
+                                checked: Array.isArray(_vm.has_children)
+                                  ? _vm._i(_vm.has_children, null) > -1
+                                  : _vm.has_children
                               },
                               on: {
                                 change: function($event) {
-                                  var $$a = _vm.bussiness_owner,
+                                  var $$a = _vm.has_children,
                                     $$el = $event.target,
                                     $$c = $$el.checked ? true : false
                                   if (Array.isArray($$a)) {
@@ -73958,184 +73847,802 @@ var render = function() {
                                       $$i = _vm._i($$a, $$v)
                                     if ($$el.checked) {
                                       $$i < 0 &&
-                                        (_vm.bussiness_owner = $$a.concat([
-                                          $$v
-                                        ]))
+                                        (_vm.has_children = $$a.concat([$$v]))
                                     } else {
                                       $$i > -1 &&
-                                        (_vm.bussiness_owner = $$a
+                                        (_vm.has_children = $$a
                                           .slice(0, $$i)
                                           .concat($$a.slice($$i + 1)))
                                     }
                                   } else {
-                                    _vm.bussiness_owner = $$c
+                                    _vm.has_children = $$c
                                   }
                                 }
                               }
                             })
                           ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col-12 col-lg-4 form-group" },
+                          [
+                            _c("label", { attrs: { for: "" } }, [
+                              _vm._v("Nivel de estudio")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.level_study,
+                                    expression: "level_study"
+                                  }
+                                ],
+                                staticClass: "form-control  border-round",
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.level_study = $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  }
+                                }
+                              },
+                              [
+                                _c("option", [_vm._v("Profesional")]),
+                                _vm._v(" "),
+                                _c("option", [_vm._v("Tecnóloga")]),
+                                _vm._v(" "),
+                                _c("option", [_vm._v("Técnica")]),
+                                _vm._v(" "),
+                                _c("option", [_vm._v("Secundaria")]),
+                                _vm._v(" "),
+                                _c("option", [_vm._v("Primaria")]),
+                                _vm._v(" "),
+                                _c("option", [_vm._v("No tiene")])
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col-12 col-lg-4 form-group" },
+                          [
+                            _c("transition", { attrs: { name: "fade" } }, [
+                              _vm.level_study === "Profesional" ||
+                              _vm.level_study === "Tecnóloga" ||
+                              _vm.level_study === "Técnica"
+                                ? _c("div", {}, [
+                                    _c("label", { attrs: { for: "" } }, [
+                                      _vm._v("Título obtenido")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "select",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.last_study,
+                                            expression: "last_study"
+                                          }
+                                        ],
+                                        staticClass:
+                                          "form-control  border-round",
+                                        on: {
+                                          change: function($event) {
+                                            var $$selectedVal = Array.prototype.filter
+                                              .call(
+                                                $event.target.options,
+                                                function(o) {
+                                                  return o.selected
+                                                }
+                                              )
+                                              .map(function(o) {
+                                                var val =
+                                                  "_value" in o
+                                                    ? o._value
+                                                    : o.value
+                                                return val
+                                              })
+                                            _vm.last_study = $event.target
+                                              .multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("option", [_vm._v("Pregrado")]),
+                                        _vm._v(" "),
+                                        _c("option", [_vm._v("Especialista")]),
+                                        _vm._v(" "),
+                                        _c("option", [_vm._v("Magister")]),
+                                        _vm._v(" "),
+                                        _c("option", [_vm._v("Doctorado")]),
+                                        _vm._v(" "),
+                                        _c("option", [_vm._v("Técnico")]),
+                                        _vm._v(" "),
+                                        _c("option", [_vm._v("Tecnólogo")])
+                                      ]
+                                    )
+                                  ])
+                                : _vm._e()
+                            ])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col-12 col-lg-4 form-group" },
+                          [
+                            _c("transition", { attrs: { name: "fade" } }, [
+                              _vm.level_study === "Profesional" ||
+                              _vm.level_study === "Tecnóloga" ||
+                              _vm.level_study === "Técnica"
+                                ? _c("div", {}, [
+                                    _c("label", { attrs: { for: "" } }, [
+                                      _vm._v("Nombre del título obtenido")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.degree,
+                                          expression: "degree"
+                                        }
+                                      ],
+                                      staticClass: "form-control  border-round",
+                                      attrs: {
+                                        type: "text",
+                                        name: "",
+                                        value: ""
+                                      },
+                                      domProps: { value: _vm.degree },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.degree = $event.target.value
+                                        }
+                                      }
+                                    })
+                                  ])
+                                : _vm._e()
+                            ])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col-12 col-lg-4 form-group" },
+                          [
+                            _c("label", { attrs: { for: "" } }, [
+                              _vm._v("¿Actualmente estudia?")
+                            ]),
+                            _vm._v(" "),
+                            _c("br"),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.study_actually,
+                                  expression: "study_actually"
+                                }
+                              ],
+                              attrs: {
+                                id: "toggle-study-actually",
+                                "data-style": "ios",
+                                type: "checkbox",
+                                "data-toggle": "toggle",
+                                "data-onstyle": "secondary",
+                                "data-offstyle": "light",
+                                "data-on": "Si",
+                                "data-off": "No"
+                              },
+                              domProps: {
+                                checked: Array.isArray(_vm.study_actually)
+                                  ? _vm._i(_vm.study_actually, null) > -1
+                                  : _vm.study_actually
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$a = _vm.study_actually,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = null,
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        (_vm.study_actually = $$a.concat([$$v]))
+                                    } else {
+                                      $$i > -1 &&
+                                        (_vm.study_actually = $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1)))
+                                    }
+                                  } else {
+                                    _vm.study_actually = $$c
+                                  }
+                                }
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col-12 col-lg-8 form-group" },
+                          [
+                            _c("transition", { attrs: { name: "fade" } }, [
+                              _vm.study_actually
+                                ? _c("div", {}, [
+                                    _c("label", { attrs: { for: "" } }, [
+                                      _vm._v("¿Qué está estudiando?")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "select",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.what_studies,
+                                            expression: "what_studies"
+                                          }
+                                        ],
+                                        staticClass:
+                                          "form-control  border-round",
+                                        on: {
+                                          change: function($event) {
+                                            var $$selectedVal = Array.prototype.filter
+                                              .call(
+                                                $event.target.options,
+                                                function(o) {
+                                                  return o.selected
+                                                }
+                                              )
+                                              .map(function(o) {
+                                                var val =
+                                                  "_value" in o
+                                                    ? o._value
+                                                    : o.value
+                                                return val
+                                              })
+                                            _vm.what_studies = $event.target
+                                              .multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("option", [_vm._v("Primaria")]),
+                                        _vm._v(" "),
+                                        _c("option", [_vm._v("Secundaria")]),
+                                        _vm._v(" "),
+                                        _c("option", [_vm._v("Tecnica")]),
+                                        _vm._v(" "),
+                                        _c("option", [_vm._v("Tecnología")]),
+                                        _vm._v(" "),
+                                        _c("option", [_vm._v("Pregrado")]),
+                                        _vm._v(" "),
+                                        _c("option", [_vm._v("Postgrado")])
+                                      ]
+                                    )
+                                  ])
+                                : _vm._e()
+                            ])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col-12 col-lg-4 form-group" },
+                          [
+                            _c("label", { attrs: { for: "" } }, [
+                              _vm._v("¿Actualmente labora?")
+                            ]),
+                            _vm._v(" "),
+                            _c("br"),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.work_actually,
+                                  expression: "work_actually"
+                                }
+                              ],
+                              attrs: {
+                                id: "toggle-work-actually",
+                                "data-style": "ios",
+                                type: "checkbox",
+                                "data-toggle": "toggle",
+                                "data-onstyle": "secondary",
+                                "data-offstyle": "light",
+                                "data-on": "Si",
+                                "data-off": "No"
+                              },
+                              domProps: {
+                                checked: Array.isArray(_vm.work_actually)
+                                  ? _vm._i(_vm.work_actually, null) > -1
+                                  : _vm.work_actually
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$a = _vm.work_actually,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = null,
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        (_vm.work_actually = $$a.concat([$$v]))
+                                    } else {
+                                      $$i > -1 &&
+                                        (_vm.work_actually = $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1)))
+                                    }
+                                  } else {
+                                    _vm.work_actually = $$c
+                                  }
+                                }
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col-12 col-lg-8 form-group" },
+                          [
+                            _c("transition", { attrs: { name: "fade" } }, [
+                              _vm.work_actually
+                                ? _c("div", {}, [
+                                    _c("label", { attrs: { for: "" } }, [
+                                      _vm._v("Sector en el que labora")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "select",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.laboral_sector,
+                                            expression: "laboral_sector"
+                                          }
+                                        ],
+                                        staticClass:
+                                          "form-control border-round",
+                                        on: {
+                                          change: function($event) {
+                                            var $$selectedVal = Array.prototype.filter
+                                              .call(
+                                                $event.target.options,
+                                                function(o) {
+                                                  return o.selected
+                                                }
+                                              )
+                                              .map(function(o) {
+                                                var val =
+                                                  "_value" in o
+                                                    ? o._value
+                                                    : o.value
+                                                return val
+                                              })
+                                            _vm.laboral_sector = $event.target
+                                              .multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("option", [
+                                          _vm._v(
+                                            "Agricultura, Ganadería, Caza, Silvicultura y Pesca"
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("option", [
+                                          _vm._v(
+                                            "Explotación de Minas y Canteras "
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("option", [
+                                          _vm._v("Industrias Manufactureras ")
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("option", [
+                                          _vm._v(
+                                            "Distribución de Agua; Evacuación y Tratamiento de Aguas Residuales, Gestión de Desechos y Actividades de Saneamiento Ambiental"
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("option", [_vm._v("Construcción ")]),
+                                        _vm._v(" "),
+                                        _c("option", [
+                                          _vm._v("Transporte y Almacenamiento")
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("option", [
+                                          _vm._v(
+                                            "Alojamiento y servicios de comida"
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("option", [
+                                          _vm._v(
+                                            "Información y Comunicaciones "
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("option", [
+                                          _vm._v(
+                                            "Actividades Financieras y de Seguros "
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("option", [
+                                          _vm._v("Actividades Inmobiliarias ")
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("option", [
+                                          _vm._v(
+                                            "Actividades Profesionales, Científicas y Técnicas"
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("option", [
+                                          _vm._v("Actividades de Servicios ")
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("option", [_vm._v("Educación")]),
+                                        _vm._v(" "),
+                                        _c("option", [
+                                          _vm._v(
+                                            "Actividades de Atención de la Salud"
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("option", [
+                                          _vm._v(
+                                            "Actividades Artísticas, de Entretenimiento y Recreación"
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("option", [
+                                          _vm._v(
+                                            "Otras Actividades de Servicios"
+                                          )
+                                        ])
+                                      ]
+                                    )
+                                  ])
+                                : _vm._e()
+                            ])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col-12 col-lg-4 form-group" },
+                          [
+                            _c("transition", { attrs: { name: "fade" } }, [
+                              _c(
+                                "div",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value:
+                                        _vm.work_actually &&
+                                        _vm.laboral_sector != "",
+                                      expression:
+                                        "work_actually && laboral_sector != ''"
+                                    }
+                                  ]
+                                },
+                                [
+                                  _c("label", { attrs: { for: "" } }, [
+                                    _vm._v("Tiene negocio propio")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.bussiness_owner,
+                                        expression: "bussiness_owner"
+                                      }
+                                    ],
+                                    attrs: {
+                                      id: "toggle-bussiness-owner",
+                                      "data-style": "ios",
+                                      type: "checkbox",
+                                      "data-toggle": "toggle",
+                                      "data-onstyle": "secondary",
+                                      "data-offstyle": "light",
+                                      "data-on": "Si",
+                                      "data-off": "No"
+                                    },
+                                    domProps: {
+                                      checked: Array.isArray(
+                                        _vm.bussiness_owner
+                                      )
+                                        ? _vm._i(_vm.bussiness_owner, null) > -1
+                                        : _vm.bussiness_owner
+                                    },
+                                    on: {
+                                      change: function($event) {
+                                        var $$a = _vm.bussiness_owner,
+                                          $$el = $event.target,
+                                          $$c = $$el.checked ? true : false
+                                        if (Array.isArray($$a)) {
+                                          var $$v = null,
+                                            $$i = _vm._i($$a, $$v)
+                                          if ($$el.checked) {
+                                            $$i < 0 &&
+                                              (_vm.bussiness_owner = $$a.concat(
+                                                [$$v]
+                                              ))
+                                          } else {
+                                            $$i > -1 &&
+                                              (_vm.bussiness_owner = $$a
+                                                .slice(0, $$i)
+                                                .concat($$a.slice($$i + 1)))
+                                          }
+                                        } else {
+                                          _vm.bussiness_owner = $$c
+                                        }
+                                      }
+                                    }
+                                  })
+                                ]
+                              )
+                            ])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col-12 col-lg-4 form-group" },
+                          [
+                            _c("transition", { attrs: { name: "fade" } }, [
+                              _vm.bussiness_owner && _vm.work_actually
+                                ? _c("div", {}, [
+                                    _c("label", { attrs: { for: "" } }, [
+                                      _vm._v("¿De que manera trabaja?")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c(
+                                      "select",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.way_working,
+                                            expression: "way_working"
+                                          }
+                                        ],
+                                        staticClass:
+                                          "form-control  border-round",
+                                        on: {
+                                          change: function($event) {
+                                            var $$selectedVal = Array.prototype.filter
+                                              .call(
+                                                $event.target.options,
+                                                function(o) {
+                                                  return o.selected
+                                                }
+                                              )
+                                              .map(function(o) {
+                                                var val =
+                                                  "_value" in o
+                                                    ? o._value
+                                                    : o.value
+                                                return val
+                                              })
+                                            _vm.way_working = $event.target
+                                              .multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("option", [_vm._v("Formal")]),
+                                        _vm._v(" "),
+                                        _c("option", [_vm._v("Informal")])
+                                      ]
+                                    )
+                                  ])
+                                : _vm._e()
+                            ])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col-12 col-lg-4 form-group" },
+                          [
+                            _c("transition", { attrs: { name: "fade" } }, [
+                              _vm.way_working === "Formal" && _vm.work_actually
+                                ? _c("div", {}, [
+                                    _c("label", { attrs: { for: "" } }, [
+                                      _vm._v("Tipo de empresa")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c(
+                                      "select",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.type_company,
+                                            expression: "type_company"
+                                          }
+                                        ],
+                                        staticClass:
+                                          "form-control  border-round",
+                                        on: {
+                                          change: function($event) {
+                                            var $$selectedVal = Array.prototype.filter
+                                              .call(
+                                                $event.target.options,
+                                                function(o) {
+                                                  return o.selected
+                                                }
+                                              )
+                                              .map(function(o) {
+                                                var val =
+                                                  "_value" in o
+                                                    ? o._value
+                                                    : o.value
+                                                return val
+                                              })
+                                            _vm.type_company = $event.target
+                                              .multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("option", [_vm._v("Pública")]),
+                                        _vm._v(" "),
+                                        _c("option", [_vm._v("Privada")])
+                                      ]
+                                    )
+                                  ])
+                                : _vm._e()
+                            ])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col-12 col-lg-6 form-group" },
+                          [
+                            _c("transition", { attrs: { name: "fade" } }, [
+                              !_vm.work_actually && !_vm.work_actually1
+                                ? _c("div", {}, [
+                                    _c("label", { attrs: { for: "" } }, [
+                                      _vm._v(
+                                        "¿Desde hace cuánto tiempo no labora?"
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c(
+                                      "select",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.time_not_to_work,
+                                            expression: "time_not_to_work"
+                                          }
+                                        ],
+                                        staticClass:
+                                          "form-control  border-round",
+                                        on: {
+                                          change: function($event) {
+                                            var $$selectedVal = Array.prototype.filter
+                                              .call(
+                                                $event.target.options,
+                                                function(o) {
+                                                  return o.selected
+                                                }
+                                              )
+                                              .map(function(o) {
+                                                var val =
+                                                  "_value" in o
+                                                    ? o._value
+                                                    : o.value
+                                                return val
+                                              })
+                                            _vm.time_not_to_work = $event.target
+                                              .multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("option", [
+                                          _vm._v("Nunca he trabajado")
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("option", [
+                                          _vm._v("Menos de un año")
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("option", [_vm._v("De 1 a 5 años")]),
+                                        _vm._v(" "),
+                                        _c("option", [_vm._v("Más de 5 años")])
+                                      ]
+                                    )
+                                  ])
+                                : _vm._e()
+                            ])
+                          ],
+                          1
                         )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-12 col-lg-4 form-group" }, [
-                        _vm.bussiness_owner && _vm.work_actually
-                          ? _c("div", {}, [
-                              _c("label", { attrs: { for: "" } }, [
-                                _vm._v("¿De que manera trabaja?")
-                              ]),
-                              _vm._v(" "),
-                              _c("br"),
-                              _vm._v(" "),
-                              _c(
-                                "select",
-                                {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.way_working,
-                                      expression: "way_working"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  on: {
-                                    change: function($event) {
-                                      var $$selectedVal = Array.prototype.filter
-                                        .call($event.target.options, function(
-                                          o
-                                        ) {
-                                          return o.selected
-                                        })
-                                        .map(function(o) {
-                                          var val =
-                                            "_value" in o ? o._value : o.value
-                                          return val
-                                        })
-                                      _vm.way_working = $event.target.multiple
-                                        ? $$selectedVal
-                                        : $$selectedVal[0]
-                                    }
-                                  }
-                                },
-                                [
-                                  _c("option", [_vm._v("Formal")]),
-                                  _vm._v(" "),
-                                  _c("option", [_vm._v("Informal")])
-                                ]
-                              )
-                            ])
-                          : _vm._e()
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-12 col-lg-4 form-group" }, [
-                        _vm.way_working === "Formal" && _vm.work_actually
-                          ? _c("div", {}, [
-                              _c("label", { attrs: { for: "" } }, [
-                                _vm._v("Tipo de empresa")
-                              ]),
-                              _vm._v(" "),
-                              _c("br"),
-                              _vm._v(" "),
-                              _c(
-                                "select",
-                                {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.type_company,
-                                      expression: "type_company"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  on: {
-                                    change: function($event) {
-                                      var $$selectedVal = Array.prototype.filter
-                                        .call($event.target.options, function(
-                                          o
-                                        ) {
-                                          return o.selected
-                                        })
-                                        .map(function(o) {
-                                          var val =
-                                            "_value" in o ? o._value : o.value
-                                          return val
-                                        })
-                                      _vm.type_company = $event.target.multiple
-                                        ? $$selectedVal
-                                        : $$selectedVal[0]
-                                    }
-                                  }
-                                },
-                                [
-                                  _c("option", [_vm._v("Pública")]),
-                                  _vm._v(" "),
-                                  _c("option", [_vm._v("Privada")])
-                                ]
-                              )
-                            ])
-                          : _vm._e()
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-12 col-lg-6 form-group" }, [
-                        !_vm.work_actually && !_vm.work_actually1
-                          ? _c("div", {}, [
-                              _c("label", { attrs: { for: "" } }, [
-                                _vm._v("¿Desde hace cuánto tiempo no labora?")
-                              ]),
-                              _vm._v(" "),
-                              _c("br"),
-                              _vm._v(" "),
-                              _c(
-                                "select",
-                                {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.time_not_to_work,
-                                      expression: "time_not_to_work"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  on: {
-                                    change: function($event) {
-                                      var $$selectedVal = Array.prototype.filter
-                                        .call($event.target.options, function(
-                                          o
-                                        ) {
-                                          return o.selected
-                                        })
-                                        .map(function(o) {
-                                          var val =
-                                            "_value" in o ? o._value : o.value
-                                          return val
-                                        })
-                                      _vm.time_not_to_work = $event.target
-                                        .multiple
-                                        ? $$selectedVal
-                                        : $$selectedVal[0]
-                                    }
-                                  }
-                                },
-                                [
-                                  _c("option", [_vm._v("Nunca he trabajado")]),
-                                  _vm._v(" "),
-                                  _c("option", [_vm._v("Menos de un año")]),
-                                  _vm._v(" "),
-                                  _c("option", [_vm._v("De 1 a 5 años")]),
-                                  _vm._v(" "),
-                                  _c("option", [_vm._v("Más de 5 años")])
-                                ]
-                              )
-                            ])
-                          : _vm._e()
-                      ])
-                    ]
-                  ),
+                      ]
+                    )
+                  ]),
                   _vm._v(" "),
-                  _vm._m(2)
-                ]
+                  _vm._m(1)
+                ],
+                1
               )
             ])
           ])
@@ -74151,21 +74658,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-12" }, [
-      _c("h5", [_vm._v("Información Básica")]),
+      _c("h5", [_c("strong", [_vm._v("Información Básica")])]),
       _vm._v(" "),
-      _c("hr")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12" }, [
-      _c("br"),
-      _vm._v(" "),
-      _c("h5", [_vm._v("Información Complementaria")]),
-      _vm._v(" "),
-      _c("hr")
+      _c("hr", { staticClass: "hr-pink-left" })
     ])
   },
   function() {
@@ -74179,10 +74674,10 @@ var staticRenderFns = [
         _c(
           "button",
           {
-            staticClass: "btn btn-secondary btn-lg",
+            staticClass: "btn btn-secondary btn-lg  border-round",
             attrs: { type: "submit", name: "button" }
           },
-          [_vm._v("¡Registrarme!")]
+          [_c("strong", [_vm._v("¡Registrarme!")])]
         )
       ])
     ])
@@ -100369,7 +100864,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _registerComponent_vue_vue_type_template_id_35e21442_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./registerComponent.vue?vue&type=template&id=35e21442&scoped=true& */ "./resources/js/components/registerComponent.vue?vue&type=template&id=35e21442&scoped=true&");
 /* harmony import */ var _registerComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./registerComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/registerComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _registerComponent_vue_vue_type_style_index_0_id_35e21442_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./registerComponent.vue?vue&type=style&index=0&id=35e21442&lang=css&scoped=true& */ "./resources/js/components/registerComponent.vue?vue&type=style&index=0&id=35e21442&lang=css&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -100377,7 +100874,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _registerComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _registerComponent_vue_vue_type_template_id_35e21442_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
   _registerComponent_vue_vue_type_template_id_35e21442_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -100406,6 +100903,22 @@ component.options.__file = "resources/js/components/registerComponent.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_registerComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./registerComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/registerComponent.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_registerComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/registerComponent.vue?vue&type=style&index=0&id=35e21442&lang=css&scoped=true&":
+/*!****************************************************************************************************************!*\
+  !*** ./resources/js/components/registerComponent.vue?vue&type=style&index=0&id=35e21442&lang=css&scoped=true& ***!
+  \****************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_registerComponent_vue_vue_type_style_index_0_id_35e21442_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./registerComponent.vue?vue&type=style&index=0&id=35e21442&lang=css&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/registerComponent.vue?vue&type=style&index=0&id=35e21442&lang=css&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_registerComponent_vue_vue_type_style_index_0_id_35e21442_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_registerComponent_vue_vue_type_style_index_0_id_35e21442_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_registerComponent_vue_vue_type_style_index_0_id_35e21442_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_registerComponent_vue_vue_type_style_index_0_id_35e21442_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_registerComponent_vue_vue_type_style_index_0_id_35e21442_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
