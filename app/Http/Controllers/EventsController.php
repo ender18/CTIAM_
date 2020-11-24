@@ -21,7 +21,7 @@ class EventsController extends Controller
     public function index()
     {
           $focos = Focus::get();
-          $courses = Course::get();
+          $courses = Course::orderBy('created_at', 'DESC')->get();
           $aliados = null;
           $id_aliado = DB::table('roles')->where('name', '=', 'aliado')->first();
           $id_tutor = DB::table('roles')->where('name', '=', 'tutor')->first();
@@ -88,10 +88,7 @@ class EventsController extends Controller
           }
 
           $course->Save();
-
-          $events = Course::get();
-
-
+          $events = Course::orderBy('created_at','DESC')->get();
           $resultado = null;
           $array = $request->focosSeleccionados;
 
@@ -127,7 +124,7 @@ class EventsController extends Controller
          $course->save();
          $id_course = $course->id;
 
-         $events = Course::get();
+         $events = Course::orderBy('created_at','DESC')->get();
 
         return response()->json([
           'id_course' => $id_course,
@@ -141,14 +138,13 @@ class EventsController extends Controller
         if ($request->ajax()) {
 
           $fecha_hoy = date("Y-m-d H:i:s");
-          $id_group = DB::table('groups')->insertGetId(
+          $id_group = DB::table('groups')->where('id', '=', $request->id)->update(
               ['name' => $this->validarString($request->name),
                'quota' => $this->validarString($request->quota),
                'schedule' => $this->validarString($request->schedule),
                'place' => $this->validarString($request->place),
                'status_group' => '',
                'id_course_parent' => $this->validarString($request->id_course_parent),
-               'created_at' => $fecha_hoy,
                'updated_at' => $fecha_hoy
              ]
           );
@@ -159,10 +155,10 @@ class EventsController extends Controller
 
           // Se insertan los focos del Evento
 
-          DB::table('groups_tutors')->where('id_tutor', $id_group)->delete();
+          DB::table('groups_tutors')->where('id_group', $request->id)->delete();
           $dataTutors = array();
           foreach ($array_tutors as $value) {
-             array_push($dataTutors, array('id_group'=> $id_group,
+             array_push($dataTutors, array('id_group'=> $request->id,
                                      'id_tutor'=> $value->id,
                                      'created_at' => $fecha_hoy,
                                      'updated_at' => $fecha_hoy
@@ -190,6 +186,66 @@ class EventsController extends Controller
 
 
     }
+
+    public function newGroup(Request $request){
+      if ($request->ajax()) {
+        $fecha_hoy = date("Y-m-d H:i:s");
+        $id_group = DB::table('groups')->insertGetId(
+          [ 'id_course_parent' => $request->id_course,
+            'created_at' => $fecha_hoy,
+            'updated_at' => $fecha_hoy
+          ]
+        );
+        return response()->json([
+          'id_group' => $id_group
+        ],200);
+      }
+    }
+
+    public function addTutorGroup(Request $request){
+      if ($request->ajax()) {
+        $tutorsSelected = null;
+        $fecha_hoy = date("Y-m-d H:i:s");
+        $existe = DB::table('groups_tutors')
+        ->where('groups_tutors.id_group', '=', $request->id_group)
+        ->where('groups_tutors.id_tutor', '=', $request->id_tutor)
+        ->get();
+        if ($existe->count() == 0) {
+          $id_group = DB::table('groups_tutors')->insert(
+            [ 'id_group' => $request->id_group,
+            'id_tutor' => $request->id_tutor,
+            'created_at' => $fecha_hoy,
+            'updated_at' => $fecha_hoy
+          ]
+        );
+      }
+      $tutorsSelected = DB::table('users')->join('groups_tutors', 'groups_tutors.id_tutor', '=', 'users.id')
+      ->where('groups_tutors.id_group', '=', $request->id_group)->orderBy('groups_tutors.created_at', 'asc')->get();
+      return response()->json([
+        'tutorsSelected' => $tutorsSelected
+      ],200);
+      // code...
+    }
+  }
+
+  public function deleteTutorGroup(Request $request){
+    if ($request->ajax()) {
+
+      DB::table('groups_tutors')
+      ->where('groups_tutors.id_group', '=', $request->id_group)
+      ->where('groups_tutors.id_tutor', '=', $request->id_tutor)->delete();
+      $tutorsSelected = DB::table('users')->join('groups_tutors', 'groups_tutors.id_tutor', '=', 'users.id')
+      ->where('groups_tutors.id_group', '=', $request->id_group)->orderBy('groups_tutors.created_at', 'asc')->get();
+
+      return response()->json([
+        'tutorsSelected' => $tutorsSelected
+      ],200);
+      // code...
+    }
+
+
+  }
+
 
     public function downloadInfoCourse(Request $request){
       return Excel::download(new UsersExport($request->id_course), 'InfoAct'.$request->id_course.'.xlsx');
@@ -265,7 +321,7 @@ class EventsController extends Controller
         $evento = Course::find($request->id);
         $evento->status = $request->status;
         $evento->Save();
-        $events = Course::get();
+        $events = Course::orderBy('created_at','DESC')->get();
         $msj = 'El evento ha cambiado su estado correctamente';
 
         $groups = DB::table('groups')->where('groups.id_course_parent', '=', $request->id)->get();
@@ -636,7 +692,7 @@ class EventsController extends Controller
           DB::table('course_foci')->where('course_id', $course->id)->delete();
           $course->delete();
 
-          $eventos = Course::get();
+          $eventos = Course::orderBy('created_at','DESC')->get();
           return response()->json([
             'eventos' => $eventos,
             'msj' => $msj

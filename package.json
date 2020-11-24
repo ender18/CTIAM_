@@ -26,6 +26,7 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.1",
         "bootstrap4-toggle": "^3.6.1",
+        "datatables.net-bs4": "^1.10.22",
         "leaflet": "^1.7.1",
         "toastr": "^2.1.4",
         "vue-google-heatmap": "^1.0.1",

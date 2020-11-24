@@ -34,7 +34,7 @@
       @endif
 
       @if ( Auth::user()->authorizedRoles('beneficiaria'))
-      <div class="row">
+      <div class="row pb-4">
         <div class="col-6 col-lg-3 mt-2  d-flex align-items-stretch">
           <div class="card border-0 shadow card-img-top">
             <div class="container">
@@ -93,7 +93,7 @@
       </div>
       @endif
       @if ( Auth::user()->authorizedRoles('tutor'))
-      <div class="row d-flex justify-content-center justify-content-lg-start ">
+      <div class="row d-flex justify-content-center justify-content-lg-start  pb-4">
         <div class="col-6 col-lg-3 mt-2 d-flex align-items-stretch">
           <div class="card border-0 shadow">
             <div class="container">
@@ -127,7 +127,7 @@
     @endif
 
     @if ( Auth::user()->authorizedRoles('aliado'))
-      <div class="row">
+      <div class="row  pb-4">
       <div class="col-6 col-lg-3 mt-2  d-flex align-items-stretch">
         <div class="card border-0 shadow card-img-top">
           <div class="container">
@@ -168,7 +168,7 @@
 
 
       @if ( Auth::user()->authorizedRoles('admin'))
-      <div class="row">
+      <div class="row ">
         <div class="col-12 d-flex align-items-center">
           <h3 class=""><strong>Panel Administrador</strong></h3>
         </div>
@@ -178,7 +178,7 @@
       </div>
       @endif
       @if ( Auth::user()->authorizedRoles('admin'))
-      <div class="row">
+      <div class="row  pb-4">
 
         <div class="col-6 col-lg-3 mt-2  d-flex align-items-stretch">
           <div class="card border-0 shadow">
@@ -262,10 +262,6 @@
         </div>
       </div>
     @endif
-
-    <div class="row pb-4">
-
-    </div>
 
       {{-- Vista de Super Administrador --}}
       {{-- @if ( Auth::user()->authorizedRoles('superadmin'))

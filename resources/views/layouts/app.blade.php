@@ -14,6 +14,8 @@
     <script src="{{ asset('js/bootstrap4-toggle.min.js') }}" defer></script>
     <script src="{{ asset('js/myjs.js') }}" defer></script>
     <script src="{{ asset('js/toastr.min.js') }}" defer></script>
+    {{-- <script src="{{ asset('js/jquery.dataTables.min.js') }}" defer></script>
+    <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}" defer></script> --}}
     {{-- <script src="https://kit.fontawesome.com/4aac046800.js" crossorigin="anonymous"></script> --}}
 
 
@@ -35,6 +37,7 @@
     <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/mycss.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap4-toggle.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/dataTablesbootstrap4.min.css') }}" rel="stylesheet">
 
     <link rel="shortcut icon" href="/images/favicon.png" />
 

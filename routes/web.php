@@ -75,6 +75,9 @@ Route::get('/exportCertified', 'EventsController@exportCertified');
 Route::get('/addCertifieds', 'EventsController@addCertifieds');
 
 Route::post('/manageEvents/addCertified', 'EventsController@addCertified');
+Route::post('/newGroup', 'EventsController@newGroup');
+Route::post('/addTutorGroup', 'EventsController@addTutorGroup');
+Route::post('/deleteTutorGroup', 'EventsController@deleteTutorGroup');
 
 
 
