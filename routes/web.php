@@ -78,6 +78,12 @@ Route::post('/manageEvents/addCertified', 'EventsController@addCertified');
 Route::post('/newGroup', 'EventsController@newGroup');
 Route::post('/addTutorGroup', 'EventsController@addTutorGroup');
 Route::post('/deleteTutorGroup', 'EventsController@deleteTutorGroup');
+Route::post('/addSchedule', 'EventsController@addSchedule');
+Route::post('/deleteSchedule', 'EventsController@deleteSchedule');
+Route::post('/searchCourse', 'EventsController@searchCourse');
+Route::post('/saveChangesCertified', 'EventsController@saveChangesCertified');
+
+
 
 
 

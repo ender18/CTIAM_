@@ -29,11 +29,11 @@
                           <div class="col-12 col-lg-6 form-group">
                             <label for="">Tipo de Documento</label>
                             <select class="form-control border-round" v-model="type_dni" id="tipo_documento" >
-                              <option>Cedula de Ciudadanía</option>
-                              <option>NIT</option>
-                              <option>Cedula de extranjeria</option>
-                              <option>Pasaporte</option>
-                              <option>Tarjeta de identidad</option>
+                              <option value="CC">Cedula de Ciudadanía</option>
+                              <option value="NIT">NIT</option>
+                              <option value="CE">Cedula de extranjeria</option>
+                              <option value="Pasaporte">Pasaporte</option>
+                              <option value="TI">Tarjeta de identidad</option>
                             </select>
                           </div>
                           <div class="col-12 col-lg-6 form-group">

@@ -150,8 +150,8 @@ class EventsController extends Controller
           );
 
           $tutorsSelected = $request->tutoresSeleccionados;
-
           $array_tutors = json_decode($tutorsSelected);
+
 
           // Se insertan los focos del Evento
 
@@ -174,13 +174,28 @@ class EventsController extends Controller
                                                 'groups.place'
           )->where('groups.id_course_parent', '=', $request->id_course_parent)->get();
 
+          $arrayIdGroups = array();
+          foreach ($groups as $group) {
+            array_push($arrayIdGroups, $group->id);
+          }
+
           $tutors = DB::table('groups_tutors')->join('groups', 'groups.id', '=', 'groups_tutors.id_group')
                                               ->join('users', 'users.id', '=', 'groups_tutors.id_tutor')
                                               ->where('groups.id_course_parent', '=', $request->id_course_parent)->get();
+
+          $schedulesGroup = DB::table('schedule')->select('id',
+                                                          'id_group',
+                                                          'day',
+                                                          DB::raw("DATE_FORMAT(hour_start,' %H:%i') as hour_start"),
+                                                          DB::raw("DATE_FORMAT(hour_end,' %H:%i') as hour_end"),
+                                                          )->whereIn('id_group', $arrayIdGroups)->orderBy('created_at', 'asc')->get();
+
+
           return response()->json([
             'msj' => $dataTutors,
             'groups' => $groups,
-            'tutors' => $tutors
+            'tutors' => $tutors,
+            'schedulesGroup' => $schedulesGroup
           ],200);
         }
 
@@ -189,15 +204,26 @@ class EventsController extends Controller
 
     public function newGroup(Request $request){
       if ($request->ajax()) {
-        $fecha_hoy = date("Y-m-d H:i:s");
-        $id_group = DB::table('groups')->insertGetId(
-          [ 'id_course_parent' => $request->id_course,
-            'created_at' => $fecha_hoy,
-            'updated_at' => $fecha_hoy
-          ]
-        );
+
+        $id_group = $request->id_group;
+
+        if ($id_group == null) {
+            $fecha_hoy = date("Y-m-d H:i:s");
+            $id_group = DB::table('groups')->insertGetId(
+              [ 'id_course_parent' => $request->id_course,
+              'created_at' => $fecha_hoy,
+              'updated_at' => $fecha_hoy
+            ]
+          );
+        }
+        $group = DB::table('groups')->where('id','=', $id_group)->first();
+        $schedulesGroup = DB::table('schedule')->where('id_group', '=', $id_group)->get();
+        $tutorsSelected = DB::table('users')->join('groups_tutors', 'groups_tutors.id_tutor', '=', 'users.id')
+        ->where('groups_tutors.id_group', '=', $id_group)->orderBy('groups_tutors.created_at', 'asc')->get();
         return response()->json([
-          'id_group' => $id_group
+          'group' => $group,
+          'schedulesGroup' => $schedulesGroup,
+          'tutorsSelected' => $tutorsSelected
         ],200);
       }
     }
@@ -299,10 +325,27 @@ class EventsController extends Controller
                                             ->join('users', 'users.id', '=', 'groups_tutors.id_tutor')
                                             ->where('groups.id_course_parent', '=', $request->id)->get();
 
+        $arrayIdGroups = array();
+        foreach ($groups as $group) {
+          array_push($arrayIdGroups, $group->id);
+        }
+
+        $tutors = DB::table('groups_tutors')->join('groups', 'groups.id', '=', 'groups_tutors.id_group')
+                                            ->join('users', 'users.id', '=', 'groups_tutors.id_tutor')
+                                            ->where('groups.id_course_parent', '=', $request->id)->get();
+
+        $schedulesGroup = DB::table('schedule')->select('id',
+                                                        'id_group',
+                                                        'day',
+                                                        DB::raw("DATE_FORMAT(hour_start,' %H:%i') as hour_start"),
+                                                        DB::raw("DATE_FORMAT(hour_end,' %H:%i') as hour_end"),
+                                                        )->whereIn('id_group', $arrayIdGroups)->orderBy('created_at', 'asc')->get();
+
         return response()->json([
           'focos' => $focos,
           'groups' => $groups,
-          'tutors' => $tutors
+          'tutors' => $tutors,
+          'schedulesGroups' => $schedulesGroup
 
         ], 200);
       }
@@ -359,12 +402,9 @@ class EventsController extends Controller
     {
 
         if ($request->ajax()) {
-
           $curso = Course::join('users', 'courses.id_owner', '=', 'users.id')
                   ->where('courses.id', '=' ,$id)->first();
           $focos = Focus::join('course_foci', 'foci.id', '=', 'course_foci.foci_id')->where('course_foci.course_id', '=', $id)->get();
-
-
           // Actualizar los GRUPOS
           $groups = DB::table('groups')->select('groups.id',
                                                 'groups.name as nameGroup',
@@ -372,15 +412,10 @@ class EventsController extends Controller
                                                 'groups.schedule',
                                                 'groups.place',
                                                 'groups.status_group',
-
           )->where('groups.id_course_parent', '=', $id)->get();
-
           $tutors = DB::table('groups_tutors')->join('groups', 'groups.id', '=', 'groups_tutors.id_group')
                                               ->join('users', 'users.id', '=', 'groups_tutors.id_tutor')
                                               ->where('groups.id_course_parent', '=', $id)->get();
-
-
-
           $arrayGroups = array();
           foreach ($groups as  $grupo) {
               array_push($arrayGroups, $grupo->id);
@@ -396,26 +431,29 @@ class EventsController extends Controller
                    'groups_users.status')
           ->whereIn('groups_users.id_group', $arrayGroups)->get();
           $array_focos = array();
-
-
-
           foreach ($focos as $value) {
             array_push($array_focos, ' '.$value->name);
           }
-
-
           $focos_string = implode(",", $array_focos);
 
-
-
-
+          $arrayIdGroups = array();
+          foreach ($groups as $group) {
+            array_push($arrayIdGroups, $group->id);
+          }
+          $schedulesGroups = DB::table('schedule')->select('id',
+                                                          'id_group',
+                                                          'day',
+                                                          DB::raw("DATE_FORMAT(hour_start,' %H:%i') as hour_start"),
+                                                          DB::raw("DATE_FORMAT(hour_end,' %H:%i') as hour_end"),
+                                                          )->whereIn('id_group', $arrayIdGroups)->orderBy('created_at', 'asc')->get();
             return response()->json([
               'course' => $curso,
               'focos' => $focos_string,
               'students' => $students,
               'groups' => $groups,
               'tutors' => $tutors,
-              'id_course' =>$id
+              'id_course' =>$id,
+              'schedulesGroups' => $schedulesGroups
             ], 200);
         }
 
@@ -822,10 +860,56 @@ class EventsController extends Controller
 
       // return view('management.certifiedCourse');
 
-      $course = Course::find(87);
-      $pdf = PDF::loadView('management.certifiedCourse', compact('course'))->setPaper('letter', 'landscape');
-      return $pdf->stream('certified.pdf');
+      if (auth()->user() != null) {
+        if (auth()->user()->authorizedRoles('admin')) {
+          $course = Course::find($request->id_course);
 
+          $user = null;
+          if ($request->id_user == null || $request->id_user == 'example') {
+            $user = new User();
+            $user->name = 'JUANA';
+            $user->last_name = "RANGEL DE CUELLAR";
+            $user->type_dni = "CC";
+            $user->dni = "1.000.000.000";
+            // code...
+          }else{
+            $user = User::select('dni',
+            DB::raw('upper(name) as name'),
+            DB::raw('upper(last_name) as last_name'),
+            'type_dni')->where('dni', $dni)->first();
+          }
+
+          $number = 0;
+          if ($course->certified_name_people1 != '' || $course->certified_name_people1 != null) {
+            $number++;
+          }
+          if ($course->certified_name_people2 != '' || $course->certified_name_people2 != null) {
+            $number++;
+          }
+          if ($course->certified_name_people3 != '' || $course->certified_name_people3 != null) {
+            $number++;
+          }
+          if ($course->certified_name_people4 != '' || $course->certified_name_people4 != null) {
+            $number++;
+          }
+          if ($course->certified_name_people5 != '' || $course->certified_name_people5 != null) {
+            $number++;
+          }
+          if ($course->certified_name_people6 != '' || $course->certified_name_people6 != null) {
+            $number++;
+          }
+
+          $image = 'images/certifieds/certified2.jpg';
+
+          $pdf = PDF::loadView('management.certifiedCourse', compact('course', 'user', 'number', 'image'))->setPaper('letter', 'landscape');
+          if ($request->view == 'true') {
+            return $pdf->stream('certified'.$request->id_user.'.pdf');
+          }
+          return $pdf->download('certified'.$request->id_course.$request->id_user.'.pdf');
+        }
+        abort(401, 'This action is inautorized');
+      }
+      abort(401, 'This action is inautorized');
     }
 
     public function addCertifieds(Request $request){
@@ -893,6 +977,86 @@ class EventsController extends Controller
         ],200);
       }
 
+    }
+
+    public function addSchedule(Request $request){
+      if ($request->ajax()) {
+        $fecha_hoy = date("Y-m-d H:i:s");
+        $id_group = DB::table('schedule')->insert(
+          [ 'day' => $request->day,
+            'hour_start' => $request->hourStart,
+            'hour_end' => $request->hourEnd,
+            'id_group' => $request->id_group,
+            'created_at' => $fecha_hoy,
+            'updated_at' => $fecha_hoy
+          ]
+        );
+        $schedulesGroup = DB::table('schedule')->select('id',
+                                                        'day',
+                                                        DB::raw("DATE_FORMAT(hour_start,' %H:%i') as hour_start"),
+                                                        DB::raw("DATE_FORMAT(hour_end,' %H:%i') as hour_end"),
+                                                        )->where('id_group', '=', $request->id_group)->orderBy('created_at', 'asc')->get();
+        return response()->json([
+          'schedulesGroup' => $schedulesGroup
+        ],200);
+      }
+    }
+
+    public function deleteSchedule(Request $request){
+      if ($request->ajax()) {
+        DB::table('schedule')->where('id', '=', $request->id_schedule)->delete();
+        $schedulesGroup = DB::table('schedule')->select('id',
+                                                        'day',
+                                                        DB::raw("DATE_FORMAT(hour_start,' %H:%i') as hour_start"),
+                                                        DB::raw("DATE_FORMAT(hour_end,' %H:%i') as hour_end"),
+                                                        )->where('id_group', '=', $request->id_group)->orderBy('created_at', 'asc')->get();
+        return response()->json([
+          'schedulesGroup' => $schedulesGroup
+        ],200);
+      }
+    }
+
+    public function searchCourse(Request $request){
+      if ($request->ajax()) {
+        $course = Course::find($request->id_course);
+        return response()->json([
+          'course' => $course
+        ],200);
+      }
+    }
+
+    public function saveChangesCertified(Request $request){
+      if ($request->ajax()) {
+        $msj = 'Los datos se han guardado satisfactoriamente';
+        $name='';
+        if($request->hasFile('certified_file')){
+          $file = $request->file('certified_file');
+          $name =time().$file->getClientOriginalName();
+          $file->move(public_path().'/images/certifieds/',$name);
+        }
+        $course = Course::find($request->id);
+        $course->certified_title = $this->validarString($request->certified_title);
+        $course->certified_header = $this->validarString($request->certified_header);
+        $course->certified_name_people1 = $this->validarString($request->certified_name_people1);
+        $course->certified_name_people2 = $this->validarString($request->certified_name_people2);
+        $course->certified_name_people3 = $this->validarString($request->certified_name_people3);
+        $course->certified_name_people4 = $this->validarString($request->certified_name_people4);
+        $course->certified_name_people5 = $this->validarString($request->certified_name_people5);
+        $course->certified_name_people6 = $this->validarString($request->certified_name_people6);
+        $course->certified_position_people1 = $this->validarString($request->certified_position_people1);
+        $course->certified_position_people2 = $this->validarString($request->certified_position_people2);
+        $course->certified_position_people3 = $this->validarString($request->certified_position_people3);
+        $course->certified_position_people4 = $this->validarString($request->certified_position_people4);
+        $course->certified_position_people5 = $this->validarString($request->certified_position_people5);
+        $course->certified_position_people6 = $this->validarString($request->certified_position_people6);
+        if ($name !== '' && $name !== null) {
+          $course->certified_image = 'images/certifieds/'.$name;
+        }
+        $course->Save();
+        return response()->json([
+          'msj' => $msj
+        ],200);
+      }
     }
 
 
