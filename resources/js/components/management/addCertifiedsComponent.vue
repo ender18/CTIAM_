@@ -22,7 +22,7 @@
       <div class="col-12">
         <h3 v-if="students1.length == 0">No hay ninguna beneficiaria en este curso</h3>
         <div class="table-responsive">
-          <table v-if="students1.length > 0" class="table">
+          <table v-if="students1.length > 0" class="table" id="table_certifieds">
             <thead class="thead-light">
               <tr >
                 <th scope="col">N° Documento</th>
@@ -41,7 +41,7 @@
                 <td>{{student.nameGroup}}</td>
                 <td>{{student.status}}</td>
                 <td class="text-center">
-                  <form class="" action="/exportCertified" method="GET">
+                  <form class="" action="/exportCertified" method="GET" target="_blank">
                     <input type="hidden" name="id_course" v-model="course1.id">
                     <input type="hidden" name="id_user" v-bind:value="student.dni">
                     <input type="hidden" name="view" v-bind:value="false">
@@ -121,6 +121,17 @@ export default {
 
       },
 
+
+
+    },
+
+    mounted(){
+
+      $('#table_certifieds').DataTable( {
+          language: {
+            url: '/js/Spanish.json'
+          }
+        });
 
 
     }

@@ -1,6 +1,6 @@
 <template >
 
-    <div class="container">
+    <div class="container pb-3">
     <!-- Inicio Misión -->
       <div class="row pt-4">
         <div class="col-lg-6 col-md-12 d-flex align-items-center">
@@ -115,22 +115,32 @@
       <!-- Vista de   Normativo y funcional Imagen a la izquierda -->
     <div class="row d-flex justify-content-center pt-4">
       <div class="col-lg-6 col-md-12">
-          <table class="table">
+        <div class="table-responsive">
+          <table class="table" id="table_marco_normativo">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Nombre del archivo</th>
+              </tr>
+            </thead>
             <tbody>
+
               <tr v-for="mn in marco_normativo" >
                 <td class="text-center">
                   <a v-bind:href="mn.file" download>
-                  <i class="fas fa-file-download fa-2x color-pink"></i>
-                </a>
+                    <i class="fas fa-file-download fa-2x color-pink"></i>
+                  </a>
                 </td>
                 <td class="text-center">
                   <a v-bind:href="mn.file" download>
-                  {{mn.content}}
+                    {{mn.content}}
                   </a>
                 </td>
               </tr>
             </tbody>
           </table>
+
+        </div>
       </div>
     </div>
     <!-- Fin de Marco Normativo y funcional -->
@@ -155,7 +165,16 @@ export default {
 
   },
 
-  props:['mision', 'vision', 'obj_general', 'obj_especifico', 'marco_normativo', 'img_obj_especifico']
+  props:['mision', 'vision', 'obj_general', 'obj_especifico', 'marco_normativo', 'img_obj_especifico'],
+
+  mounted(){
+
+    $('#table_marco_normativo').DataTable( {
+      language: {
+        url: '/js/Spanish.json'
+      }
+    });
+  }
 
 }
 </script>

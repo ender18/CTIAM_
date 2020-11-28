@@ -100,7 +100,7 @@
                     <div class="carousel-inner">
                         <div v-bind:class="['carousel-item', (n === 1) ? 'active': ''] " v-for="n in secciones">
                           <div class="row">
-                            <div class="col-md-4 mb-3"  v-for="m in 3" v-if="n*3+m-4 < proyectos_realizados1.length">
+                            <div class="col-md-4 mb-3 d-flex align-items-stretch"  v-for="m in 3" v-if="n*3+m-4 < proyectos_realizados1.length">
                               <div class="card shadow border-0">
                                 <img v-bind:src="proyectos_realizados1[n*3+m-4].file" alt="" class="img img-fluid border-top-element">
                                 <div class="card-body">

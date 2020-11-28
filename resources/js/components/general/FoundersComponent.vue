@@ -22,7 +22,7 @@
             <p class="card-text">Profesión: {{founder.content2}}</p>
             <p class="card-text">{{founder.content1}}</p>
             <div class="d-flex justify-content-center">
-              <a :href="founder.content2" target="_blank"> <button class="btn btn-primary border-round" type="button" name="button">Ver CV</button> </a>
+              <a :href="founder.content3" target="_blank"> <button class="btn btn-primary border-round" type="button" name="button">Ver CV</button> </a>
             </div>
           </div>
         </div>

@@ -10,10 +10,10 @@ class AllyController extends Controller
 {
 
       public function index(){
+        if (auth()->user() == null) abort(401, 'This action is inautorized');
+        if (!auth()->user()->authorizedRoles('aliado')) abort(401, 'This action is inautorized');
         $my_courses = Course::where('id_owner', auth()->user()->id)->get();
         $id_my_courses = array();
-
-
         $my_groups = DB::table('groups')
                  ->join('courses', 'courses.id', '=', 'groups.id_course_parent')
                  ->select('groups.id_course_parent', DB::raw('count(groups.id_course_parent) as total'))
@@ -36,6 +36,9 @@ class AllyController extends Controller
 
 
       public function indexBeneficiary(){
+
+        if (auth()->user() == null) abort(401, 'This action is inautorized');
+        if (!auth()->user()->authorizedRoles('aliado')) abort(401, 'This action is inautorized');    
 
         $beneficiaries = DB::table('users')
                           ->join('role_user', 'users.id', '=', 'role_user.user_id')

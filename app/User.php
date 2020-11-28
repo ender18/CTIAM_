@@ -6,12 +6,13 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use DB;
+use App\Notifications\SuscribeCourse;
 
 class User extends Authenticatable
 {
     use Notifiable;
 
-
+    protected $sendMail;
 
     public function roles(){
         return $this->belongsToMany('App\Role');
@@ -93,4 +94,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function sendNotify($curso, $grupo, $schedules_string, $email)
+    {
+        $this->notify(new SuscribeCourse($curso, $grupo, $schedules_string));
+    }
 }

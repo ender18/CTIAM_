@@ -14,6 +14,8 @@ class FocusController extends Controller
      */
     public function index()
     {
+      if (auth()->user() == null) abort(401, 'This action is inautorized');
+      if (!auth()->user()->authorizedRoles('admin')) abort(401, 'This action is inautorized');
         $focos = Focus::get();
         return view('management.focusManagement', compact('focos'));
     }

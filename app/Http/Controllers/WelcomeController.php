@@ -12,7 +12,7 @@ use DB;
 class WelcomeController extends Controller
 {
     public function index(){
-      $sliders = Content::where('name', 'primary_slider')->get();
+      $sliders = Content::where('name', 'primary_slider')->orderBy('created_at', 'desc')->get();
       $quienes_somos = Content::where('name', 'quienes_somos')->get();
       $que_hacemos = Content::where('name', 'que_hacemos')->get();
       $proyectos_realizados = Content::where('name', 'proyectos_realizados')->orderBy('id', 'desc')->get();

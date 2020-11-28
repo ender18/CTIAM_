@@ -4,7 +4,6 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link href="css/mycss.css" rel="stylesheet">
     <style>
       @page { margin:0px;}
     </style>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Content;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Test;
 
 class ContentController extends Controller
 {
@@ -14,8 +16,9 @@ class ContentController extends Controller
      */
     public function index()
     {
+      if (auth()->user() == null) abort(401, 'This action is inautorized');
+      if (!auth()->user()->authorizedRoles('admin')) abort(401, 'This action is inautorized');
         $content = Content::get();
-
         return view('management.indexManagement', compact('content'));
     }
 
@@ -60,6 +63,9 @@ class ContentController extends Controller
         $contents = Content::get();
         $msj = 'Los cambios se guardaron correctamente.';
 
+        // Mail::to('enderortega@outlook.com')
+        //   ->send(new Test('Si funciona'));
+        //
         return response()->json([
           'msj' => $msj,
           'contents' => $contents

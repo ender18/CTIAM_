@@ -1,39 +1,40 @@
 <template>
 
   <div class="container">
-    <div class="row">
-      <div id="msj" v-show="a"  class="col-12">
-        <div class="alert alert-success" role="alert">
-          {{msj}}
-        </div>
-      </div>
-      <div class="col-10">
-        <h1>Focos de nuestra red de conocimiento</h1>
-        <button class="btn btn-primary" type="button" v-on:click="openMsj('Hola a todos, este es un mensaje de error')" name="button">Mostrar Mensaje</button>
-      </div>
-      <div class="col-2">
-        <button class="btn btn-primary " type="button" name="button" v-on:click="openModalContent(null)"><i class="fas fa-plus" ></i> Nuevo Foco</button>
 
+    <div class="row pt-4">
+      <div class="col-10 text-center">
+        <h2> <strong>Focos de nuestra red de conocimiento</strong> </h2>
+        <hr class="hr-pink-center">
       </div>
+      <div class="col-2 text-right">
+        <button class="btn btn-secondary border-round " type="button" name="button" v-on:click="openModalContent(null)"><i class="fas fa-plus" ></i></button>
+      </div>
+    </div>
+
+    <div class="row pt-4">
       <div class="col-12">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Nombre</th>
-              <th scope="col">Descripción</th>
-              <th scope="col">Imagen</th>
-              <th scope="col">Opciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="foco in focos1">
-              <th scope="row">{{foco.name}}</th>
-              <td>{{foco.description}}</td>
-              <td><img v-bind:src="foco.url_image" alt="" class="img img-fluid" style="width: 100px"></td>
-              <td><button class="btn btn-warning" type="button" name="button" v-on:click="openModalContent(foco.id)"><i class="fas fa-pen"></i></button> <button class="btn btn-danger" type="button" name="button" v-on:click="eraseContent(foco.id)"><i class="fas fa-trash"></i></button> </td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col" class="d-none d-lg-block">Descripción</th>
+                <th scope="col">Imagen</th>
+                <th scope="col">Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="foco in focos1">
+                <th scope="row">{{foco.name}}</th>
+                <td class="d-none d-lg-block">{{foco.description}}</td>
+                <td><img v-bind:src="foco.url_image" alt="" class="img img-fluid" style="width: 100%"></td>
+                <td><button class="btn btn-secondary border-round" type="button" name="button" v-on:click="openModalContent(foco.id)"><i class="fas fa-pen"></i></button>
+                  <button class="btn btn-white border-color-pink color-pink border-round " type="button" name="button" v-on:click="eraseContent(foco.id)"><i class="fas fa-trash"></i></button> </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
 
@@ -41,11 +42,20 @@
     <div class="modal fade" id="modalFocus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Editar / Agregar Foco</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+          <div class="modal-header border-0">
+            <div class="container">
+              <div class="row">
+                <div class="col-10 text-center">
+                  <h4 ><strong>Editar / Agregar Foco</strong></h4 >
+                  <hr class="hr-pink-center">
+                </div>
+                <div class="col-2">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="modal-body">
             <form class="form-group" v-on:submit.prevent="addChangeFocus">
@@ -55,20 +65,20 @@
                 </div>
                 <div class="col-12">
                   <label for="">Nombre</label>
-                  <input class="form-control" type="text" name="" value="" v-model="name">
+                  <input class="form-control border-round" type="text" name="" value="" v-model="name">
                 </div>
                 <div class="col-12">
                   <label for="">Descripción</label>
-                  <textarea class="form-control" rows="3" v-model="description"></textarea>
+                  <textarea class="form-control border-round" rows="3" v-model="description"></textarea>
                 </div>
                 <div class="col-12">
                   <label for="">Imagen / Archivo</label>
                   <input type="file" id="file" @change="obtenerFile" class="form-control-file" name="file">
                 </div>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" v-on:click="closeModalContent()">Cerrar</button>
-                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+              <div class="modal-footer border-0">
+                <button type="button" class="btn btn-white color-pink border-color-pink border-round" v-on:click="closeModalContent()"><i class="fas fa-times" ></i> </button>
+                <button type="submit" class="btn btn-secondary border-round"> <i class="fas fa-save"></i></button>
               </div>
 
             </form>
@@ -109,7 +119,7 @@ export default {
   methods:{
 
     addChangeFocus: function(){
-
+      toastr.warning('Procesando solicitud', 'Espere')
       let formData = new FormData();
       formData.append('id', this.id);
       formData.append('name', this.name);
@@ -128,6 +138,7 @@ export default {
 
     },
     eraseContent(id){
+      toastr.warning('Procesando solicitud', 'Espere')
       axios.delete('/manage_focus/'+id)
       .then(response => {
          this.focos1 = response.data.focos;
@@ -139,11 +150,6 @@ export default {
 
     },
 
-
-    openMsj: function(msj){
-      toastr.success("HOLAAAAAAAAAAAA", 'Holaaa');
-    }
-    ,
     openModalContent: function(id){
 
 
@@ -200,11 +206,7 @@ export default {
     showMessage: function(msj){
       this.msj = msj;
       this.a = true;
-      $("#msj").fadeIn(500);
-      setTimeout(function(){
-          $("#msj").fadeOut();
-          this.a = false;
-      }, 2000);
+      toastr.success(msj, 'Exito');
     }
 
 

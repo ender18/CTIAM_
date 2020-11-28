@@ -15,8 +15,11 @@ class StatisticsController extends Controller
      */
     public function index()
     {
-        $rol_beneficiaria = DB::table('roles')->where('name', 'beneficiaria')->first();
 
+      
+        if (auth()->user() == null) abort(401, 'This action is inautorized');
+        if (!auth()->user()->authorizedRoles('admin')) abort(401, 'This action is inautorized');
+        $rol_beneficiaria = DB::table('roles')->where('name', 'beneficiaria')->first();
         $beneficiarias = User::select('users.commune', DB::raw('count(commune) as total'))
                  ->join('role_user', 'users.id', '=', 'role_user.user_id')
                  ->where('role_user.role_id', '=', $rol_beneficiaria->id)

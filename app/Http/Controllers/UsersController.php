@@ -136,9 +136,9 @@ class UsersController extends Controller
     }
 
 
-    public function manageUsers(){
-
-
+    public function manageUsers(){      
+      if (auth()->user() == null) abort(401, 'This action is inautorized');
+      if (!auth()->user()->authorizedRoles('admin')) abort(401, 'This action is inautorized');
       $usuarios = User::select('role_user.id', 'users.name', 'users.last_name', 'users.email', 'users.phone', 'roles.description', 'role_user.status')->join('role_user', 'users.id', '=', 'role_user.user_id')->join('roles', 'roles.id', '=', 'role_user.role_id' )->orderBy('users.id', 'ASC')->get();
       return view('management.manageUsers', compact('usuarios'));
     }

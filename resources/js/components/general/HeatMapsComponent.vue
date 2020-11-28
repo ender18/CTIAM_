@@ -1,181 +1,180 @@
 <template>
 
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <div class="text-center">
-        <h2>Mapa de beneficiarias por comunas</h2>
-        <div class="progress" style="height: 4px;">
-          <div class="progress-bar bg-secondary" role="progressbar" style="width: 100%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center pt-4">
+        <h2> <strong>Mapa de beneficiarias por comunas</strong> </h2>
+        <hr class="hr-pink-center">
       </div>
-      <div style="height: 1200px;">
-        <l-map
-        style="height: 80%; width: 100%"
-        :zoom="zoom"
-        :center="center"
-        @update:zoom="zoomUpdated"
-        @update:center="centerUpdated"
-        @update:bounds="boundsUpdated"
-        >
-        <l-tile-layer :url="url"></l-tile-layer>
-
-<!-- Comuna 1 -->
-        <l-polygon :lat-lngs="polygon.comuna1" :color="polygon.color1" :fillColor="polygon.color1" :attribution="'Proyecto CTIAM 2020 - UFPS. All rights reserved'">
-          <l-popup>
-            <h5><strong>Comuna 1</strong> </h5>
-            <hr>
-            <h6><strong>Beneficiarias</strong> : {{this.beneficiarias_comuna_1}}</h6>
-            <h6><strong>Aliados</strong> : {{this.aliados_comuna_1}}</h6>
-          </l-popup>
-          <l-tooltip :options="{ permanent: true, interactive: true }">
-            <div>
-              Comuna 1
-            </div>
-          </l-tooltip>
-        </l-polygon>
-
-<!-- Comuna 2 -->
-        <l-polygon :lat-lngs="polygon.comuna2" :color="polygon.color2" :fillColor="polygon.color2" :attribution="'Proyecto CTIAM 2020 - UFPS. All rights reserved'">
-          <l-popup>
-            <h5><strong>Comuna 2</strong> </h5>
-            <hr>
-            <h6><strong>Beneficiarias</strong> : {{this.beneficiarias_comuna_2}}</h6>
-            <h6><strong>Aliados</strong> : {{this.aliados_comuna_2}}</h6>
-          </l-popup>
-          <l-tooltip :options="{ permanent: true, interactive: true }">
-            <div>
-              Comuna 2
-            </div>
-          </l-tooltip>
-        </l-polygon>
-
-<!-- Comuna 3 -->
-        <l-polygon :lat-lngs="polygon.comuna3" :color="polygon.color3" :fillColor="polygon.color3" :attribution="'Proyecto CTIAM 2020 - UFPS. All rights reserved'">
-          <l-popup>
-            <h5><strong>Comuna 3</strong> </h5>
-            <hr>
-            <h6><strong>Beneficiarias</strong> : {{this.beneficiarias_comuna_3}}</h6>
-            <h6><strong>Aliados</strong> : {{this.aliados_comuna_3}}</h6>
-          </l-popup>
-          <l-tooltip :options="{ permanent: true, interactive: true }">
-            <div>
-              Comuna 3
-            </div>
-          </l-tooltip>
-        </l-polygon>
-
-<!-- Comuna 4 -->
-        <l-polygon :lat-lngs="polygon.comuna4" :color="polygon.color1" :fillColor="polygon.color4" :attribution="'Proyecto CTIAM 2020 - UFPS. All rights reserved'">
-          <l-popup>
-            <h5><strong>Comuna 4</strong> </h5>
-            <hr>
-            <h6><strong>Beneficiarias</strong> : {{this.beneficiarias_comuna_4}}</h6>
-            <h6><strong>Aliados</strong> : {{this.aliados_comuna_4}}</h6>
-          </l-popup>
-          <l-tooltip :options="{ permanent: true, interactive: true }">
-            <div>
-              Comuna 4
-            </div>
-          </l-tooltip>
-        </l-polygon>
-
-<!-- Comuna 5 -->
-        <l-polygon :lat-lngs="polygon.comuna5" :color="polygon.color5" :fillColor="polygon.color5" :attribution="'Proyecto CTIAM 2020 - UFPS. All rights reserved'">
-          <l-popup>
-            <h5><strong>Comuna 5</strong> </h5>
-            <hr>
-            <h6><strong>Beneficiarias</strong> : {{this.beneficiarias_comuna_5}}</h6>
-            <h6><strong>Aliados</strong> : {{this.aliados_comuna_5}}</h6>
-          </l-popup>
-          <l-tooltip :options="{ permanent: true, interactive: true }">
-            <div>
-              Comuna 5
-            </div>
-          </l-tooltip>
-        </l-polygon>
-
-<!-- Comuna 6 -->
-        <l-polygon :lat-lngs="polygon.comuna6" :color="polygon.color6" :fillColor="polygon.color6" :attribution="'Proyecto CTIAM 2020 - UFPS. All rights reserved'">
-          <l-popup>
-            <h5><strong>Comuna 6</strong> </h5>
-            <hr>
-            <h6><strong>Beneficiarias</strong> : {{this.beneficiarias_comuna_6}}</h6>
-            <h6><strong>Aliados</strong> : {{this.aliados_comuna_6}}</h6>
-          </l-popup>
-          <l-tooltip :options="{ permanent: true, interactive: true }">
-            <div>
-              Comuna 6
-            </div>
-
-          </l-tooltip>
-        </l-polygon>
-
-<!-- Comuna 7 -->
-        <l-polygon :lat-lngs="polygon.comuna7" :color="polygon.color7" :fillColor="polygon.color7" :attribution="'Proyecto CTIAM 2020 - UFPS. All rights reserved'">
-          <l-popup>
-            <h5><strong>Comuna 7</strong> </h5>
-            <hr>
-            <h6><strong>Beneficiarias</strong> : {{this.beneficiarias_comuna_7}}</h6>
-            <h6><strong>Aliados</strong> : {{this.aliados_comuna_7}}</h6>
-          </l-popup>
-          <l-tooltip :options="{ permanent: true, interactive: true }">
-            <div>
-              Comuna 7
-            </div>
-          </l-tooltip>
-        </l-polygon>
-
-<!-- Comuna 8 -->
-        <l-polygon :lat-lngs="polygon.comuna8" :color="polygon.color8" :fillColor="polygon.color8" :attribution="'Proyecto CTIAM 2020 - UFPS. All rights reserved'">
-          <l-popup>
-            <h5><strong>Comuna 8</strong> </h5>
-            <hr>
-            <h6><strong>Beneficiarias</strong> : {{this.beneficiarias_comuna_8}}</h6>
-            <h6><strong>Aliados</strong> : {{this.aliados_comuna_8}}</h6>
-          </l-popup>
-          <l-tooltip :options="{ permanent: true, interactive: true }">
-            <div>
-              Comuna 8
-            </div>
-          </l-tooltip>
-        </l-polygon>
-
-<!-- Comuna 9 -->
-        <l-polygon :lat-lngs="polygon.comuna9" :color="polygon.color9" :fillColor="polygon.color9" :attribution="'Proyecto CTIAM 2020 - UFPS. All rights reserved'">
-          <l-popup>
-            <h5><strong>Comuna 9</strong> </h5>
-            <hr>
-            <h6><strong>Beneficiarias</strong> : {{this.beneficiarias_comuna_9}}</h6>
-            <h6><strong>Aliados</strong> : {{this.aliados_comuna_9}}</h6>
-          </l-popup>
-          <l-tooltip :options="{ permanent: true, interactive: true }">
-            <div>
-              Comuna 9
-            </div>
-          </l-tooltip>
-        </l-polygon>
-
-<!-- Comuna 10 -->
-        <l-polygon :lat-lngs="polygon.comuna10" :color="polygon.color10" :fillColor="polygon.color10" :attribution="'Proyecto CTIAM 2020 - UFPS. All rights reserved'">
-          <l-popup>
-            <h5><strong>Comuna 10</strong> </h5>
-            <hr>
-            <h6><strong>Beneficiarias</strong> : {{this.beneficiarias_comuna_10}}</h6>
-            <h6><strong>Aliados</strong> : {{this.aliados_comuna_10}}</h6>
-          </l-popup>
-          <l-tooltip :options="{ permanent: true, interactive: true }">
-            <div>
-              Comuna 10
-            </div>
-          </l-tooltip>
-        </l-polygon>
-
-
-      </l-map>
     </div>
 
+    <div class="row">
+      <div class="col-12">
+        <div style="height: 1200px; z-index:  1;">
+          <l-map
+          style="height: 80%; width: 100%;  z-index:  1;"
+          :zoom="zoom"
+          :center="center"
+          @update:zoom="zoomUpdated"
+          @update:center="centerUpdated"
+          @update:bounds="boundsUpdated"
+          >
+          <l-tile-layer :url="url"></l-tile-layer>
+
+          <!-- Comuna 1 -->
+          <l-polygon :lat-lngs="polygon.comuna1" :color="polygon.color1" :fillColor="polygon.color1" :attribution="'Proyecto CTIAM 2020 - UFPS. All rights reserved'">
+            <l-popup>
+              <h5><strong>Comuna 1</strong> </h5>
+              <hr>
+              <h6><strong>Beneficiarias</strong> : {{this.beneficiarias_comuna_1}}</h6>
+              <h6><strong>Aliados</strong> : {{this.aliados_comuna_1}}</h6>
+            </l-popup>
+            <l-tooltip :options="{ permanent: true, interactive: true }">
+              <div>
+                Comuna 1
+              </div>
+            </l-tooltip>
+          </l-polygon>
+
+          <!-- Comuna 2 -->
+          <l-polygon :lat-lngs="polygon.comuna2" :color="polygon.color2" :fillColor="polygon.color2" :attribution="'Proyecto CTIAM 2020 - UFPS. All rights reserved'">
+            <l-popup>
+              <h5><strong>Comuna 2</strong> </h5>
+              <hr>
+              <h6><strong>Beneficiarias</strong> : {{this.beneficiarias_comuna_2}}</h6>
+              <h6><strong>Aliados</strong> : {{this.aliados_comuna_2}}</h6>
+            </l-popup>
+            <l-tooltip :options="{ permanent: true, interactive: true }">
+              <div>
+                Comuna 2
+              </div>
+            </l-tooltip>
+          </l-polygon>
+
+          <!-- Comuna 3 -->
+          <l-polygon :lat-lngs="polygon.comuna3" :color="polygon.color3" :fillColor="polygon.color3" :attribution="'Proyecto CTIAM 2020 - UFPS. All rights reserved'">
+            <l-popup>
+              <h5><strong>Comuna 3</strong> </h5>
+              <hr>
+              <h6><strong>Beneficiarias</strong> : {{this.beneficiarias_comuna_3}}</h6>
+              <h6><strong>Aliados</strong> : {{this.aliados_comuna_3}}</h6>
+            </l-popup>
+            <l-tooltip :options="{ permanent: true, interactive: true }">
+              <div>
+                Comuna 3
+              </div>
+            </l-tooltip>
+          </l-polygon>
+
+          <!-- Comuna 4 -->
+          <l-polygon :lat-lngs="polygon.comuna4" :color="polygon.color1" :fillColor="polygon.color4" :attribution="'Proyecto CTIAM 2020 - UFPS. All rights reserved'">
+            <l-popup>
+              <h5><strong>Comuna 4</strong> </h5>
+              <hr>
+              <h6><strong>Beneficiarias</strong> : {{this.beneficiarias_comuna_4}}</h6>
+              <h6><strong>Aliados</strong> : {{this.aliados_comuna_4}}</h6>
+            </l-popup>
+            <l-tooltip :options="{ permanent: true, interactive: true }">
+              <div>
+                Comuna 4
+              </div>
+            </l-tooltip>
+          </l-polygon>
+
+          <!-- Comuna 5 -->
+          <l-polygon :lat-lngs="polygon.comuna5" :color="polygon.color5" :fillColor="polygon.color5" :attribution="'Proyecto CTIAM 2020 - UFPS. All rights reserved'">
+            <l-popup>
+              <h5><strong>Comuna 5</strong> </h5>
+              <hr>
+              <h6><strong>Beneficiarias</strong> : {{this.beneficiarias_comuna_5}}</h6>
+              <h6><strong>Aliados</strong> : {{this.aliados_comuna_5}}</h6>
+            </l-popup>
+            <l-tooltip :options="{ permanent: true, interactive: true }">
+              <div>
+                Comuna 5
+              </div>
+            </l-tooltip>
+          </l-polygon>
+
+          <!-- Comuna 6 -->
+          <l-polygon :lat-lngs="polygon.comuna6" :color="polygon.color6" :fillColor="polygon.color6" :attribution="'Proyecto CTIAM 2020 - UFPS. All rights reserved'">
+            <l-popup>
+              <h5><strong>Comuna 6</strong> </h5>
+              <hr>
+              <h6><strong>Beneficiarias</strong> : {{this.beneficiarias_comuna_6}}</h6>
+              <h6><strong>Aliados</strong> : {{this.aliados_comuna_6}}</h6>
+            </l-popup>
+            <l-tooltip :options="{ permanent: true, interactive: true }">
+              <div>
+                Comuna 6
+              </div>
+
+            </l-tooltip>
+          </l-polygon>
+
+          <!-- Comuna 7 -->
+          <l-polygon :lat-lngs="polygon.comuna7" :color="polygon.color7" :fillColor="polygon.color7" :attribution="'Proyecto CTIAM 2020 - UFPS. All rights reserved'">
+            <l-popup>
+              <h5><strong>Comuna 7</strong> </h5>
+              <hr>
+              <h6><strong>Beneficiarias</strong> : {{this.beneficiarias_comuna_7}}</h6>
+              <h6><strong>Aliados</strong> : {{this.aliados_comuna_7}}</h6>
+            </l-popup>
+            <l-tooltip :options="{ permanent: true, interactive: true }">
+              <div>
+                Comuna 7
+              </div>
+            </l-tooltip>
+          </l-polygon>
+
+          <!-- Comuna 8 -->
+          <l-polygon :lat-lngs="polygon.comuna8" :color="polygon.color8" :fillColor="polygon.color8" :attribution="'Proyecto CTIAM 2020 - UFPS. All rights reserved'">
+            <l-popup>
+              <h5><strong>Comuna 8</strong> </h5>
+              <hr>
+              <h6><strong>Beneficiarias</strong> : {{this.beneficiarias_comuna_8}}</h6>
+              <h6><strong>Aliados</strong> : {{this.aliados_comuna_8}}</h6>
+            </l-popup>
+            <l-tooltip :options="{ permanent: true, interactive: true }">
+              <div>
+                Comuna 8
+              </div>
+            </l-tooltip>
+          </l-polygon>
+
+          <!-- Comuna 9 -->
+          <l-polygon :lat-lngs="polygon.comuna9" :color="polygon.color9" :fillColor="polygon.color9" :attribution="'Proyecto CTIAM 2020 - UFPS. All rights reserved'">
+            <l-popup>
+              <h5><strong>Comuna 9</strong> </h5>
+              <hr>
+              <h6><strong>Beneficiarias</strong> : {{this.beneficiarias_comuna_9}}</h6>
+              <h6><strong>Aliados</strong> : {{this.aliados_comuna_9}}</h6>
+            </l-popup>
+            <l-tooltip :options="{ permanent: true, interactive: true }">
+              <div>
+                Comuna 9
+              </div>
+            </l-tooltip>
+          </l-polygon>
+
+          <!-- Comuna 10 -->
+          <l-polygon :lat-lngs="polygon.comuna10" :color="polygon.color10" :fillColor="polygon.color10" :attribution="'Proyecto CTIAM 2020 - UFPS. All rights reserved'">
+            <l-popup>
+              <h5><strong>Comuna 10</strong> </h5>
+              <hr>
+              <h6><strong>Beneficiarias</strong> : {{this.beneficiarias_comuna_10}}</h6>
+              <h6><strong>Aliados</strong> : {{this.aliados_comuna_10}}</h6>
+            </l-popup>
+            <l-tooltip :options="{ permanent: true, interactive: true }">
+              <div>
+                Comuna 10
+              </div>
+            </l-tooltip>
+          </l-polygon>
+
+
+        </l-map>
+      </div>
     </div>
   </div>
 </div>
@@ -207,6 +206,8 @@ export default {
   },
   data () {
     return {
+      
+
       beneficiarias1 : this.beneficiarias,
       aliados1: this.aliados,
       beneficiarias_comuna_1: '0',

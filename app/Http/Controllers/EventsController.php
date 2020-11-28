@@ -10,6 +10,7 @@ use App\User;
 use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade as PDF;
+use App\Notifications\SuscribeCourse;
 
 class EventsController extends Controller
 {
@@ -20,6 +21,8 @@ class EventsController extends Controller
      */
     public function index()
     {
+          if (auth()->user() == null) abort(401, 'This action is inautorized');
+          if (!auth()->user()->authorizedRoles('admin')) abort(401, 'This action is inautorized');
           $focos = Focus::get();
           $courses = Course::orderBy('created_at', 'DESC')->get();
           $aliados = null;
@@ -460,6 +463,15 @@ class EventsController extends Controller
     }
 
     public function finishCourse(Request $request){
+
+      if (auth()->user() == null) abort(401, 'This action is inautorized');
+      if (!auth()->user()->authorizedRoles('tutor')) abort(401, 'This action is inautorized');
+      $grupo = DB::table('groups')->where('id', '=', $request->id_group)->first();
+
+
+      if (auth()->user()->id == $grupo->id) abort(401, 'This action is inautorized');
+      if ($grupo->status_group == 'Calificado') abort(401, 'This action is inautorized');
+
       $id_course = $request->id_course;
       $id_group = $request->id_group;
 
@@ -516,6 +528,10 @@ class EventsController extends Controller
 
     public function showEvents(Request $request)
     {
+
+      if (auth()->user() == null) abort(401, 'This action is inautorized');
+      if (!auth()->user()->authorizedRoles('beneficiaria')) abort(401, 'This action is inautorized');
+
       $fecha_hoy = date("Y-m-d H:i:s");
 
 
@@ -577,11 +593,16 @@ class EventsController extends Controller
 
     public function suscribe(Request $request){
       if ($request->ajax()) {
+
+
+
+
         $msj = '';
         $status = '';
 
         $grupo = DB::table('groups')->where('id', '=', $request->id)->first();
         $curso = Course::find($grupo->id_course_parent);
+        $schedules =
         $matriculados1 = count(DB::table('groups_users')->where('id_group', $request->id)->get());
 
         if ($grupo->quota > $matriculados1) {
@@ -591,6 +612,15 @@ class EventsController extends Controller
           );
           $msj = 'Se ha inscrito en la actividad "'.$curso->title.'" satisfactoriamente. ¿Desea ver más actividades disponibles o ver actividades matriculadas?';
           $status = 'success';
+          $schedules_string = '';
+          $schedules = DB::table('schedule')->where('id_group', '=', $request->id)->get();
+          foreach ($schedules as $schedule) {
+            $schedules_string .= $schedule->day.' ('.substr($schedule->hour_start, 0, 5 ).'-'.substr($schedule->hour_end, 0, 5 ).') -';
+          }
+          $email = auth()->user()->email;
+
+          auth()->user()->sendNotify($curso, $grupo, $schedules_string, $email);
+
         }else {
           $msj = 'No se ha podido inscribir en el curso "'.$curso->title.'" ha excedido el cupo maximo';
           $status = '';
@@ -668,6 +698,8 @@ class EventsController extends Controller
     }
 
     public function showMyEvents(Request $request){
+      if (auth()->user() == null) abort(401, 'This action is inautorized');
+      if (!auth()->user()->authorizedRoles('beneficiaria')) abort(401, 'This action is inautorized');
 
       $my_courses = Course::join('groups', 'courses.id', '=', 'groups.id_course_parent')
                           ->join('groups_users', 'groups_users.id_group', '=', 'groups.id')
@@ -741,6 +773,10 @@ class EventsController extends Controller
 
     // METODOS DE MYEVENTS SESIÓN ALIADOS
     public function myEventsAliado(Request $request){
+
+      if (auth()->user() == null) abort(401, 'This action is inautorized');
+      if (!auth()->user()->authorizedRoles('tutor')) abort(401, 'This action is inautorized');
+
       $courses = Course::join('groups', 'courses.id', '=', 'groups.id_course_parent')
                         ->join('groups_tutors', 'groups_tutors.id_group', '=', 'groups.id')
                         ->select('courses.title',
@@ -777,14 +813,11 @@ class EventsController extends Controller
           $type_msj = '';
           // $msj = 'id_grupo: '.$request->addBeneficiaryGroup.' Id beneficiaria: '.$request->addBeneficiaryDni;
 
-
-
           $existeBeneficiaria = DB::table('users')->where('users.dni', '=', $request->addBeneficiaryDni)->first();
 
           if ($existeBeneficiaria == null) {
             $msj = 'No existe ninguna beneficiaria registrada con ese numero de documento';
             $type_msj = 'error';
-
           }else{
               $curso = DB::table('courses')->select('courses.id')
                                           ->join('groups', 'groups.id_course_parent', '=', 'courses.id')
@@ -794,9 +827,6 @@ class EventsController extends Controller
                                                           ->join('courses', 'courses.id', '=', 'groups.id_course_parent')
                                                           ->where('groups_users.id_users', '=', $existeBeneficiaria->id)
                                                           ->where('courses.id', '=', $curso->id)->first();
-
-
-
               if ($estaMatriculada != null) {
                 $msj = 'La beneficiaria ya se encuentra matriculada en la actividad de formación';
                 $type_msj = 'error';
@@ -805,11 +835,22 @@ class EventsController extends Controller
                 $id_group = DB::table('groups_users')->insertGetId(
                   ['id_group' => $this->validarString($request->addBeneficiaryGroup),
                   'id_users' => $this->validarString($existeBeneficiaria->id),
-                  'status' => '',
+                  'status' => 'Matriculado',
                   'created_at' => $fecha_hoy,
                   'updated_at' => $fecha_hoy
                 ]
               );
+
+              // $curso = Course::find($curso->id);
+              // $grupo = DB::table('groups')->where('id', '=', $request->addBeneficiaryGroup)->first();
+              // $schedules_string = '';
+              // $schedules = DB::table('schedule')->where('id_group', '=', $request->addBeneficiaryGroup)->get();
+              // foreach ($schedules as $schedule) {
+              //   $schedules_string .= $schedule->day.' ('.substr($schedule->hour_start, 0, 5 ).'-'.substr($schedule->hour_end, 0, 5 ).') -';
+              // }
+              // $email = $existeBeneficiaria->email;
+              // auth()->user()->sendNotify($curso, $grupo, $schedules_string, $email);
+
               }
           }
           return response()->json([
@@ -836,7 +877,11 @@ class EventsController extends Controller
                  'groups_users.status')
         ->where('groups_users.id_group', $request->id_group)->get();
         $owner = User::join('courses', 'courses.id_owner', '=', 'users.id')->where('courses.id', '=', $request->id_course)->first();
+        $schedules = DB::table('schedule')->where('id_group', '=', $request->id_group)->get();
+
         $array_focos = array();
+
+
 
         foreach ($focos as $value) {
           array_push($array_focos, ' '.$value->name);
@@ -847,7 +892,8 @@ class EventsController extends Controller
         return response()->json([
           'focos' => $focos_string,
           'students' => $students,
-          'owner' => $owner
+          'owner' => $owner,
+          'schedules' => $schedules
 
         ],200);
         // code...
@@ -876,7 +922,7 @@ class EventsController extends Controller
             $user = User::select('dni',
             DB::raw('upper(name) as name'),
             DB::raw('upper(last_name) as last_name'),
-            'type_dni')->where('dni', $dni)->first();
+            'type_dni')->where('dni', $request->id_user)->first();
           }
 
           $number = 0;
@@ -899,13 +945,14 @@ class EventsController extends Controller
             $number++;
           }
 
-          $image = 'images/certifieds/certified2.jpg';
+          // $image = 'images/certifieds/certified2.jpg';
 
-          $pdf = PDF::loadView('management.certifiedCourse', compact('course', 'user', 'number', 'image'))->setPaper('letter', 'landscape');
+          // $pdf = \PDF::loadView('mail.testEmail')->setPaper('letter', 'landscape');
+          $pdf = \PDF::loadView('management.certifiedCourse', compact('course', 'user', 'number'))->setPaper('letter', 'landscape');
           if ($request->view == 'true') {
             return $pdf->stream('certified'.$request->id_user.'.pdf');
           }
-          return $pdf->download('certified'.$request->id_course.$request->id_user.'.pdf');
+          return $pdf->download('certified'.$request->id_user.'.pdf');
         }
         abort(401, 'This action is inautorized');
       }
@@ -914,7 +961,8 @@ class EventsController extends Controller
 
     public function addCertifieds(Request $request){
 
-
+      if (auth()->user() == null) abort(401, 'This action is inautorized');
+      if (!auth()->user()->authorizedRoles('admin')) abort(401, 'This action is inautorized');
       $course = Course::find($request->id_course);
       $students  = User::join('groups_users', 'users.id', '=', 'groups_users.id_users')->join('groups', 'groups_users.id_group', '=', 'groups.id')
       ->select('users.last_name',
@@ -948,6 +996,7 @@ class EventsController extends Controller
           $name = '/certifieds/'.time().$file->getClientOriginalName();
           $file->move(public_path().'/certifieds/',$name);
         }
+
 
         $affected = DB::table('groups_users')
               ->where('id', $request->id)
@@ -1034,6 +1083,13 @@ class EventsController extends Controller
           $name =time().$file->getClientOriginalName();
           $file->move(public_path().'/images/certifieds/',$name);
         }
+        $url_current = url()->current();
+        if (str_contains($url_current, 'https://')) {
+            $url_current = substr ( $url_current , 8 , strlen($url_current)-1);
+        }else {
+          $url_current = substr ( $url_current , 7 , strlen($url_current)-1);
+        }
+        $url = substr ( $url_current , 0 , strlen($url_current)-20);
         $course = Course::find($request->id);
         $course->certified_title = $this->validarString($request->certified_title);
         $course->certified_header = $this->validarString($request->certified_header);
@@ -1050,7 +1106,7 @@ class EventsController extends Controller
         $course->certified_position_people5 = $this->validarString($request->certified_position_people5);
         $course->certified_position_people6 = $this->validarString($request->certified_position_people6);
         if ($name !== '' && $name !== null) {
-          $course->certified_image = 'images/certifieds/'.$name;
+          $course->certified_image = $url.'images/certifieds/'.$name;
         }
         $course->Save();
         return response()->json([

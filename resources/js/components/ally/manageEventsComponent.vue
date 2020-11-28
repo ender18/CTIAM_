@@ -5,7 +5,7 @@
 
     <div class="row pt-4">
       <div class="col-12 ">
-        <h2><strong>Gestión de Actividades de formación</strong></h2>
+        <h2><strong>Administración de Actividades de formación</strong></h2>
       </div>
     </div>
     <div class="row pb-4">
@@ -433,9 +433,6 @@
                           </div>
                         </div>
                       </div>
-
-
-
                   <div class="row">
                     <div class="col-12 text-center">
                       <button type="button" class="btn btn-dark border-round" v-on:click="changePagination(1)" name="button"><i class="fas fa-angle-left"></i></button>
@@ -481,13 +478,15 @@
                 <div class="col-6 col-lg-4">
                   <p><strong>Estado: </strong>{{view_status}}</p>
                   <p><strong>Tipo: </strong>{{view_type}}</p>
-                </div>
-                <div class="col-6 col-lg-4">
+                  <p><strong>Aliado: {{view_name_owner}} </strong></p>
                   <p><strong>Foco(s): </strong>{{view_focos}}</p>
-                  <p><strong>Duración: </strong>{{view_duration}} {{view_duration_type}}</p>
                 </div>
                 <div class="col-6 col-lg-4">
-                  <p><strong>Aliado: {{view_ally}} </strong></p>
+                  <p><strong>Duración: </strong>{{view_duration}} {{view_duration_type}}</p>
+                  <p><strong>Fecha inicio inscripción: </strong>{{view_course.fecha_inicio_inscription}}</p>
+                  <p><strong>Fecha Fin inscripción: </strong>{{view_course.fecha_fin_inscription}}</p>
+                </div>
+                <div class="col-6 col-lg-4">
                   <p><strong>Fecha de Inicio: </strong>{{view_fecha_inicio}}</p>
                   <p><strong>Fecha Fin: </strong>{{view_fecha_fin}}</p>
                 </div>
@@ -604,7 +603,7 @@
                   </select>
                 </div>
                 <div class="col-2">
-                  <button type="button" class="btn btn-primary border-round" name="button" v-on:click="addBeneficiary()"><i class="fas fa-plus"></i></button>
+                  <button type="button" :disabled="disable_btn_addBeneficiary" class="btn btn-primary border-round" name="button" v-on:click="addBeneficiary()"><i class="fas fa-plus"></i></button>
                 </div>
               </div>
             </div>
@@ -625,6 +624,7 @@
               <div class="row">
                 <div class="col-12">
                   <h4 class="modal-title text-center"><strong>Editar certificado</strong></h4>
+                  <h5 class="text-center"> {{course_certified.title}}</h5>
                 </div>
                 <div class="col-12">
                   <hr class="hr-pink-center">
@@ -746,6 +746,7 @@ export default {
 
   data(){
     return {
+      disable_btn_addBeneficiary : false,
       spinner: false,
       eventos : this.courses,
       imgMiniatura : '',
@@ -783,8 +784,10 @@ export default {
       schedule: '',
 
       // Elementos del curso
+      view_course: '',
       view_id_course: '',
-      view_ally: '',
+      view_name: '',
+      view_last_name: '',
       view_title : '',
       view_type : '',
       view_description : '',
@@ -871,8 +874,12 @@ export default {
           toastr.error("Los campos no pueden quedar vacíos, intenta de nuevo.", 'Error');
           return;
       }
+      this.disable_btn_addBeneficiary = true;
+      toastr.warning("Procesando solicitud", 'Espere...');
+
       axios.post('/addBeneficiary',  { addBeneficiaryDni : this.addBeneficiaryDni, addBeneficiaryGroup : this.addBeneficiaryGroup  }
       ).then(response => {
+        this.disable_btn_addBeneficiary = false;
         if (response.data.type_msj == 'error') {
           toastr.error(response.data.msj, 'Error');
         }else{
@@ -882,6 +889,7 @@ export default {
         }
       }).catch(function (error){
         console.log(error);
+        this.disable_btn_addBeneficiary = false;
       });
     },
 
@@ -997,6 +1005,7 @@ export default {
       this.id_course = id;
       axios.get('/manageEvents/'+id)
       .then(response => {
+        this.view_course = response.data.course;
         this.view_title = response.data.course.title;
         this.view_type = response.data.course.type;
         this.view_description = response.data.course.description;
@@ -1004,7 +1013,8 @@ export default {
         this.view_duration_type = response.data.course.duration_type;
         this.view_url_image = response.data.course.url_image;
         this.view_quota = response.data.course.quota;
-        this.view_ally = response.data.course.name + response.data.course.last_name;
+        this.view_name = response.data.course.name;
+        this.view_last_name = response.data.course.last_name;
         this.view_fecha_inicio = response.data.course.fecha_inicio;
         this.view_fecha_fin = response.data.course.fecha_fin;
         this.view_place = response.data.course.place;
@@ -1053,6 +1063,7 @@ export default {
     },
 
     addChangeFocus: function(){
+      $('#table_pagination').DataTable().destroy();
       this.resetClasses();
       var errorForm = true;
       if (this.title == null || this.title == '') {
@@ -1113,14 +1124,24 @@ export default {
          $('#file').val('');
          this.spinner = false;
          toastr.success(response.data.msj, 'Exito');
+
          this.eventos = response.data.events;
          console.log(response.data.msj);
          this.resetClasses();
          this.changePagination(1);
+         console.log('Aqui llega');
+
+
       }).catch(function (error){
         console.log(error);
         this.spinner = false;
       });
+
+      $('#table_pagination').DataTable( {
+       language: {
+         url: '/js/Spanish.json'
+       }
+     });
     },
 
     eraseContent(id){
@@ -1448,6 +1469,7 @@ export default {
     },
 
     addChangeCertified : function(){
+      toastr.warning('Se estan cargando los datos', 'Espere...');
       let formData = new FormData();
       formData.append('id', this.course_certified.id);
       formData.append('certified_title', this.certified_title);
@@ -1535,6 +1557,7 @@ export default {
 </script>
 
 <style>
+
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s
 }

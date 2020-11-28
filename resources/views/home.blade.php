@@ -47,7 +47,7 @@
             <div class="card-body text-center">
               <h5 class="card-tittle">Actividades de formación disponibles </h5>
               <p class="card-text d-none d-lg-block">Aqui puedes los ver los cursos, talleres, capacitaciones disponibles para ti</p>
-              <a href="/showEvents" class="btn btn-primary border-round">Ingresa</a>
+              <a href="/showEvents" class="btn btn-primary border-round"><i class="fas fa-sign-in-alt"></i></a>
             </div>
           </div>
         </div>
@@ -63,7 +63,7 @@
             <div class="card-body text-center">
               <h5 class="card-tittle">Mis Actividades de formación </h5>
               <p class="card-text d-none d-lg-block">Mira el estado de las actividades de formación en las que me he inscrito</p>
-              <a href="/myEvents" class="btn btn-primary border-round">Ingresa</a>
+              <a href="/myEvents" class="btn btn-primary border-round"><i class="fas fa-sign-in-alt"></i></a>
             </div>
           </div>
         </div>
@@ -106,7 +106,7 @@
             <div class="card-body text-center">
               <h5 class="card-tittle">Mis Actividades de Formación</h5>
               <p class="card-text  d-none d-lg-block">Encuentra las actividades asignadas</p>
-              <a href="/myEventsAliado" class="btn btn-primary border-round">Ingresa</a>
+              <a href="/myEventsAliado" class="btn btn-primary border-round"><i class="fas fa-sign-in-alt"></i></a>
             </div>
           </div>
         </div>
@@ -140,7 +140,7 @@
           <div class="card-body text-center">
             <h5 class="card-tittle">Mis Actividades</h5>
             <p class="card-text d-none d-lg-block">Encuentra estadísticas de mis actividades de formación</p>
-            <a href="/myEventsAlly" class="btn btn-primary border-round">Ingresa</a>
+            <a href="/myEventsAlly" class="btn btn-primary border-round"><i class="fas fa-sign-in-alt"></i></a>
           </div>
         </div>
       </div>
@@ -156,7 +156,7 @@
           <div class="card-body text-center">
             <h5 class="card-tittle">&nbsp Mis  Usuarios &nbsp  &nbsp</h5>
             <p class="card-text d-none d-lg-block">Encuentra información de tus beneficiarias y tutores</p>
-            <a href="/myBeneficiaryAlly" class="btn btn-primary border-round">Ingresa</a>
+            <a href="/myBeneficiaryAlly" class="btn btn-primary border-round"><i class="fas fa-sign-in-alt"></i></a>
           </div>
         </div>
       </div>
@@ -190,9 +190,9 @@
               </div>
             </div>
             <div class="card-body text-center">
-              <h5 class="card-tittle">Gestionar Actividades de Formación</h5>
+              <h5 class="card-tittle">Administrar Actividades de Formación</h5>
               <p class="card-text d-none d-lg-block">Agrega, edita y elimina</p>
-              <a href="/manageEvents" class="btn btn-primary border-round">Ingresa</a>
+              <a href="/manageEvents" class="btn btn-primary border-round"><i class="fas fa-sign-in-alt"></i></a>
             </div>
           </div>
         </div>
@@ -208,7 +208,7 @@
             <div class="card-body text-center">
               <h5 class="card-tittle">Gestión de contenido</h5>
               <p class="card-text d-none d-lg-block">Administra el contenido del sitio</p>
-              <a href="/manageContent" class="btn btn-primary border-round">Ingresa</a>
+              <a href="/manageContent" class="btn btn-primary border-round"><i class="fas fa-sign-in-alt"></i></a>
             </div>
           </div>
         </div>
@@ -224,7 +224,7 @@
             <div class="card-body text-center">
               <h5 class="card-tittle">Gestión de focos</h5>
               <p class="card-text d-none d-lg-block">Administra la clasificación de focos</p>
-              <a href="/manage_focus" class="btn btn-primary border-round">Ingresa</a>
+              <a href="/manage_focus" class="btn btn-primary border-round"><i class="fas fa-sign-in-alt"></i></a>
             </div>
           </div>
         </div>
@@ -240,7 +240,7 @@
             <div class="card-body text-center">
               <h5 class="card-tittle">Administrar usuarios</h5>
               <p class="card-text d-none d-lg-block">Asigna roles, activa y desactiva usuarios</p>
-              <a href="/manageUsers" class="btn btn-primary border-round">Ingresa</a>
+              <a href="/manageUsers" class="btn btn-primary border-round"><i class="fas fa-sign-in-alt"></i></a>
             </div>
           </div>
         </div>
@@ -249,14 +249,14 @@
             <div class="container">
               <div class="row text-center pt-5 pb-4 d-flex align-items-center">
                 <div class="col-12">
-                  <a href="/statisticsInfo"><i class="fas fa-chart-bar fa-5x color-pink"></i></a>
+                  <a href="/statisticsInfo"><i class="fas fa-map-marked fa-5x color-pink"></i></a>
                 </div>
               </div>
             </div>
             <div class="card-body text-center">
-              <h5 class="card-tittle">&nbsp &nbsp Estadísticas  &nbsp &nbsp</h5>
-              <p class="card-text d-none d-lg-block">Accede al mapa de beneficiarias, cantidad de cursos...</p>
-              <a href="/statisticsInfo" class="btn btn-primary border-round">Ingresa</a>
+              <h5 class="card-tittle"> Mapa de beneficiarias</h5>
+              <p class="card-text d-none d-lg-block">Accede al mapa de beneficiarias por comunas</p>
+              <a href="/statisticsInfo" class="btn btn-primary border-round"><i class="fas fa-sign-in-alt"></i></a>
             </div>
           </div>
         </div>
