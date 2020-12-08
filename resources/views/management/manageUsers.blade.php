@@ -6,6 +6,6 @@
 
 @section('content')
 
-  <manage-users-component :usuarios="{{$usuarios}}"></manage-users-component>
+  <manage-users-component v-bind:usuarios="{{$usuarios}}" v-bind:superadmin="{{$superadmin}}"></manage-users-component>
 
 @endsection

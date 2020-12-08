@@ -593,23 +593,53 @@
           <div class="modal-body">
             <div class="container">
               <div class="row">
-                <div class="col-5">
-                  <input type="number" class="form-control border-round" name="" placeholder="Documento de identidad" v-model="addBeneficiaryDni" >
-                </div>
-                <div class="col-5">
+                <div class="col-12">
                   <select class="form-control border-round"  v-model="addBeneficiaryGroup">
                     <option value="">Selecione el grupo</option>
                     <option v-for="group in courseGroups" v-bind:value="group.id"> {{group.nameGroup}}</option>
                   </select>
                 </div>
-                <div class="col-2">
-                  <button type="button" :disabled="disable_btn_addBeneficiary" class="btn btn-primary border-round" name="button" v-on:click="addBeneficiary()"><i class="fas fa-plus"></i></button>
+              </div>
+
+              <div class="row pt-4">
+                <div class="col-12">
+                  <h4><strong>Beneficiarias</strong></h4>
+                  <hr class="hr-pink-left">
                 </div>
               </div>
+              <div class="row pt-3">
+                <div class="col-12">
+                  <div class="table-responsive">
+                    <table class="table table-hover" id="table_pagination_addbeneficiaries">
+                      <thead class="thead-light">
+                        <tr>
+                          <th scope="col">DNI</th>
+                          <th scope="col">Nombres</th>
+                          <th scope="col">Apellidos</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">Agregar</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr v-for="beneficiary in beneficiaries">
+                          <th scope="row">{{beneficiary.dni}}</th>
+                          <td>{{beneficiary.name}}</td>
+                          <td>{{beneficiary.last_name}}</td>
+                          <td>{{beneficiary.email}}</td>
+                          <td>
+                            <button type="button" :disabled="disable_btn_addBeneficiary" class="btn btn-primary border-round" v-on:click="addBeneficiary(beneficiary.dni)" name="button"> <i class="fas fa-plus"></i> </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-dark txt-white border-round" data-dismiss="modal"><i class="fas fa-times"></i></button>
+            <button type="button" class="btn btn-dark txt-white border-round" v-on:click="closeModalAddBeneficiaries()"><i class="fas fa-times"></i></button>
           </div>
         </div>
       </div>
@@ -805,6 +835,7 @@ export default {
       view_status : '',
       students: '',
       courseGroups: '',
+      beneficiaries : '',
 
       // Elementos de grupos
       id_group: '',
@@ -869,9 +900,10 @@ export default {
   methods:{
 
 
-    addBeneficiary : function(){
-      if (this.addBeneficiaryDni == '' || this.addBeneficiaryGroup == '' ) {
-          toastr.error("Los campos no pueden quedar vacíos, intenta de nuevo.", 'Error');
+    addBeneficiary : function(addBeneficiaryDni){
+      this.addBeneficiaryDni = addBeneficiaryDni;
+      if (this.addBeneficiaryGroup == '' ) {
+          toastr.error("Debes seleccionar un grupo, intenta de nuevo.", 'Error');
           return;
       }
       this.disable_btn_addBeneficiary = true;
@@ -884,8 +916,6 @@ export default {
           toastr.error(response.data.msj, 'Error');
         }else{
           toastr.success(response.data.msj, 'Exito');
-          this.addBeneficiaryDni = '',
-          this.addBeneficiaryGroup = ''
         }
       }).catch(function (error){
         console.log(error);
@@ -1247,13 +1277,44 @@ export default {
     },
 
     openModalAddBeneficiary : function(id_course){
-      axios.get('/manageEvents/'+id_course)
-      .then(response => {
+
+     axios.post('/manageEvents/getDataAddBeneficiarie',{ id_course : id_course
+      }).then(response =>{
         this.view_title = response.data.course.title;
         this.courseGroups = response.data.groups;
+        this.beneficiaries = response.data.users;
+        this.addBeneficiaryGroup = '';
+        console.log(response.data.users);
+
+
+
+
         $('#modalAddBeneficiary').modal('show');
+
+
+
+        $('#modalAddBeneficiary').on('shown.bs.modal', function () {
+          $('#table_pagination_addbeneficiaries').DataTable( {
+            language: {
+              url: '/js/Spanish.json'
+            }
+          });
+          $('#table_pagination_addbeneficiaries').DataTable().destroy();
+        });
+
+
+       //  $('#modalAddBeneficiary').on('shown.bs.modal', function () {
+       //
+       //    $('#table_pagination_addbeneficiaries').DataTable( {
+       //      language: {
+       //        url: '/js/Spanish.json'
+       //      }
+       //    });
+       //    $('#table_pagination_addbeneficiaries').DataTable().destroy();
+       // });
+
       }).catch(function (error){
-        console.log(error);
+
       });
 
     },
@@ -1466,6 +1527,12 @@ export default {
       console.log('Entra a este metodo de cerrar MODAL');
       $('#table_pagination_beneficiaries').DataTable().destroy();
       $('#modalShow').modal('hide');
+    },
+
+    closeModalAddBeneficiaries :  function(){
+      $('#table_pagination_addbeneficiaries').DataTable().destroy();
+      $('#modalAddBeneficiary').modal('hide');
+
     },
 
     addChangeCertified : function(){

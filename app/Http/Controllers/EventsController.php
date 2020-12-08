@@ -1115,6 +1115,34 @@ class EventsController extends Controller
       }
     }
 
+    public function getDataAddBeneficiarie(Request $request){
+      if ($request->ajax()) {
+        $course = Course::find($request->id_course);
+        $groups = DB::table('groups')->select('groups.id',
+                                              'groups.name as nameGroup',
+                                              'groups.quota',
+                                              'groups.schedule',
+                                              'groups.place',
+                                              'groups.status_group',
+        )->where('groups.id_course_parent', '=', $request->id_course)->get();
+        $users = User::select('users.id', 'users.dni', 'users.name', 'users.last_name', 'users.email', 'users.phone', 'roles.description', 'role_user.status')
+              ->join('role_user', 'users.id', '=', 'role_user.user_id')
+              ->join('roles', 'roles.id', '=', 'role_user.role_id' )
+              ->where('roles.name', '=', 'beneficiaria')
+              ->orderBy('users.id', 'ASC')->get();
+
+        return response()->json([
+          'course' => $course,
+          'groups' => $groups,
+          'users' => $users
+
+
+        ],200);
+      }
+
+
+    }
+
 
 
 

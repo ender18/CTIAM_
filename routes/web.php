@@ -82,6 +82,16 @@ Route::post('/addSchedule', 'EventsController@addSchedule');
 Route::post('/deleteSchedule', 'EventsController@deleteSchedule');
 Route::post('/searchCourse', 'EventsController@searchCourse');
 Route::post('/saveChangesCertified', 'EventsController@saveChangesCertified');
+Route::post('/manageEvents/getDataAddBeneficiarie', 'EventsController@getDataAddBeneficiarie');
+Route::post('/manageUsers/searchUser', 'UsersController@searchUser');
+Route::post('/manageUsers/addRole', 'UsersController@addRole');
+Route::post('/manageUsers/deleteRole', 'UsersController@deleteRole');
+Route::post('/manageUsers/saveUser', 'UsersController@saveUser');
+
+
+
+
+
 
 
 

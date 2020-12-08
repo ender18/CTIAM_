@@ -136,11 +136,13 @@ class UsersController extends Controller
     }
 
 
-    public function manageUsers(){      
+    public function manageUsers(){
       if (auth()->user() == null) abort(401, 'This action is inautorized');
       if (!auth()->user()->authorizedRoles('admin')) abort(401, 'This action is inautorized');
-      $usuarios = User::select('role_user.id', 'users.name', 'users.last_name', 'users.email', 'users.phone', 'roles.description', 'role_user.status')->join('role_user', 'users.id', '=', 'role_user.user_id')->join('roles', 'roles.id', '=', 'role_user.role_id' )->orderBy('users.id', 'ASC')->get();
-      return view('management.manageUsers', compact('usuarios'));
+      $usuarios = User::select('role_user.id', 'users.dni', 'users.type_dni', 'users.id as user_id', 'users.name', 'users.last_name', 'users.email', 'users.phone', 'roles.description', 'role_user.status')->join('role_user', 'users.id', '=', 'role_user.user_id')->join('roles', 'roles.id', '=', 'role_user.role_id' )->orderBy('users.id', 'ASC')->get();
+      $superadmin = auth()->user()->authorizedRoles('superadmin');
+      $superadmin = 0;
+      return view('management.manageUsers', compact('usuarios', 'superadmin'));
     }
 
     public function changeStatus(Request $request){
@@ -152,10 +154,10 @@ class UsersController extends Controller
             ->where('id', $request->id)
             ->update(['status' => $request->status]);
 
-        $usuarios = User::select('role_user.id', 'users.name', 'users.last_name', 'users.email', 'users.phone', 'roles.description', 'role_user.status')->join('role_user', 'users.id', '=', 'role_user.user_id')->join('roles', 'roles.id', '=', 'role_user.role_id' )->orderBy('users.id', 'ASC')->get();
+            $users = User::select('role_user.id', 'users.dni', 'users.type_dni', 'users.id as user_id', 'users.name', 'users.last_name', 'users.email', 'users.phone', 'roles.description', 'role_user.status')->join('role_user', 'users.id', '=', 'role_user.user_id')->join('roles', 'roles.id', '=', 'role_user.role_id' )->orderBy('users.id', 'ASC')->get();
 
         return response()->json([
-          'usuarios' => $usuarios
+          'usuarios' => $users
         ],200);
       }
 
@@ -257,4 +259,116 @@ class UsersController extends Controller
     {
         //
     }
+
+    public function searchUser(Request $request){
+      if ($request->ajax()) {
+        $user = User::find($request->user_id);
+        $roles = DB::table('roles')
+                ->join('role_user', 'roles.id', '=', 'role_user.role_id')
+                ->where('role_user.user_id', '=', $request->user_id)
+                ->get();
+        $all_roles = DB::table('roles')->where('name', '!=', 'superadmin')->get();
+
+        return response()->json([
+          'user' => $user,
+          'roles' => $roles,
+          'all_roles' => $all_roles
+        ],200);
+      }
+
+    }
+
+    public function addRole(Request $request){
+      if ($request->ajax()) {
+        $msj = '';
+        $success = false;
+
+        $existe = DB::table('role_user')
+                  ->where('user_id', $request->user_id)
+                  ->where('role_id', $request->role_id)->first();
+
+        if ($existe == null) {
+          DB::table('role_user')->insert(
+              ['user_id' => $request->user_id, 'role_id' => $request->role_id, 'status' => 'activated']
+          );
+          $msj = 'El rol seleccionado fue asociado correctamente.';
+          $success = true;
+        }else {
+          $msj = 'El rol seleccionado ya está asociado a este usuario.';
+        }
+        $roles = DB::table('roles')
+                ->join('role_user', 'roles.id', '=', 'role_user.role_id')
+                ->where('role_user.user_id', '=', $request->user_id)
+                ->get();
+      $users = User::select('role_user.id', 'users.dni', 'users.type_dni', 'users.id as user_id', 'users.name', 'users.last_name', 'users.email', 'users.phone', 'roles.description', 'role_user.status')->join('role_user', 'users.id', '=', 'role_user.user_id')->join('roles', 'roles.id', '=', 'role_user.role_id' )->orderBy('users.id', 'ASC')->get();
+
+        return response()->json([
+          'msj' => $msj,
+          'success' => $success,
+          'roles' => $roles,
+          'users' => $users
+        ],200);
+      }
+    }
+
+    public function deleteRole(Request $request){
+      if ($request->ajax()) {
+        DB::table('role_user')->where('id', $request->id)->delete();
+        $msj = 'El rol del usuario fue eliminado correctamente.';
+        $success = true;
+        $roles = DB::table('roles')
+        ->join('role_user', 'roles.id', '=', 'role_user.role_id')
+        ->where('role_user.user_id', '=', $request->user_id)
+        ->get();
+
+        $users = User::select('role_user.id', 'users.dni', 'users.type_dni', 'users.id as user_id', 'users.name', 'users.last_name', 'users.email', 'users.phone', 'roles.description', 'role_user.status')
+                ->join('role_user', 'users.id', '=', 'role_user.user_id')
+                ->join('roles', 'roles.id', '=', 'role_user.role_id' )
+                ->orderBy('users.id', 'ASC')->get();
+
+
+        return response()->json([
+          'msj' => $msj,
+          'success' => $success,
+          'roles' => $roles,
+          'users' => $users
+        ],200);
+      }
+    }
+
+    public function saveUser(Request $request){
+      if ($request->ajax()) {
+
+        $msj = 'Los datos se guardaron correctamente.';
+        $user = json_decode($request->user, true);
+        $affected = DB::table('users')
+              ->where('id', $user['id'])
+              ->update(['name' => $user['name'],
+                        'last_name' =>$user['last_name'],
+                        'email' =>$user['email'],
+                        'type_dni' =>$user['type_dni'],
+                        'dni' =>$user['dni'],
+                        'phone' =>$user['phone']
+                      ]);
+
+        $users = User::select('role_user.id', 'users.dni', 'users.type_dni', 'users.id as user_id', 'users.name', 'users.last_name', 'users.email', 'users.phone', 'roles.description', 'role_user.status')
+                ->join('role_user', 'users.id', '=', 'role_user.user_id')
+                ->join('roles', 'roles.id', '=', 'role_user.role_id' )
+                ->orderBy('users.id', 'ASC')->get();
+
+
+        return response()->json([
+          'msj' => $msj,
+          'users' => $users
+        ],200);
+      }
+
+
+
+    }
+
+
+
+
+
 }
